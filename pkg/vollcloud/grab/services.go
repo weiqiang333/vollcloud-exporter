@@ -1,10 +1,11 @@
 package grab
 
 import (
-	"github.com/PuerkitoBio/goquery"
-	"github.com/spf13/viper"
 	"log"
 	"net/http"
+
+	"github.com/PuerkitoBio/goquery"
+	"github.com/spf13/viper"
 )
 
 type Services struct {

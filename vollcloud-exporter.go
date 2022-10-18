@@ -2,18 +2,19 @@ package main
 
 import (
 	"fmt"
-	"github.com/prometheus/client_golang/prometheus"
-	"github.com/prometheus/client_golang/prometheus/promhttp"
-	"github.com/spf13/pflag"
-	"github.com/spf13/viper"
 	"io"
 	"log"
 	"net/http"
 	"os/exec"
 	"runtime"
 	"time"
-	"vollcloud-exporter/pkg/vollcloud/grab"
 
+	"github.com/prometheus/client_golang/prometheus"
+	"github.com/prometheus/client_golang/prometheus/promhttp"
+	"github.com/spf13/pflag"
+	"github.com/spf13/viper"
+
+	"vollcloud-exporter/pkg/vollcloud/grab"
 	vclogin "vollcloud-exporter/pkg/vollcloud/login"
 )
 

@@ -2,7 +2,6 @@ package login
 
 import (
 	"fmt"
-	"github.com/spf13/viper"
 	"log"
 	"net/http"
 	"net/http/cookiejar"
@@ -12,6 +11,7 @@ import (
 	"time"
 
 	"github.com/PuerkitoBio/goquery"
+	"github.com/spf13/viper"
 	"golang.org/x/net/publicsuffix"
 )
 
