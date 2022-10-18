@@ -17,5 +17,5 @@
 .idea/
 vendor/
 config/production/
-vollcloud_exporter
-.*.tar.gz
+vollcloud-exporter
+*.tar.gz
