@@ -2,20 +2,24 @@ package main
 
 import (
 	"fmt"
-	"io"
-	"net/http"
-	"os/exec"
-	"runtime"
-
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"github.com/spf13/pflag"
 	"github.com/spf13/viper"
+	"io"
+	"log"
+	"net/http"
+	"os/exec"
+	"runtime"
+	"time"
+	"vollcloud-exporter/pkg/vollcloud/grab"
+
+	vclogin "vollcloud-exporter/pkg/vollcloud/login"
 )
 
 func init() {
 	pflag.String("address", ":9109", "The address on which to expose the web interface and generated Prometheus metrics.")
-	pflag.String("configfile", "./config/vollcloud-exporter.yaml", "exporter config file")
+	pflag.String("configfile", "./config/production/vollcloud-exporter.yaml", "exporter config file")
 }
 
 type Exporter struct {
@@ -37,7 +41,17 @@ func (e *Exporter) Describe(ch chan<- *prometheus.Desc) {
 }
 
 func (e *Exporter) Collect(ch chan<- prometheus.Metric) {
-	e.NodeOnline.WithLabelValues("")
+	e.NodeOnline.WithLabelValues("ip_address", "node_ip", "hostname", "vm_type", "node_location", "os").Set(0)
+	vclogin := vclogin.NewLogin()
+	_, err := vclogin.Login()
+	if err != nil {
+		log.Println("Failed grab in login")
+		return
+	}
+	httpClient := *vclogin.HttpClient
+	vsServices := grab.NewServices(httpClient)
+	vsServices.Get()
+	vsServices.GetProductIdUrls()
 
 	e.NodeOnline.Collect(ch)
 }
@@ -75,7 +89,7 @@ func open(uri string) error {
 func main() {
 	pflag.Parse()
 	if err := viper.BindPFlags(pflag.CommandLine); err != nil {
-		fmt.Println("Fatal error BindPFlags: %w", err.Error())
+		log.Fatal("Fatal error BindPFlags: %w", err.Error())
 	}
 	fmt.Println("load config file ", viper.GetString("configfile"))
 	viper.SetConfigType("yaml")
@@ -85,14 +99,19 @@ func main() {
 	}
 
 	prometheus.MustRegister(NewExporter())
+
 	// http server
-	fmt.Printf("http server start, address %s/metrics\n", viper.GetString("address"))
+	listenAddress := viper.GetString("address")
+	fmt.Printf("http server start, address %s/metrics\n", listenAddress)
 	http.Handle("/metrics", promhttp.Handler())
 	http.HandleFunc("/reload", reloadConfig)
-	if err := open(fmt.Sprintf("http://127.0.0.1:9109/metrics")); err != nil {
-		fmt.Println(err.Error())
-	}
-	if err := http.ListenAndServe(viper.GetString("exporter.address"), nil); err != nil {
-		fmt.Println("Fatal error http: %w", err)
+	go func() {
+		time.Sleep(time.Second)
+		if err := open(fmt.Sprintf("http://127.0.0.1:9109/metrics")); err != nil {
+			log.Fatal(err.Error())
+		}
+	}()
+	if err := http.ListenAndServe(listenAddress, nil); err != nil {
+		log.Fatal("Fatal error http: %w", err)
 	}
 }
