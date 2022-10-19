@@ -20,29 +20,69 @@ import (
 
 func init() {
 	pflag.String("address", ":9109", "The address on which to expose the web interface and generated Prometheus metrics.")
-	pflag.String("configfile", "./config/production/vollcloud-exporter.yaml", "exporter config file")
+	pflag.String("configfile", "./config/vollcloud-exporter.yaml", "exporter config file")
 }
 
+const namespace = "vollcloud"
+
 type Exporter struct {
-	NodeOnline prometheus.GaugeVec
+	NodeOnline       prometheus.GaugeVec
+	BandwidthTotalGB prometheus.GaugeVec
+	BandwidthUsedGB  prometheus.GaugeVec
+	BandwidthFreeGB  prometheus.GaugeVec
+	BandwidthUsage   prometheus.GaugeVec
 }
 
 func NewExporter() *Exporter {
 	return &Exporter{
 		NodeOnline: *prometheus.NewGaugeVec(
 			prometheus.GaugeOpts{
-				Name: "node_suspended",
-				Help: "server run status value, Running=0 / Suspended=1",
-			}, []string{"ip_address", "node_ip", "hostname", "vm_type", "node_location", "os"}),
+				Namespace: namespace,
+				Name:      "node_online",
+				Help:      "server run status value, Running=0 / Suspended=1",
+			}, []string{"ip_address", "hostname", "vm_type", "memory", "disk"}),
+		BandwidthTotalGB: *prometheus.NewGaugeVec(
+			prometheus.GaugeOpts{
+				Namespace: namespace,
+				Name:      "bandwidth_total_GB",
+				Help:      "宽带流量当月总数 GB",
+			}, []string{"ip_address", "hostname"}),
+		BandwidthUsedGB: *prometheus.NewGaugeVec(
+			prometheus.GaugeOpts{
+				Namespace: namespace,
+				Name:      "bandwidth_used_GB",
+				Help:      "宽带流量当月使用总数 GB",
+			}, []string{"ip_address", "hostname"}),
+		BandwidthFreeGB: *prometheus.NewGaugeVec(
+			prometheus.GaugeOpts{
+				Namespace: namespace,
+				Name:      "bandwidth_free_GB",
+				Help:      "宽带流量当月剩余总数 GB",
+			}, []string{"ip_address", "hostname"}),
+		BandwidthUsage: *prometheus.NewGaugeVec(
+			prometheus.GaugeOpts{
+				Namespace: namespace,
+				Name:      "bandwidth_usage",
+				Help:      "宽带流量使用百分比 %",
+			}, []string{"ip_address", "hostname"}),
 	}
 }
 
 func (e *Exporter) Describe(ch chan<- *prometheus.Desc) {
 	e.NodeOnline.Describe(ch)
+	e.BandwidthTotalGB.Describe(ch)
+	e.BandwidthFreeGB.Describe(ch)
+	e.BandwidthUsage.Describe(ch)
+	e.BandwidthUsedGB.Describe(ch)
 }
 
 func (e *Exporter) Collect(ch chan<- prometheus.Metric) {
-	e.NodeOnline.WithLabelValues("ip_address", "node_ip", "hostname", "vm_type", "node_location", "os").Set(0)
+	e.NodeOnline.Reset()
+	e.BandwidthTotalGB.Reset()
+	e.BandwidthUsedGB.Reset()
+	e.BandwidthFreeGB.Reset()
+	e.BandwidthUsage.Reset()
+
 	vclogin := vclogin.NewLogin()
 	_, err := vclogin.Login()
 	if err != nil {
@@ -53,8 +93,23 @@ func (e *Exporter) Collect(ch chan<- prometheus.Metric) {
 	vsServices := grab.NewServices(httpClient)
 	vsServices.Get()
 	vsServices.GetProductIdUrls()
+	idUrls := vsServices.IdUrls
+	for _, idUrl := range idUrls {
+		vsProductdetails := grab.NewProductdetails(httpClient)
+		vsProductdetails.Get(idUrl)
+		vsProductdetails.CreateStats()
+		e.NodeOnline.WithLabelValues(vsProductdetails.Stats.IpAddress, vsProductdetails.Stats.Hostname, vsProductdetails.Stats.Type, vsProductdetails.Stats.Memory, vsProductdetails.Stats.Disk).Set(vsProductdetails.Stats.Status)
+		e.BandwidthTotalGB.WithLabelValues(vsProductdetails.Stats.IpAddress, vsProductdetails.Stats.Hostname).Set(vsProductdetails.Stats.BandwidthTotalGB)
+		e.BandwidthUsedGB.WithLabelValues(vsProductdetails.Stats.IpAddress, vsProductdetails.Stats.Hostname).Set(vsProductdetails.Stats.BandwidthUsedGB)
+		e.BandwidthFreeGB.WithLabelValues(vsProductdetails.Stats.IpAddress, vsProductdetails.Stats.Hostname).Set(vsProductdetails.Stats.BandwidthFreeGB)
+		e.BandwidthUsage.WithLabelValues(vsProductdetails.Stats.IpAddress, vsProductdetails.Stats.Hostname).Set(vsProductdetails.Stats.BandwidthUsage)
+	}
 
 	e.NodeOnline.Collect(ch)
+	e.BandwidthTotalGB.Collect(ch)
+	e.BandwidthUsedGB.Collect(ch)
+	e.BandwidthFreeGB.Collect(ch)
+	e.BandwidthUsage.Collect(ch)
 }
 
 func reloadConfig(w http.ResponseWriter, _ *http.Request) {
