@@ -1,10 +1,12 @@
 vollcloud:
+  # http get timeout second
+  timeout: 10
   login:
-    username:
-    password:
+    username: xxx
+    password: xxx
     url: https://vollcloud.com/index.php/login
   services:
     url: https://vollcloud.com/clientarea.php?action=services
   productdetails:
-    # 自动参数 &id=${id}
-    url: https://vollcloud.com/clientarea.php?action=productdetails
+    # 自动 url+参数 clientarea.php?action=productdetails&id=${id}
+    url: https://vollcloud.com/
