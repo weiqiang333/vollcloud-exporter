@@ -12,6 +12,7 @@ if [ -z $version ]; then
 fi
 
 go build -o vollcloud-exporter vollcloud-exporter.go
+chmod +x vollcloud-exporter
 
 tar -zcvf vollcloud-exporter-linux-amd64-${version}.tar.gz \
   vollcloud-exporter config/vollcloud-exporter.yaml config/vollcloud-exporter.service README.md
