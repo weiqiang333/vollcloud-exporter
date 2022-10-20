@@ -164,7 +164,7 @@ func main() {
 	go func() {
 		time.Sleep(time.Second)
 		if err := open(fmt.Sprintf("http://127.0.0.1:9109/metrics")); err != nil {
-			log.Fatal(err.Error())
+			log.Println(err.Error())
 		}
 	}()
 	if err := http.ListenAndServe(listenAddress, nil); err != nil {
