@@ -3,6 +3,7 @@
 
 Mertrics api exposing vollcloud server information. [mertrics_example](./docs/mertrics_example)
 
+[中文](README-cn.md)
 
 ## usage
 Install and Start
