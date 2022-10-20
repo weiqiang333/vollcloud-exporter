@@ -27,7 +27,6 @@ type Stats struct {
 	Type             string
 	Memory           string
 	Disk             string
-	Bandwidth        string
 	BandwidthTotalGB float64
 	BandwidthUsedGB  float64
 	BandwidthFreeGB  float64
@@ -58,15 +57,15 @@ func (p *Productdetails) Get(idUrl string) {
 }
 
 func (p *Productdetails) GetModuleBody() {
-	moduleBody := p.Doc.Find("div.module-body tr").Each(func(i int, s *goquery.Selection) {
+	p.Doc.Find("div.module-body tr").Each(func(i int, s *goquery.Selection) {
 		tds := []string{}
-		td := s.Find("td").Each(func(i int, selection *goquery.Selection) {
+		s.Find("td").Each(func(i int, selection *goquery.Selection) {
 			tds = append(tds, strings.TrimSpace(selection.Text()))
 		})
-		log.Println("Info GetModuleBody", td.Size(), tds)
+		//log.Println("Info GetModuleBody", td.Size(), tds)
 		p.StatsMapTemp[tds[0]] = tds[1]
 	})
-	log.Println("Info GetModuleBody success: ", moduleBody.Size(), p.StatsMapTemp)
+	//log.Println("Info GetModuleBody success: ", p.StatsMapTemp)
 }
 
 func (p *Productdetails) CreateStats() {
@@ -77,21 +76,20 @@ func (p *Productdetails) CreateStats() {
 	p.Stats.Type = p.StatsMapTemp["Type"]
 	p.Stats.Memory = p.StatsMapTemp["Memory"]
 	p.Stats.Disk = p.StatsMapTemp["HDD"]
-	p.Stats.Bandwidth = p.StatsMapTemp["Bandwidth"]
-	p.getBandwidth()
-	log.Println(p.Stats)
+	p.getBandwidth(p.StatsMapTemp["Bandwidth"])
+	log.Println("Info CreateStats success: ", p.Stats)
 }
 
 // getBandwidth - b 例子: "254.38 GB of 1000 GB Used / 745.62 GB Free\n\n\n                                25%"
-func (p *Productdetails) getBandwidth() {
-	sOf := strings.Split(p.Stats.Bandwidth, " of ")
+func (p *Productdetails) getBandwidth(bandwidth string) {
+	sOf := strings.Split(bandwidth, " of ")
 	sUsed := strings.Split(sOf[1], " Used / ")
 	sFree := strings.Split(sUsed[1], " Free")
 	used := sOf[0]
 	total := sUsed[0]
 	free := sFree[0]
 	usage, _ := strconv.ParseFloat(strings.Split(strings.TrimSpace(sFree[1]), "%")[0], 64)
-	log.Println(fmt.Sprintf("Info getBandwidth; used: %s, total: %s, free: %s, usage: %v", used, total, free, usage))
+	//log.Println(fmt.Sprintf("Info getBandwidth; used: %s, total: %s, free: %s, usage: %v", used, total, free, usage))
 
 	if usedGB, err := getConversion(used); err == nil {
 		p.Stats.BandwidthUsedGB = usedGB
