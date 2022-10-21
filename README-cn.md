@@ -38,7 +38,22 @@ systemctl status vollcloud-exporter
 
 ---
 ## prometheus
-query prometheus.
+- 配置 prometheus.yml
+```yaml
+scrape_configs:
+    - job_name: vollcloud_cloud
+      honor_timestamps: true
+      scrape_interval: 15m
+      scrape_timeout: 1m
+      metrics_path: /metrics
+      scheme: http
+      follow_redirects: true
+      enable_http2: true
+      static_configs:
+      - targets:
+        - localhost:9109
+```
+- query prometheus.
 
 
 ## grafana

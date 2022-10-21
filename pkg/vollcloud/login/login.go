@@ -1,7 +1,6 @@
 package login
 
 import (
-	"fmt"
 	"log"
 	"net/http"
 	"net/http/cookiejar"
@@ -53,15 +52,15 @@ func (l *Login) Login() (string, error) {
 	client := l.HttpClient
 	resp, err := client.PostForm(l.Url, l.UrlValues)
 	if err != nil {
-		log.Fatal("Failed Login in err: ", err.Error())
+		log.Println("Failed Login in err: ", err.Error())
 		return "", err
 	}
 	//body, _ := ioutil.ReadAll(resp.Body)
 	//fmt.Println(string(body))
-	fmt.Println(resp.StatusCode)
+
 	doc, err := goquery.NewDocumentFromReader(resp.Body)
 	if err != nil {
-		log.Fatal("Failed goquery error: ", err)
+		log.Println("Failed goquery error: ", err)
 		return "", err
 	}
 	headerUsername := strings.TrimSpace(doc.Find("#page-header-user-dropdown").Text())
