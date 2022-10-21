@@ -39,7 +39,7 @@ func NewExporter() *Exporter {
 			prometheus.GaugeOpts{
 				Namespace: namespace,
 				Name:      "node_online",
-				Help:      "server run status value, Running=0 / Suspended=1",
+				Help:      "server run status value, Disabled=0 / Online=1",
 			}, []string{"ip_address", "hostname", "vm_type", "memory", "disk"}),
 		BandwidthTotalGB: *prometheus.NewGaugeVec(
 			prometheus.GaugeOpts{

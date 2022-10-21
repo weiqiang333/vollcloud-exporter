@@ -7,8 +7,7 @@ Wants=network-online.target
 [Service]
 Type=simple
 WorkingDirectory=/usr/local/vollcloud-exporter/
-ExecStart=/usr/local/vollcloud-exporter/vollcloud-exporter \
-  --configfile config/vollcloud-exporter.yaml
+ExecStart=/usr/local/vollcloud-exporter/vollcloud-exporter --configfile config/vollcloud-exporter.yaml
 Restart=on-failure
 RestartSec=5
 LimitNOFILE=65536
