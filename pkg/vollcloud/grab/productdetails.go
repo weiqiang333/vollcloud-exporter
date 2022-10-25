@@ -60,7 +60,11 @@ func (p *Productdetails) GetModuleBody() {
 	p.Doc.Find("div.module-body tr").Each(func(i int, s *goquery.Selection) {
 		tds := []string{}
 		s.Find("td").Each(func(i int, selection *goquery.Selection) {
-			tds = append(tds, strings.TrimSpace(selection.Text()))
+			if strings.TrimSpace(selection.Text()) == "" {
+				tds = append(tds, "nil")
+			} else {
+				tds = append(tds, strings.TrimSpace(selection.Text()))
+			}
 		})
 		//log.Println("Info GetModuleBody", td.Size(), tds)
 		p.StatsMapTemp[tds[0]] = tds[1]
