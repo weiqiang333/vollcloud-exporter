@@ -57,7 +57,7 @@ scrape_configs:
 
 
 ## grafana
-以下内容 [Dashboard template](./docs/granfana.json), 可以导入grafana以获得基本的仪表板。
+以下内容 [Dashboard template](./docs/grafana.json), 可以导入grafana以获得基本的仪表板。
 
 例子:
-
+![cloud grafana](./docs/img/grafana-Cloud.png)

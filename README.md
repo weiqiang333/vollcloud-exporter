@@ -57,7 +57,7 @@ scrape_configs:
 
 
 ## grafana
-The following [Dashboard template](./docs/granfana.json), can be imported into grafana to get an basic dashboard.
+The following [Dashboard template](./docs/grafana.json), can be imported into grafana to get an basic dashboard.
 
 Example:
-
+![cloud grafana](./docs/img/grafana-Cloud.png)
