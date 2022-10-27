@@ -26,6 +26,7 @@ func init() {
 const namespace = "vollcloud"
 
 type Exporter struct {
+	HttpClient       *http.Client
 	NodeOnline       prometheus.GaugeVec
 	BandwidthTotalGB prometheus.GaugeVec
 	BandwidthUsedGB  prometheus.GaugeVec
@@ -33,8 +34,9 @@ type Exporter struct {
 	BandwidthUsage   prometheus.GaugeVec
 }
 
-func NewExporter() *Exporter {
+func NewExporter(httpClient http.Client) *Exporter {
 	return &Exporter{
+		HttpClient: &httpClient,
 		NodeOnline: *prometheus.NewGaugeVec(
 			prometheus.GaugeOpts{
 				Namespace: namespace,
@@ -83,13 +85,16 @@ func (e *Exporter) Collect(ch chan<- prometheus.Metric) {
 	e.BandwidthFreeGB.Reset()
 	e.BandwidthUsage.Reset()
 
-	vclogin := vclogin.NewLogin()
-	_, err := vclogin.Login()
+	httpClient := *e.HttpClient
+	vcClientarea := grab.NewClientarea(httpClient)
+	vcClientarea.Get()
+	_, err := vcClientarea.IfUserLogin()
 	if err != nil {
-		log.Println("Failed grab in login")
-		return
+		log.Println("Failed grab in login, About to sign in again from.")
+		httpClient = *loginGetClient()
+		e.HttpClient = &httpClient
 	}
-	httpClient := *vclogin.HttpClient
+
 	vsServices := grab.NewServices(httpClient)
 	vsServices.Get()
 	vsServices.GetProductIdUrls()
@@ -142,6 +147,15 @@ func open(uri string) error {
 	return cmd.Start()
 }
 
+func loginGetClient() *http.Client {
+	vcLogin := vclogin.NewLogin()
+	_, err := vcLogin.Login()
+	if err != nil {
+		log.Println("Failed grab in login")
+	}
+	return vcLogin.HttpClient
+}
+
 func main() {
 	pflag.Parse()
 	if err := viper.BindPFlags(pflag.CommandLine); err != nil {
@@ -154,7 +168,9 @@ func main() {
 		panic(fmt.Errorf("Fatal error config file: %w \n", err))
 	}
 
-	prometheus.MustRegister(NewExporter())
+	httpClient := *loginGetClient()
+
+	prometheus.MustRegister(NewExporter(httpClient))
 
 	// http server
 	listenAddress := viper.GetString("address")
