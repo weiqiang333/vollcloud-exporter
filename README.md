@@ -8,9 +8,10 @@ Mertrics api exposing vollcloud server information. [mertrics_example](./docs/me
 ## usage
 Install and Start
 ```shell
-wget https://github.com/weiqiang333/vollcloud-exporter/releases/download/v1.0/vollcloud-exporter-linux-amd64-v1.0.tar.gz
+version=v1.1
+wget https://github.com/weiqiang333/vollcloud-exporter/releases/download/${version}/vollcloud-exporter-linux-amd64-${version}.tar.gz
 mkdir /usr/local/vollcloud-exporter
-tar -zxf vollcloud-exporter-linux-amd64-v1.0.tar.gz -C /usr/local/vollcloud-exporter
+tar -zxf vollcloud-exporter-linux-amd64-${version}.tar.gz -C /usr/local/vollcloud-exporter
 chmod +x /usr/local/vollcloud-exporter/vollcloud-exporter
 /usr/local/vollcloud-exporter/vollcloud-exporter --config.file /usr/local/vollcloud-exporter/config/vollcloud-exporter.yaml
     # Don't forget to modify your config file /usr/local/vollcloud-exporter/config/vollcloud-exporter.yaml
@@ -36,6 +37,7 @@ systemctl status vollcloud-exporter
     http://127.0.0.1:9109/reload  # reload default "config/config.yaml"
 ```
 
+
 ---
 ## prometheus
 - config prometheus.yml
@@ -54,6 +56,7 @@ scrape_configs:
         - localhost:9109
 ```
 - query prometheus.
+[mertrics_example](docs/mertrics_example)
 
 
 ## grafana

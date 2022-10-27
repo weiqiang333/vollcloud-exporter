@@ -8,9 +8,10 @@ Mertrics api 采集 vollcloud 服务器信息. [mertrics 数据案例](./docs/me
 ## 使用说明
 安装
 ```shell
-wget https://github.com/weiqiang333/vollcloud-exporter/releases/download/v1.0/vollcloud-exporter-linux-amd64-v1.0.tar.gz
+version=v1.1
+wget https://github.com/weiqiang333/vollcloud-exporter/releases/download/${version}/vollcloud-exporter-linux-amd64-${version}.tar.gz
 mkdir /usr/local/vollcloud-exporter
-tar -zxf vollcloud-exporter-linux-amd64-v1.0.tar.gz -C /usr/local/vollcloud-exporter
+tar -zxf vollcloud-exporter-linux-amd64-${version}.tar.gz -C /usr/local/vollcloud-exporter
 chmod +x /usr/local/vollcloud-exporter/vollcloud-exporter
 /usr/local/vollcloud-exporter/vollcloud-exporter --config.file /usr/local/vollcloud-exporter/config/vollcloud-exporter.yaml
     # Don't forget to modify your config file /usr/local/vollcloud-exporter/config/vollcloud-exporter.yaml

@@ -1,6 +1,7 @@
 package login
 
 import (
+	"fmt"
 	"log"
 	"net/http"
 	"net/http/cookiejar"
@@ -66,5 +67,10 @@ func (l *Login) Login() (string, error) {
 	headerUsername := strings.TrimSpace(doc.Find("#page-header-user-dropdown").Text())
 
 	log.Println("Info login success user: ", headerUsername)
+	if len(headerUsername) == 0 {
+		pageTitleBox := doc.Find(".page-title-box")
+		log.Println("Failed Login, msg: ", strings.Fields(pageTitleBox.Text()))
+		return "", fmt.Errorf("Failed Login")
+	}
 	return headerUsername, nil
 }
