@@ -10,3 +10,5 @@ vollcloud:
   productdetails:
     # 自动 url+参数 clientarea.php?action=productdetails&id=${id}
     url: https://vollcloud.com/
+  clientarea:
+    url: https://vollcloud.com/clientarea.php
