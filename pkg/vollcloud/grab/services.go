@@ -25,12 +25,12 @@ func (s *Services) Get() {
 	url := viper.GetString("vollcloud.services.url")
 	resp, err := s.HttpClient.Get(url)
 	if err != nil {
-		log.Fatalln("Failed Services Get error: ", err.Error())
+		log.Println("Failed Services Get error: ", err.Error())
 		return
 	}
 	doc, err := goquery.NewDocumentFromReader(resp.Body)
 	if err != nil {
-		log.Fatalln("Failed Services goquery error: ", err.Error())
+		log.Println("Failed Services goquery error: ", err.Error())
 		return
 	}
 	s.Doc = doc

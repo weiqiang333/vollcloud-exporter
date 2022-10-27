@@ -26,12 +26,12 @@ func (c *Clientarea) Get() {
 	url := viper.GetString("vollcloud.clientarea.url")
 	resp, err := c.HttpClient.Get(url)
 	if err != nil {
-		log.Fatalln("Failed clientarea Get error: ", err.Error())
+		log.Println("Failed clientarea Get error: ", err.Error())
 		return
 	}
 	doc, err := goquery.NewDocumentFromReader(resp.Body)
 	if err != nil {
-		log.Fatalln("Failed clientarea goquery error: ", err.Error())
+		log.Println("Failed clientarea goquery error: ", err.Error())
 		return
 	}
 	c.Doc = doc
