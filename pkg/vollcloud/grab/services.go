@@ -21,6 +21,7 @@ func NewServices(httpClient http.Client) *Services {
 	}
 }
 
+// Get 获取 services 页面
 func (s *Services) Get() {
 	url := viper.GetString("vollcloud.services.url")
 	resp, err := s.HttpClient.Get(url)
@@ -36,6 +37,7 @@ func (s *Services) Get() {
 	s.Doc = doc
 }
 
+// GetProductIdUrls 获取资源的子页面
 func (s *Services) GetProductIdUrls() {
 	tbody := s.Doc.Find("#tableServicesList tbody")
 	urlHref := tbody.Find("td.responsive-edit-button").Each(func(i int, gs *goquery.Selection) {

@@ -101,8 +101,12 @@ func (e *Exporter) Collect(ch chan<- prometheus.Metric) {
 	idUrls := vsServices.IdUrls
 	for _, idUrl := range idUrls {
 		vsProductdetails := grab.NewProductdetails(httpClient)
-		vsProductdetails.Get(idUrl)
-		vsProductdetails.CreateStats()
+		if err := vsProductdetails.Get(idUrl); err != nil {
+			continue
+		}
+		if err := vsProductdetails.CreateStats(); err != nil {
+			continue
+		}
 		e.NodeOnline.WithLabelValues(vsProductdetails.Stats.IpAddress, vsProductdetails.Stats.Hostname, vsProductdetails.Stats.Type, vsProductdetails.Stats.Memory, vsProductdetails.Stats.Disk).Set(vsProductdetails.Stats.Status)
 		e.BandwidthTotalGB.WithLabelValues(vsProductdetails.Stats.IpAddress, vsProductdetails.Stats.Hostname).Set(vsProductdetails.Stats.BandwidthTotalGB)
 		e.BandwidthUsedGB.WithLabelValues(vsProductdetails.Stats.IpAddress, vsProductdetails.Stats.Hostname).Set(vsProductdetails.Stats.BandwidthUsedGB)

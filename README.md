@@ -8,7 +8,7 @@ Mertrics api exposing vollcloud server information. [mertrics_example](./docs/me
 ## usage
 Install and Start
 ```shell
-version=v1.1
+version=v1.2
 wget https://github.com/weiqiang333/vollcloud-exporter/releases/download/${version}/vollcloud-exporter-linux-amd64-${version}.tar.gz
 mkdir /usr/local/vollcloud-exporter
 tar -zxf vollcloud-exporter-linux-amd64-${version}.tar.gz -C /usr/local/vollcloud-exporter
