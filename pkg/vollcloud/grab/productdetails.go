@@ -41,21 +41,32 @@ func NewProductdetails(httpClient http.Client) *Productdetails {
 	}
 }
 
-func (p *Productdetails) Get(idUrl string) {
+// Get 访问资源页面，获取资源描述.
+func (p *Productdetails) Get(idUrl string) error {
 	url := fmt.Sprintf("%s%s&language=english", viper.GetString("vollcloud.productdetails.url"), idUrl)
 	resp, err := p.HttpClient.Get(url)
 	if err != nil {
-		log.Println("Failed Productdetails Get error: ", idUrl, err.Error())
-		return
+		msg := fmt.Sprintf("Failed Productdetails Get error: %s %s", idUrl, err.Error())
+		log.Println(msg)
+		return fmt.Errorf(msg)
 	}
+	if resp.StatusCode != 200 {
+		msg := fmt.Sprintf("Failed Productdetails Get StatusCode not is 200, it is %v", resp.StatusCode)
+		log.Println(msg)
+		return fmt.Errorf(msg)
+	}
+
 	doc, err := goquery.NewDocumentFromReader(resp.Body)
 	if err != nil {
-		log.Println("Failed Productdetails goquery error: ", err.Error())
-		return
+		msg := fmt.Sprintf("Failed Productdetails goquery error: %s", err.Error())
+		log.Println(msg)
+		return fmt.Errorf(msg)
 	}
 	p.Doc = doc
+	return nil
 }
 
+// GetModuleBody 将资源 tr 中的信息临时存放至 StatsMapTemp，方便提取
 func (p *Productdetails) GetModuleBody() {
 	p.Doc.Find("div.module-body tr").Each(func(i int, s *goquery.Selection) {
 		tds := []string{}
@@ -66,22 +77,37 @@ func (p *Productdetails) GetModuleBody() {
 				tds = append(tds, strings.TrimSpace(selection.Text()))
 			}
 		})
-		//log.Println("Info GetModuleBody", td.Size(), tds)
-		p.StatsMapTemp[tds[0]] = tds[1]
+		if len(tds) >= 2 {
+			//log.Println("Info GetModuleBody", tds)
+			p.StatsMapTemp[tds[0]] = tds[1]
+		}
 	})
 	//log.Println("Info GetModuleBody success: ", p.StatsMapTemp)
 }
 
-func (p *Productdetails) CreateStats() {
+// CreateStats 将资源页面的信息进行统计拼凑
+func (p *Productdetails) CreateStats() error {
 	p.GetModuleBody()
+	if len(p.StatsMapTemp) <= 2 {
+		msg := fmt.Sprintf("Failed CreateStats in GetModuleBody's StatsMapTemp is not to standard. StatsMapTemp: %s", p.StatsMapTemp)
+		log.Println(msg)
+		return fmt.Errorf(msg)
+	}
 	p.Stats.Hostname = p.StatsMapTemp["Hostname"]
 	p.Stats.IpAddress = p.StatsMapTemp["Main IP Address"]
 	p.Stats.Status = getStatus(p.StatsMapTemp["Status"])
 	p.Stats.Type = p.StatsMapTemp["Type"]
 	p.Stats.Memory = p.StatsMapTemp["Memory"]
 	p.Stats.Disk = p.StatsMapTemp["HDD"]
-	p.getBandwidth(p.StatsMapTemp["Bandwidth"])
+	if b, ok := p.StatsMapTemp["Bandwidth"]; ok {
+		p.getBandwidth(b)
+	} else {
+		msg := fmt.Sprintf("Failed CreateStats in get StatsMapTemp[\"Bandwidth\"], key not exists")
+		log.Println(msg)
+		return fmt.Errorf(msg)
+	}
 	log.Println("Info CreateStats success: ", p.Stats)
+	return nil
 }
 
 // getBandwidth - b 例子: "254.38 GB of 1000 GB Used / 745.62 GB Free\n\n\n                                25%"
