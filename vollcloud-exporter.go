@@ -71,8 +71,8 @@ func NewExporter(httpClient http.Client) *Exporter {
 		CostUSD: *prometheus.NewGaugeVec(
 			prometheus.GaugeOpts{
 				Namespace: namespace,
-				Name:      "cost_usb",
-				Help:      "服务成本/USB",
+				Name:      "cost_usd",
+				Help:      "服务成本/USD",
 			}, []string{"ip_address", "hostname", "date_start", "date_end", "cost_cycle"}),
 	}
 }
