@@ -32,6 +32,7 @@ type Exporter struct {
 	BandwidthUsedGB  prometheus.GaugeVec
 	BandwidthFreeGB  prometheus.GaugeVec
 	BandwidthUsage   prometheus.GaugeVec
+	CostUSD          prometheus.GaugeVec
 }
 
 func NewExporter(httpClient http.Client) *Exporter {
@@ -67,6 +68,12 @@ func NewExporter(httpClient http.Client) *Exporter {
 				Name:      "bandwidth_usage",
 				Help:      "宽带流量使用百分比 %",
 			}, []string{"ip_address", "hostname"}),
+		CostUSD: *prometheus.NewGaugeVec(
+			prometheus.GaugeOpts{
+				Namespace: namespace,
+				Name:      "cost_usb",
+				Help:      "服务成本/USB",
+			}, []string{"ip_address", "hostname", "date_start", "date_end", "cost_cycle"}),
 	}
 }
 
@@ -76,6 +83,7 @@ func (e *Exporter) Describe(ch chan<- *prometheus.Desc) {
 	e.BandwidthFreeGB.Describe(ch)
 	e.BandwidthUsage.Describe(ch)
 	e.BandwidthUsedGB.Describe(ch)
+	e.CostUSD.Describe(ch)
 }
 
 func (e *Exporter) Collect(ch chan<- prometheus.Metric) {
@@ -84,6 +92,7 @@ func (e *Exporter) Collect(ch chan<- prometheus.Metric) {
 	e.BandwidthUsedGB.Reset()
 	e.BandwidthFreeGB.Reset()
 	e.BandwidthUsage.Reset()
+	e.CostUSD.Reset()
 
 	httpClient := *e.HttpClient
 	vcClientarea := grab.NewClientarea(httpClient)
@@ -112,6 +121,13 @@ func (e *Exporter) Collect(ch chan<- prometheus.Metric) {
 		e.BandwidthUsedGB.WithLabelValues(vsProductdetails.Stats.IpAddress, vsProductdetails.Stats.Hostname).Set(vsProductdetails.Stats.BandwidthUsedGB)
 		e.BandwidthFreeGB.WithLabelValues(vsProductdetails.Stats.IpAddress, vsProductdetails.Stats.Hostname).Set(vsProductdetails.Stats.BandwidthFreeGB)
 		e.BandwidthUsage.WithLabelValues(vsProductdetails.Stats.IpAddress, vsProductdetails.Stats.Hostname).Set(vsProductdetails.Stats.BandwidthUsage)
+		if err := vsProductdetails.GetProductDetails(); err != nil {
+			log.Println(err.Error())
+			continue
+		}
+		for _, cost := range vsProductdetails.SplitCostCycle() {
+			e.CostUSD.WithLabelValues(vsProductdetails.Stats.IpAddress, vsProductdetails.Stats.Hostname, cost.DateStart, cost.DateEnd, cost.CostCycle).Set(cost.BlendedCostUSD)
+		}
 	}
 
 	e.NodeOnline.Collect(ch)
@@ -119,6 +135,7 @@ func (e *Exporter) Collect(ch chan<- prometheus.Metric) {
 	e.BandwidthUsedGB.Collect(ch)
 	e.BandwidthFreeGB.Collect(ch)
 	e.BandwidthUsage.Collect(ch)
+	e.CostUSD.Collect(ch)
 }
 
 func reloadConfig(w http.ResponseWriter, _ *http.Request) {
