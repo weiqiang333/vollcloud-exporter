@@ -108,7 +108,7 @@ func (e *Exporter) Collect(ch chan<- prometheus.Metric) {
 	costs := grab.NewCost(httpClient)
 	costErr := costs.GetCost()
 	if costErr != nil {
-		log.Println("Failed GetCost: ", err.Error())
+		log.Println("Failed GetCost: ", costErr.Error())
 	}
 
 	vsServices := grab.NewServices(httpClient)
