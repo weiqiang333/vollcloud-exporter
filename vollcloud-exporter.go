@@ -14,6 +14,7 @@ import (
 	"github.com/spf13/pflag"
 	"github.com/spf13/viper"
 
+	"vollcloud-exporter/pkg/unit/url_parse"
 	"vollcloud-exporter/pkg/vollcloud/grab"
 	vclogin "vollcloud-exporter/pkg/vollcloud/login"
 )
@@ -43,37 +44,37 @@ func NewExporter(httpClient http.Client) *Exporter {
 				Namespace: namespace,
 				Name:      "node_online",
 				Help:      "server run status value, Disabled=0 / Online=1",
-			}, []string{"ip_address", "hostname", "vm_type", "memory", "disk"}),
+			}, []string{"product_id", "ip_address", "hostname", "vm_type", "memory", "disk"}),
 		BandwidthTotalGB: *prometheus.NewGaugeVec(
 			prometheus.GaugeOpts{
 				Namespace: namespace,
 				Name:      "bandwidth_total_GB",
 				Help:      "宽带流量当月总数 GB",
-			}, []string{"ip_address", "hostname"}),
+			}, []string{"product_id", "ip_address", "hostname"}),
 		BandwidthUsedGB: *prometheus.NewGaugeVec(
 			prometheus.GaugeOpts{
 				Namespace: namespace,
 				Name:      "bandwidth_used_GB",
 				Help:      "宽带流量当月使用总数 GB",
-			}, []string{"ip_address", "hostname"}),
+			}, []string{"product_id", "ip_address", "hostname"}),
 		BandwidthFreeGB: *prometheus.NewGaugeVec(
 			prometheus.GaugeOpts{
 				Namespace: namespace,
 				Name:      "bandwidth_free_GB",
 				Help:      "宽带流量当月剩余总数 GB",
-			}, []string{"ip_address", "hostname"}),
+			}, []string{"product_id", "ip_address", "hostname"}),
 		BandwidthUsage: *prometheus.NewGaugeVec(
 			prometheus.GaugeOpts{
 				Namespace: namespace,
 				Name:      "bandwidth_usage",
 				Help:      "宽带流量使用百分比 %",
-			}, []string{"ip_address", "hostname"}),
+			}, []string{"product_id", "ip_address", "hostname"}),
 		CostUSD: *prometheus.NewGaugeVec(
 			prometheus.GaugeOpts{
 				Namespace: namespace,
 				Name:      "cost_usd",
 				Help:      "服务成本/USD",
-			}, []string{"ip_address", "hostname", "date_start", "date_end", "cost_cycle"}),
+			}, []string{"product_id", "ip_address", "hostname", "date_start", "date_end", "cost_cycle"}),
 	}
 }
 
@@ -104,6 +105,12 @@ func (e *Exporter) Collect(ch chan<- prometheus.Metric) {
 		e.HttpClient = &httpClient
 	}
 
+	costs := grab.NewCost(httpClient)
+	costErr := costs.GetCost()
+	if costErr != nil {
+		log.Println("Failed GetCost: ", err.Error())
+	}
+
 	vsServices := grab.NewServices(httpClient)
 	vsServices.Get()
 	vsServices.GetProductIdUrls()
@@ -113,20 +120,28 @@ func (e *Exporter) Collect(ch chan<- prometheus.Metric) {
 		if err := vsProductdetails.Get(idUrl); err != nil {
 			continue
 		}
+		productId, err := url_parse.GetParameId(idUrl, "id")
+		if err != nil {
+			log.Println(err.Error(), productId, idUrl)
+		}
 		if err := vsProductdetails.CreateStats(); err != nil {
 			continue
 		}
-		e.NodeOnline.WithLabelValues(vsProductdetails.Stats.IpAddress, vsProductdetails.Stats.Hostname, vsProductdetails.Stats.Type, vsProductdetails.Stats.Memory, vsProductdetails.Stats.Disk).Set(vsProductdetails.Stats.Status)
-		e.BandwidthTotalGB.WithLabelValues(vsProductdetails.Stats.IpAddress, vsProductdetails.Stats.Hostname).Set(vsProductdetails.Stats.BandwidthTotalGB)
-		e.BandwidthUsedGB.WithLabelValues(vsProductdetails.Stats.IpAddress, vsProductdetails.Stats.Hostname).Set(vsProductdetails.Stats.BandwidthUsedGB)
-		e.BandwidthFreeGB.WithLabelValues(vsProductdetails.Stats.IpAddress, vsProductdetails.Stats.Hostname).Set(vsProductdetails.Stats.BandwidthFreeGB)
-		e.BandwidthUsage.WithLabelValues(vsProductdetails.Stats.IpAddress, vsProductdetails.Stats.Hostname).Set(vsProductdetails.Stats.BandwidthUsage)
-		if err := vsProductdetails.GetProductDetails(); err != nil {
-			log.Println(err.Error())
+		e.NodeOnline.WithLabelValues(productId, vsProductdetails.Stats.IpAddress, vsProductdetails.Stats.Hostname, vsProductdetails.Stats.Type, vsProductdetails.Stats.Memory, vsProductdetails.Stats.Disk).Set(vsProductdetails.Stats.Status)
+		e.BandwidthTotalGB.WithLabelValues(productId, vsProductdetails.Stats.IpAddress, vsProductdetails.Stats.Hostname).Set(vsProductdetails.Stats.BandwidthTotalGB)
+		e.BandwidthUsedGB.WithLabelValues(productId, vsProductdetails.Stats.IpAddress, vsProductdetails.Stats.Hostname).Set(vsProductdetails.Stats.BandwidthUsedGB)
+		e.BandwidthFreeGB.WithLabelValues(productId, vsProductdetails.Stats.IpAddress, vsProductdetails.Stats.Hostname).Set(vsProductdetails.Stats.BandwidthFreeGB)
+		e.BandwidthUsage.WithLabelValues(productId, vsProductdetails.Stats.IpAddress, vsProductdetails.Stats.Hostname).Set(vsProductdetails.Stats.BandwidthUsage)
+		if costErr != nil {
 			continue
 		}
-		for _, cost := range vsProductdetails.SplitCostCycle() {
-			e.CostUSD.WithLabelValues(vsProductdetails.Stats.IpAddress, vsProductdetails.Stats.Hostname, cost.DateStart, cost.DateEnd, cost.CostCycle).Set(cost.BlendedCostUSD)
+		costs.GetCostInfos()
+		for _, cost := range costs.CostInfos {
+			if cost.ProductId == productId {
+				for _, cost := range grab.SplitCostCycle(cost) {
+					e.CostUSD.WithLabelValues(productId, vsProductdetails.Stats.IpAddress, vsProductdetails.Stats.Hostname, cost.DateStart, cost.DateEnd, cost.CostCycle).Set(cost.BlendedCostUSD)
+				}
+			}
 		}
 	}
 

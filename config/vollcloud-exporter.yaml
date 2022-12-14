@@ -8,7 +8,10 @@ vollcloud:
   services:
     url: https://vollcloud.com/clientarea.php?action=services
   productdetails:
-    # 自动 url+参数 clientarea.php?action=productdetails&id=${id}
+    # 自动 url+参数 /clientarea.php?action=productdetails&id=${id}
     url: https://vollcloud.com/
   clientarea:
     url: https://vollcloud.com/clientarea.php
+  cost:
+    # 成本只获取当前有效的产品
+    url: https://vollcloud.com/index.php?m=renewal

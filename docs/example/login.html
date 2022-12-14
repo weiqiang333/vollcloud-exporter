@@ -1,487 +1,398 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="zh_CN">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>香港-美国-vps主机-便宜海外服务器租用 - VoLLcloud LLC</title>
-    <meta name="keywords" content="香港vps,美国服务器,香港服务器,日本服务器,韩国服务器,海外服务器,高防服务器,vollcloud,站群服务器" />
-    <meta name="description" content="vollcloud 专注于vps主机/高防服务器租用/香港服务器/美国服务器/日本/韩国等外国云服务器托管租用及游
-戏服务器,站群服务器！" />
+    <title>404 - Page Not Found - VoLLcloud LLC</title>
+
+
+
     <!-- Styling -->
-    <link href="/templates/VollCloud/css/all.min.css?v=07f587" rel="stylesheet">
-    <link href="/templates/VollCloud/css/bootstrap.min.css?v=07f587" rel="stylesheet">
-    <link href="/templates/VollCloud/css/app.min.css?v=07f587" rel="stylesheet">
-    <link href="/templates/VollCloud/css/icons.min.css?v=07f587" rel="stylesheet">
+    <link href="/templates/twenty-one/css/all.min.css?v=07f587" rel="stylesheet">
+    <link href="/templates/twenty-one/css/theme.min.css?v=07f587" rel="stylesheet">
     <link href="/assets/css/fontawesome-all.min.css" rel="stylesheet">
-    <link href="/templates/VollCloud/css/custom.css" rel="stylesheet">
-    <script>
-        var csrfToken = '84badd4b7ade42c990d94fc10d496aec5c4133ac',
-            markdownGuide = 'Markdown Guide',
+    <link href="/templates/voll/css/fonts.css?v=07f587" rel="stylesheet">
+    <link href="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css" type="text/css" rel="stylesheet" />
+    <link href="/templates/voll/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/templates/voll/css/custom.css?2022-12-13 18:00:11" rel="stylesheet">
+
+
+
+
+    <script type="text/javascript">
+        var csrfToken = '3333333333333333333333333333333333',
+            markdownGuide = 'Markdown 使用教程',
             locale = 'en',
-            saved = 'saved',
-            saving = 'autosaving',
+            saved = '已保存',
+            saving = '自动保存',
             whmcsBaseUrl = "",
-            requiredText = 'Required',
+            requiredText = '必填',
             recaptchaSiteKey = "";
     </script>
-    <script src="/templates/VollCloud/js/scripts.min.js?v=07f587"></script>
+    <script src="/templates/twenty-one/js/scripts.min.js"></script>
 
-    <link rel="stylesheet" href="modules/addons/ClientNotifications/style/style.css" type="text/css"><style>#htb .info{color: #0e7fad !
-important;background-color: #c0e9fa !important;}#htb .success{color: #4f8746 !important;background-color: #d4ffcd !important;}#htb .err
-                                                                                                                                                                                                                                                                    or{color: #641f1a !important;background-color: #ffd2d4 !important;}#htb .warning{color: #9d9c49 !important;background-color: #fdfdcb !i
-mportant;}#htb .tip{color: #c77d10 !important;background-color: #f9d69e !important;}#htb .secure{color: #9638f1 !important;background-c
-olor: #e5cefc !important;}#htb .message{color: #000000 !important;background-color: #efefef !important;}#htb .download{color: #04b5eb !
-important;background-color: #f7f7f7 !important;}#htb .purchase{color: #426164 !important;background-color: #c2e1e3 !important;}#htb .pr
-                                                                                                                                                                                                                                                                     int{color: #3c4b5e !important;background-color: #c8d9e3 !important;}</style><style></style><style>#htb h4 {font-size: 20px;}#htb p {font-size: 12px;}#htb h4 {font-weight: inherit;}#htb p {font-weight: bold;}</style>
+
+    <script type="text/javascript">
+        $(function () {
+
+            $(".dropdown-wrap").hover(function(){
+                $(this).find(".dropdown-container").addClass("show");
+            },function() {
+                $(this).find(".dropdown-container").removeClass("show");
+            });
+            $(".dropdown-body-menu-list li").hover(function() {
+                $(this).parent().find(".active").removeClass("active");
+                $(this).addClass("active");
+                var layer = $(this).data("layer");
+                $("#"+layer).parent().find(".tabs-content").removeClass("active");
+                $("#"+layer).addClass("active");
+            });
+            $('.dropdown-menu .language').click(function () {
+                var language = $(this).data('language');
+                $.ajax({
+                    type: 'POST',
+                    url: 'https://vollcloud.com/',
+                    data: { language: language },
+                    dataType: 'html',
+                    success: function (data) {
+                        //console.log(data);
+                        location.reload();
+                    }
+                });
+            });
+            var themeMode = 'white';
+            var themeCheck = '';
+            if ( themeMode == 'dark' ) {
+                themeMode = '<div class="active">深色</div><div>浅色</div>';
+                themeCheck = 'white';
+            } else {
+                themeMode = '<div>深色</div><div class="active">浅色</div>';
+                themeCheck = 'dark';
+            }
+            $('.btn-thememode > a').append('<div class="ml-auto float-right">'+ themeMode +'</div>');
+
+            $('.btn-thememode > a').click(function (e) {
+                e.preventDefault();
+                $.ajax({
+                    type: 'POST',
+                    url: 'https://vollcloud.com/',
+                    data: { thememode: themeCheck },
+                    dataType: 'html',
+                    success: function (data) {
+                        location.reload();
+                    }
+                });
+            });
+
+        });
+
+    </script>
+
+    <link rel="stylesheet" href="modules/addons/ClientNotifications/style/style.css" type="text/css"><style>#htb .info{color: #0e7fad !important;background-color: #c0e9fa !important;}#htb .success{color: #4f8746 !important;background-color: #d4ffcd !important;}#htb .err
+                                                                                                                                                                                                                                                                     or{color: #641f1a !important;background-color: #ffd2d4 !important;}#htb .warning{color: #9d9c49 !important;background-color: #fdfdcb !important;}#htb .tip{color: #c77d10 !important;background-color: #f9d69e !important;}#htb .secure{color: #9638f1 !important;background-color
+: #e5cefc !important;}#htb .message{color: #000000 !important;background-color: #efefef !important;}#htb .download{color: #04b5eb !important;background-color: #f7f7f7 !important;}#htb .purchase{color: #426164 !important;background-color: #c2e1e3 !important;}#htb .print{color: #3c4b5e !important;background-color: #c8d9e3 !important;}</style><style></style><style>#htb h4 {font-size: 20px;}#htb p {font-size: 12px;}#htb h4 {font-weight: inherit;}#htb p {font-weight: bold;}</style>
 
 </head>
 
 
-<body data-topbar="colored" data-phone-cc-input="1">
-<!-- Begin page -->
-<div id="layout-wrapper">
-
-    <header id="page-topbar">
-        <div class="navbar-header">
-            <div class="d-flex">
-                <!-- LOGO -->
-                <div class="navbar-brand-box">
-                    <a href="/index.php" class="logo logo-dark">
-                                <span class="logo-sm">
-                                    <img src="assets/images/logo-sm-dark.png" alt="" height="22">
-                                </span>
-                        <span class="logo-lg">
-                                    <img src="/templates/VollCloud/img/logo.svg" alt="" height="32">
-                                </span>
-                    </a>
-                </div>
-
-                <button type="button" class="btn btn-sm px-3 font-size-24 header-item waves-effect" id="vertical-menu-btn">
-                    <i class="mdi mdi-backburger"></i>
-                </button>
-
-
-                <!-- App Search-->
-                <form class="app-search d-none d-lg-block" method="post" action="/index.php/knowledgebase/search">
-                    <input type="hidden" name="token" value="84badd4b7ade42c990d94fc10d496aec5c4133ac" />
-                    <div class="position-relative">
-                        <input type="text" class="form-control" placeholder="Search our knowledgebase...">
-                        <span class="mdi mdi-magnify"></span>
-                    </div>
-                </form>
-            </div>
-
-            <div class="d-flex">
-
-                <div class="dropdown d-inline-block d-lg-none ml-2">
-
-
-                    <button type="button" class="btn header-item noti-icon waves-effect" id="page-header-search-dropdown"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="mdi mdi-magnify"></i>
-                    </button>
-                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right p-0"
-                         aria-labelledby="page-header-search-dropdown">
-
-                        <form class="p-3">
-                            <div class="form-group m-0">
-                                <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Search ..." aria-label="Recipient's username">
-                                    <div class="input-group-append">
-                                        <button class="btn btn-primary" type="submit"><i class="mdi mdi-magnify"></i></button>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-
-                <div class="dropdown d-inline-block">
-                    <button type="button" class="btn  header-item noti-icon waves-effect" data-toggle="modal" data-target="#modalChooseLanguage">
-                        <div class="d-inline-block align-middle">
-                            <div class="iti-flag cn"></div>
-                        </div>
-                    </button>
-
-                </div>
-
-                <div class="dropdown d-inline-block">
-                    <button type="button" class="btn header-item noti-icon right-bar-toggle waves-effect" data-toggle="popover" id="accountNotifications" data-placement="bottom">
-                        <i class="mdi mdi-message-minus-outline"></i>
-                    </button>
-                </div>
-                <div id="accountNotificationsContent" class="w-hidden">
-                    <ul class="client-alerts">
-                        <li class="none">
-                            您目前沒有任何通知。
-                        </li>
-                    </ul>
-                </div>
-
-
-                <div class="dropdown d-inline-block">
-                    <button onclick="window.location.href='/cart.php?a=view'"  class="btn header-item noti-icon right-bar-toggle waves-effect">
-                        <i class="mdi mdi-shopping-outline"></i>
-                    </button>
-                </div>
-
-
-                <div class="dropdown d-inline-block">
-                    <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img class="rounded-circle header-profile-user" src="/modules/addons/profilephotos/image.php" alt="Header Avatar">
-                        <span class="d-none d-sm-inline-block ml-1">                                    doumeng
-                                </span>
-                        <i class="mdi mdi-chevron-down d-none d-sm-inline-block"></i>
-                    </button>
-                    <div class="dropdown-menu dropdown-menu-right">
-                        <a href="/index.php/user/accounts" class="dropdown-item" data-toggle="tooltip" data-placement="bottom" title="Switch Account">
-                            <i class="fad fa-random  mr-1"></i>Switch Account
-                        </a>
-
-
-
-                        <a href="/index.php?m=profilephotos"  class="dropdown-item">
-                            <i class="el-icon-picture"></i>
-
-                            Your Photo
-                        </a>
-
-                        <a href="/clientarea.php?action=details"  class="dropdown-item">
-                            <i class="el-icon-account-circle"></i>
-
-
-                            我的詳情
-                        </a>
-
-                        <a href="/index.php/account/users"  class="dropdown-item">
-                            <i class="el-icon-indexorg"></i>
-
-                            User Management
-                        </a>
-
-                        <a href="/index.php/account/contacts"  class="dropdown-item">
-                            <i class="el-icon-indexchat-1"></i>
-
-                            Contacts
-                        </a>
-
-                        <a href="/clientarea.php?action=emails"  class="dropdown-item">
-                            <i class="el-icon-email"></i>
-
-                            Email 訊息紀錄
-                        </a>
-
-                        <a href="/index.php/user/profile"  class="dropdown-item">
-                            <i class="el-icon-indexsetting-2"></i>
-
-                            Your Profile
-                        </a>
-
-                        <a href="/index.php/user/password"  class="dropdown-item">
-                            <i class="el-icon-indexpermission"></i>
-
-
-                            變更密碼
-                        </a>
-
-                        <a href="/logout.php"  class="dropdown-item">
-                            <i class="el-icon-logout"></i>
-
-
-                            登出
-                        </a>
+<body data-phone-cc-input="1" class="error-page-not-found">
 
 
 
 
-                    </div>
-                </div>
 
-            </div>
-        </div>
-
-    </header>
-    <!-- ========== Left Sidebar Start ========== -->
-    <div class="vertical-menu">
-
-        <div data-simplebar class="h-100">
-
-            <!--- Sidemenu -->
-            <div id="sidebar-menu">
-                <!-- Left Menu Start -->
-                <ul class="metismenu list-unstyled" id="side-menu">
-                    <li class="menu-title">快捷操作</li>
-
-
-                    <li >
-                        <a  href="/clientarea.php" class="waves-effect " >
-                            <div class="d-inline-block icons-sm mr-1"><i class="uim uim-layer-group"></i></div>
-                            <span>首頁</span>
+<header id="header">
+    <nav class="navbar navbar-expand-md  flex-md-nowrap p-0">
+        <div class="container-fluid">
+            <a class="navbar-brand mr-4 ml-2" href="https://vollcloud.com/">
+                VoLLcloud LLC
+            </a>
+            <button class="navbar-toggler mr-2 d-md-none collapsed" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fal fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mr-auto">
+                    <li menuItemName="Home" class="nav-item" id="Primary_Navbar-Home">
+                        <a class="nav-link" href="/clientarea.php">
+                            用户中心
                         </a>
                     </li>
-
-                    <li >
-                        <a  href="javascript:void(0)"  class="has-arrow waves-effect" class="waves-effect " data-target="#menuItemServices">
-                            <div class="d-inline-block icons-sm mr-1"><i class="uim uim-apps"></i></div>
-                            <span>服務</span>
-                            <span class="arrow">
-                                                                                <i class="arrow-icon"></i>
-                                                                        </span>                                   </a>
-                        <ul id="menuItemServices"  class="sub-menu" aria-expanded="false">
-                            <!-- Colors -->
-                            <li id="Primary_Navbar-Services-My_Services">
-                                <a href="/clientarea.php?action=services">
-                                    我的服務
+                    <li menuItemName="Services" class="nav-item dropdown" id="Primary_Navbar-Services">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">
+                            产品服务
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li menuItemName="My Services" class="dropdown-item" id="Primary_Navbar-Services-My_Services">
+                                <a href="/clientarea.php?action=services" class="dropdown-link">
+                                    我的服务
                                 </a>
                             </li>
-
-
-                            <!-- Colors -->
-                            <li id="Primary_Navbar-Services-产品过户">
-                                <a href="/index.php?m=push">
+                            <div class="dropdown-divider"></div>
+                            <li menuItemName="Order New Services" class="dropdown-item" id="Primary_Navbar-Services-Order_New_Services">
+                                <a href="/cart.php" class="dropdown-link">
+                                    购买服务
+                                </a>
+                            </li>
+                            <li menuItemName="View Available Addons" class="dropdown-item" id="Primary_Navbar-Services-View_Available_Addons">
+                                <a href="/cart.php?gid=addons" class="dropdown-link">
+                                    附加服务
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li menuItemName="Billing" class="nav-item dropdown" id="Primary_Navbar-Billing">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">
+                            财务管理
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li menuItemName="My Invoices" class="dropdown-item" id="Primary_Navbar-Billing-My_Invoices">
+                                <a href="/clientarea.php?action=invoices" class="dropdown-link">
+                                    账单
+                                </a>
+                            </li>
+                            <li menuItemName="续费管理" class="dropdown-item" id="Primary_Navbar-Billing-续费管理">
+                                <a href="/index.php?m=renewal" class="dropdown-link">
+                                    续费管理
+                                </a>
+                            </li>
+                            <li menuItemName="Transfer Products" class="dropdown-item" id="Primary_Navbar-Billing-Transfer_Products">
+                                <a href="/index.php?m=transfer" class="dropdown-link">
                                     产品过户
                                 </a>
                             </li>
-
-
-                            <!-- Colors -->
-                            <li id="Primary_Navbar-Services-过户日志">
-                                <a href="/index.php?m=push&page=log">
-                                    过户日志
+                            <li menuItemName="My Quotes" class="dropdown-item" id="Primary_Navbar-Billing-My_Quotes">
+                                <a href="/clientarea.php?action=quotes" class="dropdown-link">
+                                    我的报价
                                 </a>
                             </li>
-
-
-                            <li class="u-sidebar-nav-menu__divider"></li>
-
-                            <!-- Colors -->
-                            <li id="Primary_Navbar-Services-Order_New_Services">
-                                <a href="/cart.php">
-                                    訂購新服務
+                            <div class="dropdown-divider"></div>
+                            <li menuItemName="Mass Payment" class="dropdown-item" id="Primary_Navbar-Billing-Mass_Payment">
+                                <a href="/clientarea.php?action=masspay&all=true" class="dropdown-link">
+                                    批量付款
                                 </a>
                             </li>
-
-
-                            <!-- Colors -->
-                            <li id="Primary_Navbar-Services-View_Available_Addons">
-                                <a href="/cart.php?gid=addons">
-                                    檢視可用的附加套件
-                                </a>
-                            </li>
-
                         </ul>
-
                     </li>
-
-                    <li >
-                        <a  href="javascript:void(0)"  class="has-arrow waves-effect" class="waves-effect " data-target="#menuItemBilling">
-                            <div class="d-inline-block icons-sm mr-1"><i class="uim uim-document-layout-right"></i></div>
-                            <span>帳務</span>
-                            <span class="arrow">
-                                                                                <i class="arrow-icon"></i>
-                                                                        </span>                                   </a>
-                        <ul id="menuItemBilling"  class="sub-menu" aria-expanded="false">
-                            <!-- Colors -->
-                            <li id="Primary_Navbar-Billing-My_Invoices">
-                                <a href="/clientarea.php?action=invoices">
-                                    我的帳單
+                    <li menuItemName="Support" class="nav-item dropdown" id="Primary_Navbar-Support">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">
+                            技术支持
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li menuItemName="Tickets" class="dropdown-item" id="Primary_Navbar-Support-Tickets">
+                                <a href="/supporttickets.php" class="dropdown-link">
+                                    我的工单
                                 </a>
                             </li>
-
-
-                            <!-- Colors -->
-                            <li id="Primary_Navbar-Billing-My_Quotes">
-                                <a href="/clientarea.php?action=quotes">
-                                    我的估價單
+                            <li menuItemName="Announcements" class="dropdown-item" id="Primary_Navbar-Support-Announcements">
+                                <a href="/index.php/announcements" class="dropdown-link">
+                                    公告信息
                                 </a>
                             </li>
-
-
-                            <li class="u-sidebar-nav-menu__divider"></li>
-
-                            <!-- Colors -->
-                            <li id="Primary_Navbar-Billing-Mass_Payment">
-                                <a href="/clientarea.php?action=masspay&all=true">
-                                    大宗支付
+                            <li menuItemName="Knowledgebase" class="dropdown-item" id="Primary_Navbar-Support-Knowledgebase">
+                                <a href="/index.php/knowledgebase" class="dropdown-link">
+                                    帮助中心
                                 </a>
                             </li>
-
+                            <li menuItemName="Downloads" class="dropdown-item" id="Primary_Navbar-Support-Downloads">
+                                <a href="/index.php/download" class="dropdown-link">
+                                    资源下载
+                                </a>
+                            </li>
+                            <li menuItemName="Network Status" class="dropdown-item" id="Primary_Navbar-Support-Network_Status">
+                                <a href="/serverstatus.php" class="dropdown-link">
+                                    服务监控
+                                </a>
+                            </li>
+                            <li menuItemName="open-ticket" class="dropdown-item open-ticket-item" id="Primary_Navbar-Support-open-ticket">
+                                <a href="/submitticket.php" class="dropdown-link">
+                                    提交工单
+                                </a>
+                            </li>
                         </ul>
-
                     </li>
-
-                    <li >
-                        <a  href="javascript:void(0)"  class="has-arrow waves-effect" class="waves-effect " data-target="#menuItemSupport">
-                            <div class="d-inline-block icons-sm mr-1"><i class="uim uim-comment-plus"></i></div>
-                            <span>技術支援</span>
-                            <span class="arrow">
-                                                                                <i class="arrow-icon"></i>
-                                                                        </span>                                   </a>
-                        <ul id="menuItemSupport"  class="sub-menu" aria-expanded="false">
-                            <!-- Colors -->
-                            <li id="Primary_Navbar-Support-Tickets">
-                                <a href="/supporttickets.php">
-                                    服務單
-                                </a>
-                            </li>
-
-
-                            <!-- Colors -->
-                            <li id="Primary_Navbar-Support-Announcements">
-                                <a href="/index.php/announcements">
-                                    公告
-                                </a>
-                            </li>
-
-
-                            <!-- Colors -->
-                            <li id="Primary_Navbar-Support-Knowledgebase">
-                                <a href="/index.php/knowledgebase">
-                                    知識庫
-                                </a>
-                            </li>
-
-
-                            <!-- Colors -->
-                            <li id="Primary_Navbar-Support-Downloads">
-                                <a href="/index.php/download">
-                                    下載
-                                </a>
-                            </li>
-
-
-                            <!-- Colors -->
-                            <li id="Primary_Navbar-Support-Network_Status">
-                                <a href="/serverstatus.php">
-                                    服務狀態
-                                </a>
-                            </li>
-
-
-                            <!-- Colors -->
-                            <li id="Primary_Navbar-Support-open-ticket">
-                                <a href="/submitticket.php">
-                                    建立服務單
-                                </a>
-                            </li>
-
-                        </ul>
-
-                    </li>
-
-                    <li >
-                        <a  href="/affiliates.php" class="waves-effect " >
-                            <div class="d-inline-block icons-sm mr-1"><i class="uim uim-repeat"></i></div>
-                            <span>推廣註冊</span>
+                    <li menuItemName="Affiliates" class="nav-item" id="Primary_Navbar-Affiliates">
+                        <a class="nav-link" href="/affiliates.php">
+                            用户推广
                         </a>
                     </li>
-
-
-
-
-
-
                 </ul>
+                <ul class="navbar-nav navbar-nav-right ml-auto">
 
-            </div>
-            <!-- Sidebar -->
-        </div>
-    </div>
-    <!-- Left Sidebar End -->
-
-    <div class="main-content">
-
-        <div class="page-content">
-
-            <div class="page-title-box">
-                <div class="container-fluid">
-                    <div class="row align-items-center">
-                        <div class="col-md-8">
-                            <h4 class="page-title mb-1">404 - Page Not Found</h4>
-                            <ol class="breadcrumb">
-                            </ol>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="float-right d-none d-md-block">
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="page-content-wrapper">
-                <div class="container-fluid">
-
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="card">
-                                <div class="card-body">
-
-
-
-
-
-
-
-                                    <section id="main-body">
-                                        <div class="">
-                                            <div class="row">
-
-                                                <div class="col-12 primary-content">
-
-
-                                                    <div class="container">
-                                                        <div class="text-center p-5">
-
-                                                            <i class="fas fa-exclamation-circle display-1 font-weight-bold text-primary"></i>
-                                                            <h1 class="display-1 font-weight-bold text-primary line-height-reduced mb-5">
-                                                                Oops!
-                                                            </h1>
-                                                            <h3>We couldn't find that page</h3>
-                                                            <p>Please try navigating using the options below.</p>
-
-                                                            <div class="buttons">
-                                                                <a href="https://vollcloud.com/" class="btn btn-primary px-4">
-                                                                    Homepage
-                                                                </a>
-                                                                <a href="https://vollcloud.com/contact.php" class="btn btn-info px-4">
-                                                                    Contact Support
-                                                                </a>
-                                                            </div>
-
-                                                        </div>
-                                                    </div>
-
-
-
-                                                </div>
-
-                                            </div>
-                                            <div class="clearfix"></div>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">
+                            工单
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li class="dropdown-item">
+                                <a href="/supporttickets.php" class="dropdown-link">
+                                    <i class="icon-product__ufile"></i>
+                                    工单列表
+                                </a>
+                            </li>
+                            <li class="dropdown-item">
+                                <a href="/submitticket.php" class="dropdown-link">
+                                    <i class="icon-product__isms"></i>
+                                    新建工单
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown billing">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">
+                            费用
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li>
+                                <div class="panel-amount">
+                                    <div class="panel-amount-head">
+                                        <div class="panel-amount-head-title">
+                                            账户余额
                                         </div>
+                                        <div class="panel-amount-head-btn">
+                                            <a href="/clientarea.php?action=addfunds">
+                                                充值
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="panel-amount-info">
+                                        <div class="panel-amount-number">
+                                            <em class="amount-number">
+                                                $0.00 USD
+                                            </em>
+                                            <em>元</em>
+                                        </div>
+                                    </div>
                                 </div>
-                                </section>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                            </li>
+                            <li class="dropdown-item">
+                                <a href="/clientarea.php?action=invoices" class="dropdown-link">
+                                    <i class="icon-product__invoice"></i>
+                                    账单管理
+                                </a>
+                            </li>
+                            <li class="dropdown-item">
+                                <a href="/index.php?m=invoice" class="dropdown-link">
+                                    <i class="icon-product__ulog"></i>
+                                    发票管理
+                                </a>
+                            </li>
+                            <li class="dropdown-item">
+                                <a href="/index.php?m=renewal" class="dropdown-link">
+                                    <i class="icon-product__billing"></i>
+                                    续费管理
+                                </a>
+                            </li>
+                            <li class="dropdown-item">
+                                <a href="/index.php?m=transfer" class="dropdown-link">
+                                    <i class="icon-product__isms"></i>
+                                    产品过户
+                                </a>
+                            </li>
+                            <li class="dropdown-item">
+                                <a class="dropdown-link" href="/affiliates.php">
+                                    <i class="icon-product__vouchers"></i>
+                                    推广联盟
+                                </a>
+                            </li>
+
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/console">
+                            控制台
+                        </a>
+                    </li>
+                    <li menuItemName="Account" class="nav-item dropdown account" id="Secondary_Navbar-Account">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">
+                            <img style="max-width: 18px;margin-right: 9px;margin-top: -3px;" src="modules/addons/profilephotos/image.php" alt="">您好，Doumeng！
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li menuItemName="profilephotos" class="dropdown-item" id="Secondary_Navbar-Account-profilephotos">
+                                <a href="/index.php?m=profilephotos" class="dropdown-link">
+                                    Your Photo
+                                </a>
+                            </li>
+                            <li menuItemName="Edit Account Details" class="dropdown-item" id="Secondary_Navbar-Account-Edit_Account_Details">
+                                <a href="/clientarea.php?action=details" class="dropdown-link">
+                                    <i class="fas fa-user-circle if-human"></i>                                账户资料
+                                </a>
+                            </li>
+                            <li menuItemName="User Management" class="dropdown-item" id="Secondary_Navbar-Account-User_Management">
+                                <a href="/index.php/account/users" class="dropdown-link">
+                                    <i class="fas fa-user-circle if-group"></i>                                用户管理
+                                </a>
+                            </li>
+                            <li menuItemName="Contacts" class="dropdown-item" id="Secondary_Navbar-Account-Contacts">
+                                <a href="/index.php/account/contacts" class="dropdown-link">
+                                    <i class="fas fa-user-circle if-sub-account"></i>                                联系人
+                                </a>
+                            </li>
+                            <li menuItemName="Email History" class="dropdown-item" id="Secondary_Navbar-Account-Email_History">
+                                <a href="/clientarea.php?action=emails" class="dropdown-link">
+                                    <i class="fas fa-user-circle icon-product__transaction-bill"></i>                                邮件存档
+                                </a>
+                            </li>
+                            <div class="dropdown-divider"></div>
+                            <li menuItemName="Profile" class="dropdown-item" id="Secondary_Navbar-Account-Profile">
+                                <a href="/index.php/user/profile" class="dropdown-link">
+                                    <i class="fas fa-user-circle icon-product__account"></i>                                您的个人资料
+                                </a>
+                            </li>
+                            <li menuItemName="Change Password" class="dropdown-item" id="Secondary_Navbar-Account-Change_Password">
+                                <a href="/index.php/user/password" class="dropdown-link">
+                                    <i class="fas fa-user-circle icon-product__account-security"></i>                                修改密码
+                                </a>
+                            </li>
+                            <li menuItemName="themeMode" class="dropdown-item btn-thememode" id="Secondary_Navbar-Account-themeMode">
+                                <a href="" class="dropdown-link">
+                                    <i class="fas fa-user-circle if-custom-function"></i>                                导航样式
+                                </a>
+                            </li>
+                            <div class="dropdown-divider"></div>
+                            <li menuItemName="Logout" class="dropdown-item" id="Secondary_Navbar-Account-Logout">
+                                <a href="/logout.php" class="dropdown-link">
+                                    <i class="fas fa-user-circle if-up-left"></i>                                退出账户
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
             </div>
         </div>
+    </nav>
+</header>
 
-        <footer id="footer" class="footer">
-            <div class="container">
 
-                <p class="copyright mb-0">
-                    Copyright &copy; 2022 VoLLcloud LLC. All Rights Reserved.
-                </p>
+
+<div class="pageError">
+    <div class="container">
+        <div class="text-center p-5">
+            <h1 class="w-hidden display-1 font-weight-bold text-primary line-height-reduced mb-5">
+                天哪！
+            </h1>
+            <img src="/templates/voll/img/404.svg">
+            <h3>我们无法找到该页面</h3>
+            <p>请尝试使用以下选项</p>
+
+            <div class="buttons mt-5">
+                <a href="https://vollcloud.com/" class="btn btn-primary px-4">
+                    主页
+                </a>
+                <a href="https://vollcloud.com/contact.php" class="btn btn-info px-4">
+                    联系支持
+                </a>
             </div>
-        </footer>
+
+        </div>
     </div>
 </div>
 
-</div>
-<!-- END layout-wrapper -->
+
+
+
+
+
+
 
 <div id="fullpage-overlay" class="w-hidden">
     <div class="outer-wrapper">
@@ -500,22 +411,22 @@ important;background-color: #f7f7f7 !important;}#htb .purchase{color: #426164 !i
                 <h5 class="modal-title"></h5>
                 <button type="button" class="close" data-dismiss="modal">
                     <span aria-hidden="true">&times;</span>
-                    <span class="sr-only">Close</span>
+                    <span class="sr-only">关闭</span>
                 </button>
             </div>
             <div class="modal-body">
-                載入中...
+                正在加载…
             </div>
             <div class="modal-footer">
                 <div class="float-left loader">
                     <i class="fas fa-circle-notch fa-spin"></i>
-                    載入中...
+                    正在加载…
                 </div>
                 <button type="button" class="btn btn-default" data-dismiss="modal">
-                    Close
+                    关闭
                 </button>
                 <button type="button" class="btn btn-primary modal-submit">
-                    Submit
+                    创建工单
                 </button>
             </div>
         </div>
@@ -531,148 +442,15 @@ important;background-color: #f7f7f7 !important;}#htb .purchase{color: #426164 !i
                         <span aria-hidden="true">&times;</span>
                     </button>
 
-                    <h5 class="h5 pt-5 pb-3">語言</h5>
-                    <div class="row item-selector">
-                        <input type="hidden" name="language" value="">
-                        <div class="col-4">
-                            <a href="#" class="item" data-value="arabic">
-                                العربية
-                            </a>
-                        </div>
-                        <div class="col-4">
-                            <a href="#" class="item" data-value="azerbaijani">
-                                Azerbaijani
-                            </a>
-                        </div>
-                        <div class="col-4">
-                            <a href="#" class="item" data-value="catalan">
-                                Català
-                            </a>
-                        </div>
-                        <div class="col-4">
-                            <a href="#" class="item active" data-value="chinese">
-                                中文
-                            </a>
-                        </div>
-                        <div class="col-4">
-                            <a href="#" class="item" data-value="croatian">
-                                Hrvatski
-                            </a>
-                        </div>
-                        <div class="col-4">
-                            <a href="#" class="item" data-value="czech">
-                                Čeština
-                            </a>
-                        </div>
-                        <div class="col-4">
-                            <a href="#" class="item" data-value="danish">
-                                Dansk
-                            </a>
-                        </div>
-                        <div class="col-4">
-                            <a href="#" class="item" data-value="dutch">
-                                Nederlands
-                            </a>
-                        </div>
-                        <div class="col-4">
-                            <a href="#" class="item" data-value="english">
-                                English
-                            </a>
-                        </div>
-                        <div class="col-4">
-                            <a href="#" class="item" data-value="estonian">
-                                Estonian
-                            </a>
-                        </div>
-                        <div class="col-4">
-                            <a href="#" class="item" data-value="farsi">
-                                Persian
-                            </a>
-                        </div>
-                        <div class="col-4">
-                            <a href="#" class="item" data-value="french">
-                                Français
-                            </a>
-                        </div>
-                        <div class="col-4">
-                            <a href="#" class="item" data-value="german">
-                                Deutsch
-                            </a>
-                        </div>
-                        <div class="col-4">
-                            <a href="#" class="item" data-value="hebrew">
-                                עברית
-                            </a>
-                        </div>
-                        <div class="col-4">
-                            <a href="#" class="item" data-value="hungarian">
-                                Magyar
-                            </a>
-                        </div>
-                        <div class="col-4">
-                            <a href="#" class="item" data-value="italian">
-                                Italiano
-                            </a>
-                        </div>
-                        <div class="col-4">
-                            <a href="#" class="item" data-value="macedonian">
-                                Macedonian
-                            </a>
-                        </div>
-                        <div class="col-4">
-                            <a href="#" class="item" data-value="norwegian">
-                                Norwegian
-                            </a>
-                        </div>
-                        <div class="col-4">
-                            <a href="#" class="item" data-value="portuguese-br">
-                                Português
-                            </a>
-                        </div>
-                        <div class="col-4">
-                            <a href="#" class="item" data-value="portuguese-pt">
-                                Português
-                            </a>
-                        </div>
-                        <div class="col-4">
-                            <a href="#" class="item" data-value="romanian">
-                                Română
-                            </a>
-                        </div>
-                        <div class="col-4">
-                            <a href="#" class="item" data-value="russian">
-                                Русский
-                            </a>
-                        </div>
-                        <div class="col-4">
-                            <a href="#" class="item" data-value="spanish">
-                                Español
-                            </a>
-                        </div>
-                        <div class="col-4">
-                            <a href="#" class="item" data-value="swedish">
-                                Svenska
-                            </a>
-                        </div>
-                        <div class="col-4">
-                            <a href="#" class="item" data-value="turkish">
-                                Türkçe
-                            </a>
-                        </div>
-                        <div class="col-4">
-                            <a href="#" class="item" data-value="ukranian">
-                                Українська
-                            </a>
-                        </div>
-                    </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-default">Apply</button>
+                    <button type="submit" class="btn btn-light">应用</button>
                 </div>
             </div>
         </div>
     </div>
 </form>
+
 
 
 <form action="#" id="frmGeneratePassword">
@@ -681,7 +459,7 @@ important;background-color: #f7f7f7 !important;}#htb .purchase{color: #426164 !i
             <div class="modal-content">
                 <div class="modal-header bg-primary text-white">
                     <h4 class="modal-title">
-                        Generate Password
+                        生成密码
                     </h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -689,16 +467,16 @@ important;background-color: #f7f7f7 !important;}#htb .purchase{color: #426164 !i
                 </div>
                 <div class="modal-body">
                     <div class="alert alert-danger w-hidden" id="generatePwLengthError">
-                        Please enter a number between 8 and 64 for the password length
+                        请输入长度在 8 到 64 之间的数字
                     </div>
                     <div class="form-group row">
-                        <label for="generatePwLength" class="col-sm-4 col-form-label">Password Length</label>
+                        <label for="generatePwLength" class="col-sm-4 col-form-label">密码长度</label>
                         <div class="col-sm-8">
                             <input type="number" min="8" max="64" value="12" step="1" class="form-control input-inline input-inline-100" id="inputGeneratePasswordLength">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="generatePwOutput" class="col-sm-4 col-form-label">Generated Password</label>
+                        <label for="generatePwOutput" class="col-sm-4 col-form-label">密码已生成</label>
                         <div class="col-sm-8">
                             <input type="text" class="form-control" id="inputGeneratePasswordOutput">
                         </div>
@@ -707,34 +485,13 @@ important;background-color: #f7f7f7 !important;}#htb .purchase{color: #426164 !i
                         <div class="col-sm-8 offset-sm-4">
                             <button type="submit" class="btn btn-default btn-sm">
                                 <i class="fas fa-plus fa-fw"></i>
-                                Generate new password
+                                生成新密码
                             </button>
                             <button type="button" class="btn btn-default btn-sm copy-to-clipboard" data-clipboard-target="#inputGeneratePasswordOutput">
                                 <img src="/assets/img/clippy.svg" alt="Copy to clipboard" width="15">
-                                Copy
+                                复制
                             </button>
                         </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">
-                        Close
-                    </button>
-                    <button type="button" class="btn btn-primary" id="btnGeneratePasswordInsert" data-clipboard-target="#inputGeneratePasswordOutput">
-                        Copy to clipboard and Insert
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-</form>
-<script src="https://unicons.iconscout.com/release/v2.0.1/script/monochrome/bundle.js"></script>
-<script src="/templates/VollCloud/libs/metismenu/metisMenu.min.js"></script>
-<script src="/templates/VollCloud/libs/simplebar/simplebar.min.js"></script>
-<script src="/templates/VollCloud/libs/node-waves/waves.min.js"></script>
-<script src="/templates/VollCloud/js/app.js"></script>
-
-
 
 
 </body>

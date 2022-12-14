@@ -1,774 +1,1457 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
+<html lang="zh_CN"><head>
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>香港-美国-vps主机-便宜海外服务器租用 - VoLLcloud LLC</title>
-    <meta name="keywords" content="香港vps,美国服务器,香港服务器,日本服务器,韩国服务器,海外服务器,高防服务器,vollcloud,站群服务器" />
-    <meta name="description" content="vollcloud 专注于vps主机/高防服务器租用/香港服务器/美国服务器/日本/韩国等外国云服务器托管租用及游戏服务器,站群服务器！" />
+    <title>用户中心 - VoLLcloud LLC</title>
+
+
+
     <!-- Styling -->
-    <link href="/templates/VollCloud/css/all.min.css?v=07f587" rel="stylesheet">
-    <link href="/templates/VollCloud/css/bootstrap.min.css?v=07f587" rel="stylesheet">
-    <link href="/templates/VollCloud/css/app.min.css?v=07f587" rel="stylesheet">
-    <link href="/templates/VollCloud/css/icons.min.css?v=07f587" rel="stylesheet">
+    <link href="/templates/twenty-one/css/all.min.css?v=07f587" rel="stylesheet">
+    <link href="/templates/twenty-one/css/theme.min.css?v=07f587" rel="stylesheet">
     <link href="/assets/css/fontawesome-all.min.css" rel="stylesheet">
-    <link href="/templates/VollCloud/css/custom.css" rel="stylesheet">
-    <script>
-        var csrfToken = 'ed24c1d293c788e436a15eb1e29150f3dc444c7a',
-            markdownGuide = 'Markdown Guide',
+    <link href="/templates/voll/css/fonts.css?v=07f587" rel="stylesheet">
+    <link href="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css" type="text/css" rel="stylesheet">
+    <link href="/templates/voll/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/templates/voll/css/custom.css?2022-12-14 10:37:21" rel="stylesheet">
+
+
+
+
+    <script type="text/javascript">
+        var csrfToken = '33333333333333333333333333333333333333',
+            markdownGuide = 'Markdown 使用教程',
             locale = 'en',
-            saved = 'saved',
-            saving = 'autosaving',
+            saved = '已保存',
+            saving = '自动保存',
             whmcsBaseUrl = "",
-            requiredText = 'Required',
+            requiredText = '必填',
             recaptchaSiteKey = "";
     </script>
-    <script src="/templates/VollCloud/js/scripts.min.js?v=07f587"></script>
-
-    <link rel="stylesheet" href="modules/addons/ClientNotifications/style/style.css" type="text/css"><style>#htb .info{color: #0e7fad !important;background-color: #c0e9fa !important;}#htb .success{color: #4f8746 !important;background-color: #d4ffcd !important;}#htb .error{c
-olor: #641f1a !important;background-color: #ffd2d4 !important;}#htb .warning{color: #9d9c49 !important;background-color: #fdfdcb !important;}#htb .tip{color: #c77d10 !important;background-color: #f9d69e !important;}#htb .secure{color: #9638f1 !important;background-color: #e
-5cefc !important;}#htb .message{color: #000000 !important;background-color: #efefef !important;}#htb .download{color: #04b5eb !important;background-color: #f7f7f7 !important;}#htb .purchase{color: #426164 !important;background-color: #c2e1e3 !important;}#htb .print{color: #3c4b5e !important;background-color: #c8d9e3 !important;}</style><style></style><style>#htb h4 {font-size: 20px;}#htb p {font-size: 12px;}#htb h4 {font-weight: inherit;}#htb p {font-weight: bold;}</style>
-
-</head>
+    <script src="/templates/twenty-one/js/scripts.min.js"></script>
 
 
-<body data-topbar="colored" data-phone-cc-input="1">
-<!-- Begin page -->
-<div id="layout-wrapper">
+    <script type="text/javascript">
+        $(function () {
 
-    <header id="page-topbar">
-        <div class="navbar-header">
-            <div class="d-flex">
-                <!-- LOGO -->
-                <div class="navbar-brand-box">
-                    <a href="/index.php" class="logo logo-dark">
-                                <span class="logo-sm">
-                                    <img src="assets/images/logo-sm-dark.png" alt="" height="22">
-                                </span>
-                        <span class="logo-lg">
-                                    <img src="/templates/VollCloud/img/logo.svg" alt="" height="32">
-                                </span>
-                    </a>
-                </div>
+            $(".dropdown-wrap").hover(function(){
+                $(this).find(".dropdown-container").addClass("show");
+            },function() {
+                $(this).find(".dropdown-container").removeClass("show");
+            });
+            $(".dropdown-body-menu-list li").hover(function() {
+                $(this).parent().find(".active").removeClass("active");
+                $(this).addClass("active");
+                var layer = $(this).data("layer");
+                $("#"+layer).parent().find(".tabs-content").removeClass("active");
+                $("#"+layer).addClass("active");
+            });
+            $('.dropdown-menu .language').click(function () {
+                var language = $(this).data('language');
+                $.ajax({
+                    type: 'POST',
+                    url: 'https://vollcloud.com/',
+                    data: { language: language },
+                    dataType: 'html',
+                    success: function (data) {
+                        //console.log(data);
+                        location.reload();
+                    }
+                });
+            });
+            var themeMode = 'white';
+            var themeCheck = '';
+            if ( themeMode == 'dark' ) {
+                themeMode = '<div class="active">深色</div><div>浅色</div>';
+                themeCheck = 'white';
+            } else {
+                themeMode = '<div>深色</div><div class="active">浅色</div>';
+                themeCheck = 'dark';
+            }
+            $('.btn-thememode > a').append('<div class="ml-auto float-right">'+ themeMode +'</div>');
 
-                <button type="button" class="btn btn-sm px-3 font-size-24 header-item waves-effect" id="vertical-menu-btn">
-                    <i class="mdi mdi-backburger"></i>
-                </button>
+            $('.btn-thememode > a').click(function (e) {
+                e.preventDefault();
+                $.ajax({
+                    type: 'POST',
+                    url: 'https://vollcloud.com/',
+                    data: { thememode: themeCheck },
+                    dataType: 'html',
+                    success: function (data) {
+                        location.reload();
+                    }
+                });
+            });
 
+        });
 
-                <!-- App Search-->
-                <form class="app-search d-none d-lg-block" method="post" action="/index.php/knowledgebase/search">
-                    <input type="hidden" name="token" value="ed24c1d293c788e436a15eb1e29150f3dc444c7a" />
-                    <div class="position-relative">
-                        <input type="text" class="form-control" placeholder="Search our knowledgebase...">
-                        <span class="mdi mdi-magnify"></span>
-                    </div>
-                </form>
-            </div>
+    </script>
 
-            <div class="d-flex">
+    <link rel="stylesheet" href="modules/addons/ClientNotifications/style/style.css" type="text/css"><style>#htb .info{color: #0e7fad !important;background-color: #c0e9fa !important;}#htb .success{color: #4f8746 !important;background-color: #d4ffcd !important;}#htb .error{color: #641f1a !important;background-color: #ffd2d4 !important;}#htb .warning{color: #9d9c49 !important;background-color: #fdfdcb !important;}#htb .tip{color: #c77d10 !important;background-color: #f9d69e !important;}#htb .secure{color: #9638f1 !important;background-color: #e5cefc !important;}#htb .message{color: #000000 !important;background-color: #efefef !important;}#htb .download{color: #04b5eb !important;background-color: #f7f7f7 !important;}#htb .purchase{color: #426164 !important;background-color: #c2e1e3 !important;}#htb .print{color: #3c4b5e !important;background-color: #c8d9e3 !important;}</style><style></style><style>#htb h4 {font-size: 20px;}#htb p {font-size: 12px;}#htb h4 {font-weight: inherit;}#htb p {font-weight: bold;}</style>
 
-                <div class="dropdown d-inline-block d-lg-none ml-2">
-
-
-                    <button type="button" class="btn header-item noti-icon waves-effect" id="page-header-search-dropdown"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="mdi mdi-magnify"></i>
-                    </button>
-                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right p-0"
-                         aria-labelledby="page-header-search-dropdown">
-
-                        <form class="p-3">
-                            <div class="form-group m-0">
-                                <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Search ..." aria-label="Recipient's username">
-                                    <div class="input-group-append">
-                                        <button class="btn btn-primary" type="submit"><i class="mdi mdi-magnify"></i></button>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-
-                <div class="dropdown d-inline-block">
-                    <button type="button" class="btn  header-item noti-icon waves-effect" data-toggle="modal" data-target="#modalChooseLanguage">
-                        <div class="d-inline-block align-middle">
-                            <div class="iti-flag cn"></div>
-                        </div>
-                    </button>
-
-                </div>
-
-                <div class="dropdown d-inline-block">
-                    <button type="button" class="btn header-item noti-icon right-bar-toggle waves-effect" data-toggle="popover" id="accountNotifications" data-placement="bottom">
-                        <i class="mdi mdi-message-minus-outline"></i>
-                    </button>
-                </div>
-                <div id="accountNotificationsContent" class="w-hidden">
-                    <ul class="client-alerts">
-                        <li class="none">
-                            您目前沒有任何通知。
-                        </li>
-                    </ul>
-                </div>
+    <style type="text/css">/* Chart.js */
+    @-webkit-keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}@keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}.chartjs-render-monitor{-webkit-animation:chartjs-render-animation 0.001s;animation:chartjs-render-animation 0.001s;}</style><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/layer/3.1.1/theme/default/layer.css?v=3.1.1" id="layuicss-layer"></head>
 
 
-                <div class="dropdown d-inline-block">
-                    <button onclick="window.location.href='/cart.php?a=view'"  class="btn header-item noti-icon right-bar-toggle waves-effect">
-                        <i class="mdi mdi-shopping-outline"></i>
-                    </button>
-                </div>
-
-
-                <div class="dropdown d-inline-block">
-                    <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img class="rounded-circle header-profile-user" src="/modules/addons/profilephotos/image.php" alt="Header Avatar">
-                        <span class="d-none d-sm-inline-block ml-1">                                    username
-                                </span>
-                        <i class="mdi mdi-chevron-down d-none d-sm-inline-block"></i>
-                    </button>
-                    <div class="dropdown-menu dropdown-menu-right">
-                        <a href="/index.php/user/accounts" class="dropdown-item" data-toggle="tooltip" data-placement="bottom" title="Switch Account">
-                            <i class="fad fa-random  mr-1"></i>Switch Account
-                        </a>
-
-
-
-                        <a href="/index.php?m=profilephotos"  class="dropdown-item">
-                            <i class="el-icon-picture"></i>
-
-                            Your Photo
-                        </a>
-
-                        <a href="/clientarea.php?action=details"  class="dropdown-item">
-                            <i class="el-icon-account-circle"></i>
-
-                            我的詳情
-                        </a>
-
-                        <a href="/index.php/account/users"  class="dropdown-item">
-                            <i class="el-icon-indexorg"></i>
-
-                            User Management
-                        </a>
-
-                        <a href="/index.php/account/contacts"  class="dropdown-item">
-                            <i class="el-icon-indexchat-1"></i>
-
-                            Contacts
-                        </a>
-
-                        <a href="/clientarea.php?action=emails"  class="dropdown-item">
-                            <i class="el-icon-email"></i>
-
-                            Email 訊息紀錄
-                        </a>
-
-                        <a href="/index.php/user/profile"  class="dropdown-item">
-                            <i class="el-icon-indexsetting-2"></i>
-
-                            Your Profile
-                        </a>
-
-                        <a href="/index.php/user/password"  class="dropdown-item">
-                            <i class="el-icon-indexpermission"></i>
-
-                            變更密碼
-                        </a>
-
-                        <a href="/logout.php"  class="dropdown-item">
-                            <i class="el-icon-logout"></i>
-
-                            登出
-                        </a>
+<body data-phone-cc-input="1" class="clientareaproducts">
 
 
 
 
-                    </div>
-                </div>
 
-            </div>
-        </div>
-
-    </header>
-    <!-- ========== Left Sidebar Start ========== -->
-    <div class="vertical-menu">
-
-        <div data-simplebar class="h-100">
-
-            <!--- Sidemenu -->
-            <div id="sidebar-menu">
-                <!-- Left Menu Start -->
-                <ul class="metismenu list-unstyled" id="side-menu">
-                    <li class="menu-title">快捷操作</li>
-
-
-                    <li >
-                        <a  href="/clientarea.php" class="waves-effect " >
-                            <div class="d-inline-block icons-sm mr-1"><i class="uim uim-layer-group"></i></div>
-                            <span>首頁</span>
+<header id="header" class="header-white">
+    <nav class="navbar navbar-expand-md navbar-dark flex-md-nowrap p-0">
+        <div class="container-fluid">
+            <a class="navbar-brand mr-4 ml-2" href="https://vollcloud.com/">
+                VoLLcloud LLC
+            </a>
+            <button class="navbar-toggler mr-2 d-md-none collapsed" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fal fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mr-auto">
+                    <li menuitemname="Home" class="nav-item" id="Primary_Navbar-Home">
+                        <a class="nav-link" href="/clientarea.php">
+                            用户中心
                         </a>
                     </li>
-
-                    <li class="mm-active">
-                        <a  href="javascript:void(0)"  class="has-arrow waves-effect" class="waves-effect active" data-target="#menuItemServices">
-                            <div class="d-inline-block icons-sm mr-1"><i class="uim uim-apps"></i></div>
-                            <span>服務</span>
-                            <span class="arrow">
-                                                                                <i class="arrow-icon"></i>
-                                                                        </span>                                   </a>
-                        <ul id="menuItemServices"  class="sub-menu" aria-expanded="false">
-                            <!-- Colors -->
-                            <li id="Primary_Navbar-Services-My_Services">
-                                <a href="/clientarea.php?action=services">
-                                    我的服務
+                    <li menuitemname="Services" class="nav-item dropdown" id="Primary_Navbar-Services">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">
+                            产品服务
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li menuitemname="My Services" class="dropdown-item" id="Primary_Navbar-Services-My_Services">
+                                <a href="/clientarea.php?action=services" class="dropdown-link">
+                                    我的服务
                                 </a>
                             </li>
-
-                            <!-- Colors -->
-                            <li id="Primary_Navbar-Services-产品过户">
-                                <a href="/index.php?m=push">
+                            <div class="dropdown-divider"></div>
+                            <li menuitemname="Order New Services" class="dropdown-item" id="Primary_Navbar-Services-Order_New_Services">
+                                <a href="/cart.php" class="dropdown-link">
+                                    购买服务
+                                </a>
+                            </li>
+                            <li menuitemname="View Available Addons" class="dropdown-item" id="Primary_Navbar-Services-View_Available_Addons">
+                                <a href="/cart.php?gid=addons" class="dropdown-link">
+                                    附加服务
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li menuitemname="Billing" class="nav-item dropdown" id="Primary_Navbar-Billing">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">
+                            财务管理
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li menuitemname="My Invoices" class="dropdown-item" id="Primary_Navbar-Billing-My_Invoices">
+                                <a href="/clientarea.php?action=invoices" class="dropdown-link">
+                                    账单
+                                </a>
+                            </li>
+                            <li menuitemname="续费管理" class="dropdown-item" id="Primary_Navbar-Billing-续费管理">
+                                <a href="/index.php?m=renewal" class="dropdown-link">
+                                    续费管理
+                                </a>
+                            </li>
+                            <li menuitemname="Transfer Products" class="dropdown-item" id="Primary_Navbar-Billing-Transfer_Products">
+                                <a href="/index.php?m=transfer" class="dropdown-link">
                                     产品过户
                                 </a>
                             </li>
-
-                            <!-- Colors -->
-                            <li id="Primary_Navbar-Services-过户日志">
-                                <a href="/index.php?m=push&page=log">
-                                    过户日志
+                            <li menuitemname="My Quotes" class="dropdown-item" id="Primary_Navbar-Billing-My_Quotes">
+                                <a href="/clientarea.php?action=quotes" class="dropdown-link">
+                                    我的报价
                                 </a>
                             </li>
-
-                            <li class="u-sidebar-nav-menu__divider"></li>
-                            <!-- Colors -->
-                            <li id="Primary_Navbar-Services-Order_New_Services">
-                                <a href="/cart.php">
-                                    訂購新服務
+                            <div class="dropdown-divider"></div>
+                            <li menuitemname="Mass Payment" class="dropdown-item" id="Primary_Navbar-Billing-Mass_Payment">
+                                <a href="/clientarea.php?action=masspay&amp;all=true" class="dropdown-link">
+                                    批量付款
                                 </a>
                             </li>
-
-                            <!-- Colors -->
-                            <li id="Primary_Navbar-Services-View_Available_Addons">
-                                <a href="/cart.php?gid=addons">
-                                    檢視可用的附加套件
-                                </a>
-                            </li>
-
                         </ul>
-
                     </li>
-
-                    <li >
-                        <a  href="javascript:void(0)"  class="has-arrow waves-effect" class="waves-effect " data-target="#menuItemBilling">
-                            <div class="d-inline-block icons-sm mr-1"><i class="uim uim-document-layout-right"></i></div>
-                            <span>帳務</span>
-                            <span class="arrow">
-                                                                                <i class="arrow-icon"></i>
-                                                                        </span>                                   </a>
-                        <ul id="menuItemBilling"  class="sub-menu" aria-expanded="false">
-                            <!-- Colors -->
-                            <li id="Primary_Navbar-Billing-My_Invoices">
-                                <a href="/clientarea.php?action=invoices">
-                                    我的帳單
+                    <li menuitemname="Support" class="nav-item dropdown" id="Primary_Navbar-Support">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">
+                            技术支持
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li menuitemname="Tickets" class="dropdown-item" id="Primary_Navbar-Support-Tickets">
+                                <a href="/supporttickets.php" class="dropdown-link">
+                                    我的工单
                                 </a>
                             </li>
-
-                            <!-- Colors -->
-                            <li id="Primary_Navbar-Billing-My_Quotes">
-                                <a href="/clientarea.php?action=quotes">
-                                    我的估價單
+                            <li menuitemname="Announcements" class="dropdown-item" id="Primary_Navbar-Support-Announcements">
+                                <a href="/index.php/announcements" class="dropdown-link">
+                                    公告信息
                                 </a>
                             </li>
-
-                            <li class="u-sidebar-nav-menu__divider"></li>
-                            <!-- Colors -->
-                            <li id="Primary_Navbar-Billing-Mass_Payment">
-                                <a href="/clientarea.php?action=masspay&all=true">
-                                    大宗支付
+                            <li menuitemname="Knowledgebase" class="dropdown-item" id="Primary_Navbar-Support-Knowledgebase">
+                                <a href="/index.php/knowledgebase" class="dropdown-link">
+                                    帮助中心
                                 </a>
                             </li>
-
+                            <li menuitemname="Downloads" class="dropdown-item" id="Primary_Navbar-Support-Downloads">
+                                <a href="/index.php/download" class="dropdown-link">
+                                    资源下载
+                                </a>
+                            </li>
+                            <li menuitemname="Network Status" class="dropdown-item" id="Primary_Navbar-Support-Network_Status">
+                                <a href="/serverstatus.php" class="dropdown-link">
+                                    服务监控
+                                </a>
+                            </li>
+                            <li menuitemname="open-ticket" class="dropdown-item open-ticket-item" id="Primary_Navbar-Support-open-ticket">
+                                <a href="/submitticket.php" class="dropdown-link">
+                                    提交工单
+                                </a>
+                            </li>
                         </ul>
-
                     </li>
-
-                    <li >
-                        <a  href="javascript:void(0)"  class="has-arrow waves-effect" class="waves-effect " data-target="#menuItemSupport">
-                            <div class="d-inline-block icons-sm mr-1"><i class="uim uim-comment-plus"></i></div>
-                            <span>技術支援</span>
-                            <span class="arrow">
-                                                                                <i class="arrow-icon"></i>
-                                                                        </span>                                   </a>
-                        <ul id="menuItemSupport"  class="sub-menu" aria-expanded="false">
-                            <!-- Colors -->
-                            <li id="Primary_Navbar-Support-Tickets">
-                                <a href="/supporttickets.php">
-                                    服務單
-                                </a>
-                            </li>
-
-                            <!-- Colors -->
-                            <li id="Primary_Navbar-Support-Announcements">
-                                <a href="/index.php/announcements">
-                                    公告
-                                </a>
-                            </li>
-
-                            <!-- Colors -->
-                            <li id="Primary_Navbar-Support-Knowledgebase">
-                                <a href="/index.php/knowledgebase">
-                                    知識庫
-                                </a>
-                            </li>
-
-                            <!-- Colors -->
-                            <li id="Primary_Navbar-Support-Downloads">
-                                <a href="/index.php/download">
-                                    下載
-                                </a>
-                            </li>
-
-                            <!-- Colors -->
-                            <li id="Primary_Navbar-Support-Network_Status">
-                                <a href="/serverstatus.php">
-                                    服務狀態
-                                </a>
-                            </li>
-
-                            <!-- Colors -->
-                            <li id="Primary_Navbar-Support-open-ticket">
-                                <a href="/submitticket.php">
-                                    建立服務單
-                                </a>
-                            </li>
-
-                        </ul>
-
-                    </li>
-
-                    <li >
-                        <a  href="/affiliates.php" class="waves-effect " >
-                            <div class="d-inline-block icons-sm mr-1"><i class="uim uim-repeat"></i></div>
-                            <span>推廣註冊</span>
+                    <li menuitemname="Affiliates" class="nav-item" id="Primary_Navbar-Affiliates">
+                        <a class="nav-link" href="/affiliates.php">
+                            用户推广
                         </a>
                     </li>
+                </ul>
+                <ul class="navbar-nav navbar-nav-right ml-auto">
 
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">
+                            工单
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li class="dropdown-item">
+                                <a href="/supporttickets.php" class="dropdown-link">
+                                    <i class="icon-product__ufile"></i>
+                                    工单列表
+                                </a>
+                            </li>
+                            <li class="dropdown-item">
+                                <a href="/submitticket.php" class="dropdown-link">
+                                    <i class="icon-product__isms"></i>
+                                    新建工单
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown billing">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">
+                            费用
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li>
+                                <div class="panel-amount">
+                                    <div class="panel-amount-head">
+                                        <div class="panel-amount-head-title">
+                                            账户余额
+                                        </div>
+                                        <div class="panel-amount-head-btn">
+                                            <a href="/clientarea.php?action=addfunds">
+                                                充值
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="panel-amount-info">
+                                        <div class="panel-amount-number">
+                                            <em class="amount-number">
+                                                $0.00 USD
+                                            </em>
+                                            <em>元</em>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="dropdown-item">
+                                <a href="/clientarea.php?action=invoices" class="dropdown-link">
+                                    <i class="icon-product__invoice"></i>
+                                    账单管理
+                                </a>
+                            </li>
+                            <li class="dropdown-item">
+                                <a href="/index.php?m=invoice" class="dropdown-link">
+                                    <i class="icon-product__ulog"></i>
+                                    发票管理
+                                </a>
+                            </li>
+                            <li class="dropdown-item">
+                                <a href="/index.php?m=renewal" class="dropdown-link">
+                                    <i class="icon-product__billing"></i>
+                                    续费管理
+                                </a>
+                            </li>
+                            <li class="dropdown-item">
+                                <a href="/index.php?m=transfer" class="dropdown-link">
+                                    <i class="icon-product__isms"></i>
+                                    产品过户
+                                </a>
+                            </li>
+                            <li class="dropdown-item">
+                                <a class="dropdown-link" href="/affiliates.php">
+                                    <i class="icon-product__vouchers"></i>
+                                    推广联盟
+                                </a>
+                            </li>
 
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/console">
+                            控制台
+                        </a>
+                    </li>
+                    <li menuitemname="Account" class="nav-item dropdown account" id="Secondary_Navbar-Account">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">
+                            <img style="max-width: 18px;margin-right: 9px;margin-top: -3px;" src="modules/addons/profilephotos/image.php" alt="">您好，ys！
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li menuitemname="profilephotos" class="dropdown-item" id="Secondary_Navbar-Account-profilephotos">
+                                <a href="/index.php?m=profilephotos" class="dropdown-link">
+                                    Your Photo
+                                </a>
+                            </li>
+                            <li menuitemname="Edit Account Details" class="dropdown-item" id="Secondary_Navbar-Account-Edit_Account_Details">
+                                <a href="/clientarea.php?action=details" class="dropdown-link">
+                                    <i class="fas fa-user-circle if-human"></i>                                账户资料
+                                </a>
+                            </li>
+                            <li menuitemname="User Management" class="dropdown-item" id="Secondary_Navbar-Account-User_Management">
+                                <a href="/index.php/account/users" class="dropdown-link">
+                                    <i class="fas fa-user-circle if-group"></i>                                用户管理
+                                </a>
+                            </li>
+                            <li menuitemname="Contacts" class="dropdown-item" id="Secondary_Navbar-Account-Contacts">
+                                <a href="/index.php/account/contacts" class="dropdown-link">
+                                    <i class="fas fa-user-circle if-sub-account"></i>                                联系人
+                                </a>
+                            </li>
+                            <li menuitemname="Email History" class="dropdown-item" id="Secondary_Navbar-Account-Email_History">
+                                <a href="/clientarea.php?action=emails" class="dropdown-link">
+                                    <i class="fas fa-user-circle icon-product__transaction-bill"></i>                                邮件存档
+                                </a>
+                            </li>
+                            <div class="dropdown-divider"></div>
+                            <li menuitemname="Profile" class="dropdown-item" id="Secondary_Navbar-Account-Profile">
+                                <a href="/index.php/user/profile" class="dropdown-link">
+                                    <i class="fas fa-user-circle icon-product__account"></i>                                您的个人资料
+                                </a>
+                            </li>
+                            <li menuitemname="Change Password" class="dropdown-item" id="Secondary_Navbar-Account-Change_Password">
+                                <a href="/index.php/user/password" class="dropdown-link">
+                                    <i class="fas fa-user-circle icon-product__account-security"></i>                                修改密码
+                                </a>
+                            </li>
+                            <li menuitemname="themeMode" class="dropdown-item btn-thememode" id="Secondary_Navbar-Account-themeMode">
+                                <a href="" class="dropdown-link">
+                                    <i class="fas fa-user-circle if-custom-function"></i>                                导航样式
+                                    <div class="ml-auto float-right"><div>深色</div><div class="active">浅色</div></div></a>
+                            </li>
+                            <div class="dropdown-divider"></div>
+                            <li menuitemname="Logout" class="dropdown-item" id="Secondary_Navbar-Account-Logout">
+                                <a href="/logout.php" class="dropdown-link">
+                                    <i class="fas fa-user-circle if-up-left"></i>                                退出账户
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+<section id="main-body">
+    <div class="page-container">
+        <nav id="sidebarMenu" class="page-side side-white">
+            <div class="sidebar-sticky">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link " href="/clientarea.php">
+                            <i class="icon-product__dashboard3"></i>
+                            <span>用户中心</span>
+                        </a>
+                    </li>
+                </ul>
 
+                <ul class="nav flex-column">
+                    <li class="nav-title">
+                        我的资源
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link " href="https://vollcloud.com/console/server">
+                            <i class="icon-product__server"></i>
+                            <span>物理主机</span>
+                        </a>
+                    </li>
 
 
 
                 </ul>
-
             </div>
-            <!-- Sidebar -->
-        </div>
-    </div>
-    <!-- Left Sidebar End -->
+        </nav>        <div class="page-body">
+        <div class="main-top">
+            <h1>我的产品与服务</h1>
+            <ol class="breadcrumb bg-transparent px-0 mb-0">
+                <li class="breadcrumb-item">
+                    <a href="/index.php">            门户首页
+                    </a>        </li>
+                <li class="breadcrumb-item">
+                    <a href="/clientarea.php">            用户中心
+                    </a>        </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    我的产品与服务
+                </li>
+            </ol></div>
 
-    <div class="main-content">
+        <div class="primary-content main-container">
+            <div class="container-fluid">
 
-        <div class="page-content">
 
-            <div class="page-title-box">
-                <div class="container-fluid">
-                    <div class="row align-items-center">
-                        <div class="col-md-8">
-                            <h4 class="page-title mb-1">我的產品 &amp; 服務</h4>
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item">
-                                    <a href="/index.php">            客戶系統
-                                    </a>        </li>
-                                <li class="breadcrumb-item">
-                                    <a href="/clientarea.php">            客戶中心
-                                    </a>        </li>
-                                <li class="breadcrumb-item active" aria-current="page">
-                                    我的產品 &amp; 服務
-                                </li>
-                            </ol>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="float-right d-none d-md-block">
 
-                            </div>
-                        </div>
+                <script type="text/javascript" charset="utf8" src="/templates/voll/js/datatables/jquery.dataTables.min.js"></script>
+                <script type="text/javascript" charset="utf8" src="/templates/voll/js/datatables/datatables.js"></script>
+                <script type="text/javascript" charset="utf8" src="/templates/voll/js/datatables/dataTables.responsive.js"></script>
+
+
+                <script type="text/javascript">
+
+                    if (typeof(buildFilterRegex) !== "function") {
+                        function buildFilterRegex(filterValue) {
+
+                            if (filterValue.indexOf('&') === -1) {
+                                return '[~>]\\s*' + jQuery.fn.dataTable.util.escapeRegex(filterValue) + '\\s*[<~]';
+                            } else {
+                                var tempDiv = document.createElement('div');
+                                tempDiv.innerHTML = filterValue;
+
+                                return '\\s*' + jQuery.fn.dataTable.util.escapeRegex(tempDiv.innerText) + '\\s*';
+                            }
+                        }
+                    }
+
+                    jQuery(document).ready(function () {
+                        jQuery(".view-filter-btns .dropdown-menu a").click(function(e) {
+                            var filterValue = jQuery(this).find("span").data('value');
+                            var filterText = jQuery(this).find("span").html().trim();
+                            var dataTable = jQuery('#tableServicesList').DataTable();
+                            var filterValueRegex;
+                            $(this).closest('.dropdown-menu').find('.active').removeClass('active');
+                            $(this).parent().addClass('active');
+                            $(this).closest('.view-filter-btns').find('.dropdown-toggle span').text(filterText);
+                            if (filterValue == "all") {
+                                dataTable.column(1).search('').draw();
+                            } else {
+                                filterValueRegex = buildFilterRegex(filterValue);
+                                dataTable.column(1)
+                                    .search(filterValueRegex, true, false, false)
+                                    .draw();
+                            }
+                            // Prevent jumping to the top of the page
+                            // when no matching tag is found.
+                            e.preventDefault();
+                        });
+                    });
+
+
+
+
+                    jQuery(document).ready(function () {
+                        jQuery(".view-filter-btns a").click(function (e) {
+                            var filterValue = jQuery(this).find("span").not('.badge').html().trim(),
+                                dataTable = jQuery('#tableServicesList').DataTable(),
+                                filterValueRegex;
+                            if (jQuery(this).hasClass('active')) {
+                                jQuery(this).removeClass('active');
+                                dataTable.column(1).search('').draw();
+                            } else {
+                                jQuery('.view-filter-btns a').removeClass('active');
+                                jQuery(this).addClass('active');
+                                filterValueRegex = buildFilterRegex(filterValue);
+                                console.log(filterValueRegex);
+                                dataTable.column(1)
+                                    .search(filterValueRegex, true, false, false)
+                                    .draw();
+                            }
+
+                            // Prevent jumping to the top of the page when no matching tag is found.
+                            e.preventDefault();
+                        });
+                    });
+                </script>
+
+                <script type="text/javascript">
+                    var alreadyReady = false; // The ready function is being called twice on page load.
+                    jQuery(document).ready( function () {
+
+
+                        var responsiveHelper = undefined;
+                        {var breakpointDefinition = {
+                            tablet: 1024,
+                            phone : 480
+                        };}
+
+                        var tableElement = jQuery("#tableServicesList");
+
+                        tableElement.dataTable ({
+                            "dom": '<"listtable"fit>pl',		"responsive": true,
+                            "autoWidth": false,
+                            "oLanguage": {
+                                "sEmptyTable":     "无记录",
+                                "sInfo":           "共有_TOTAL_ 项，正在展示第 _START_ 到 _END_ 项",
+                                "sInfoEmpty":      "无记录",
+                                "sInfoFiltered":   "(从 _MAX_ 条中筛选)",
+                                "sInfoPostFix":    "",
+                                "sInfoThousands":  ",",
+                                "sLengthMenu":     "每页显示 _MENU_ 条",
+                                "sLoadingRecords": "加载中...",
+                                "sProcessing":     "处理中...",
+                                "sSearch":         "",
+                                "sZeroRecords":    "无记录",
+                                "oPaginate": {
+                                    "sFirst":    "首页",
+                                    "sLast":     "末页",
+                                    "sNext":     "下一页",
+                                    "sPrevious": "上一页"
+                                }
+                            },
+                            "pageLength": 10,
+                            "order": [
+                                [ 0, "asc" ]
+                            ],
+                            "lengthMenu": [
+                                [10, 25, 50, -1],
+                                [10, 25, 50, "所有"]
+                            ],
+                            "aoColumnDefs": [
+                                {
+                                    "bSortable": false,
+                                    "aTargets": [ 0,2,3,6,7 ]
+                                },
+                                {
+                                    "sType": "string",
+                                    "aTargets": [ 1 ]
+                                }
+                            ],
+
+                            preDrawCallback: function () {
+                                // Initialize the responsive datatables helper once.
+                                if (!responsiveHelper) {
+                                    responsiveHelper = new ResponsiveDatatablesHelper(tableElement, breakpointDefinition);
+                                }
+                            },
+                            rowCallback    : function (nRow) {
+                                responsiveHelper.createExpandIcon(nRow);
+                            },
+                            drawCallback   : function (oSettings) {
+                                responsiveHelper.respond();
+                            },
+
+
+                            "stateSave": true
+                        });
+
+
+
+                        // highlight remembered filter on page re-load
+
+                        var table = jQuery('#tableServicesList').DataTable();
+                        var rememberedFilterTerm = table.state().columns[1].search.search;
+                        if (rememberedFilterTerm && !alreadyReady) {
+
+                            // This should only run on the first "ready" event.
+                            jQuery(".view-filter-btns a span").each(function(index) {
+                                if (buildFilterRegex(jQuery(this).text().trim()) == rememberedFilterTerm) {
+                                    $(this).closest('li').addClass('active');
+                                    $(this).closest('.view-filter-btns').find('.dropdown-toggle span').text(jQuery(this).text());
+                                }
+                            });
+                        }
+                        alreadyReady = true;
+
+                        if (jQuery('#table-search').length > 0 && $('.dataTables_filter').length > 0){
+                            var searchTableVal = $('.dataTables_filter input').val();
+                            jQuery('#table-search').val(searchTableVal);
+                            var searchVal = $('#table-search').val();
+                            table.search(searchVal, true).draw();
+                        }
+
+                        jQuery('#table-search').on('keyup', function () {
+                            table.search(this.value, true).draw();
+                        });
+
+                    } );
+                </script>
+                <link rel="stylesheet" href="/templates/voll/css/ec.css">
+                <link rel="stylesheet" href="/templates/voll/css/font-os/font-os.css">
+
+                <script src="/templates/voll/js/Chart.min.js"></script>
+                <script src="/templates/voll/js/Chart.extension.js"></script>
+
+
+                <script type="text/javascript">
+                    jQuery(document).ready( function ()
+                    {
+                        var table = jQuery('#tableServicesList').removeClass('hidden').DataTable();
+                        table.order([0, 'asc'], [3, 'asc']);
+                        table.column(1).search('有效的', true, false, false).draw();
+                        jQuery('#tableLoading').addClass('hidden');
+                    });
+                </script>
+
+                <div class="ecs-info-card hidden">
+
+
+                    <div class="left-wrap"><div><p class="title"><i class="icon-product__ec"></i> 云主机 ECS</p><p class="description">云主机 ECS (Elastic Compute Server) 是一种按需获取的云端服务器，为您提供高可靠、弹性扩展的计算资源服务。</p><p class="description2">您可以根据需求选择不同规格的CPU、内存、操作系统、硬盘和网络来创建您的云主机，满足您的个性化业务需求。</p></div>
+                        <p class="description">仅需简单3步，即可拥有一台云主机，开始搭建您的云上业务！</p><div class="step-list"><div class="el-steps steps-wrap el-steps--horizontal"><div class="el-step is-horizontal" style="flex-basis: 260px; margin-right: 0px;"><div class="el-step__head is-wait"><div class="el-step__line" style="margin-right: 0px;"><i class="el-step__line-inner" style="transition-delay: 0ms; border-width: 0px; width: 0%;"></i></div><div class="el-step__icon is-text"><!----><div class="el-step__icon-inner">1</div></div></div><div class="el-step__main"><div class="el-step__title is-wait">创建一台云主机</div><div class="el-step__description is-wait"></div></div></div><div class="el-step is-horizontal" style="flex-basis: 260px; margin-right: 0px;"><div class="el-step__head is-wait"><div class="el-step__line" style="margin-right: 0px;"><i class="el-step__line-inner" style="transition-delay: -150ms; border-width: 0px; width: 0%;"></i></div><div class="el-step__icon is-text"><!----><div class="el-step__icon-inner">2</div></div></div><div class="el-step__main"><div class="el-step__title is-wait">启动云主机</div><div class="el-step__description is-wait"></div></div></div><div class="el-step is-horizontal" style="flex-basis: 260px; max-width: 33.3333%;"><div class="el-step__head is-wait"><div class="el-step__line"><i class="el-step__line-inner"></i></div><div class="el-step__icon is-text"><!----><div class="el-step__icon-inner">3</div></div></div><div class="el-step__main"><div class="el-step__title is-wait">开始搭建业务</div><div class="el-step__description is-wait"></div></div></div></div></div>
+                    </div>
+
+                </div>
+                <div class="d-flex align-items-end justify-content-between mb-4">
+                    <div class="header-tools">
+                        <a href="/store/ec" class="btn px-4 btn-primary">
+                            <i class="el-icon-add"></i>
+                            立即添加
+                        </a>
+                    </div>
+                    <div class="btn-group view-filter-btns mb-0" aria-label="view-filter-btns">
+                        <a href="#" class="btn btn-outline-primary active" data-value="有效的">
+                            <span>有效的</span>
+                        </a>
+                        <a href="#" type="button" class="btn btn-outline-primary" data-value="审核中">
+                            <span>审核中</span>
+                        </a>
+                        <a href="#" type="button" class="btn btn-outline-primary" data-value="已暂停">
+                            <span>已暂停</span>
+                        </a>
+                        <a href="#" type="button" class="btn btn-outline-primary" data-value="已终止">
+                            <span>已终止</span>
+                        </a>
+                        <a href="#" type="button" class="btn btn-outline-primary" data-value="已取消">
+                            <span>已取消</span>
+                        </a>
                     </div>
                 </div>
-            </div>
 
-            <div class="page-content-wrapper">
-                <div class="container-fluid">
+                <div class="table-container clearfix">
+                    <div class="table-header">
+                        <label>我的产品与服务</label>
 
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="card">
-                                <div class="card-body">
+                    </div>
+                    <div id="tableServicesList_wrapper" class="dataTables_wrapper  no-footer"><div class="listtable"><div id="tableServicesList_filter" class="dataTables_filter"><label><input type="search" class="form-control input-sm" placeholder="" aria-controls="tableServicesList"></label></div><div class="dataTables_info" id="tableServicesList_info" role="status" aria-live="polite">共有10 项，正在展示第 1 到 10 项</div><table id="tableServicesList" class="datatable table table-hover dataTable no-footer" aria-describedby="tableServicesList_info" role="grid">
 
-
-
-
-
-
-
-                                    <section id="main-body">
-                                        <div class="container">
-                                            <div class="row">
-
-                                                <div class="col-lg-4 col-xl-3">
-                                                    <div class="sidebar">
-                                                    </div>
-                                                    <div class="d-none d-lg-block sidebar">
-                                                        <div menuItemName="My Services Actions" class="mb-3 card card-sidebar panel-default">
-                                                            <div class="card-header">
-                                                                <h3 class="card-title m-0">
-                                                                    <i class="fas fa-plus"></i>&nbsp;                動作
-                                                                    <i class="fas fa-chevron-up card-minimise float-right"></i>
-                                                                </h3>
-                                                            </div>
-                                                            <div class="collapsable-card-body">
-                                                                <div class="list-group list-group-flush d-inline-block d-md-flex" role="tablist">
-                                                                    <a menuItemName="Place a New Order" href="/cart.php" class="list-group-item list-group-item-action" id="Secondary_Sidebar-My_Services_Actions-Place_a_New_Order">
-                                                                        <i class="fas fa-shopping-cart fa-fw"></i>&nbsp;                                建立新訂單
-                                                                    </a>
-                                                                    <a menuItemName="View Available Addons" href="/cart.php?gid=addons" class="list-group-item list-group-item-action" id="Secondary_Sidebar-My_Services_Actions-View_Available_Addons">
-                                                                        <i class="fas fa-cubes fa-fw"></i>&nbsp;                                檢視可用的附加套件
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-8 col-xl-9 primary-content">
-
-
-                                                    <script>
-                                                        if (typeof(buildFilterRegex) !== "function") {
-                                                            function buildFilterRegex(filterValue) {
-                                                                if (filterValue.indexOf('&') === -1) {
-                                                                    return '[~>]\\s*' + jQuery.fn.dataTable.util.escapeRegex(filterValue) + '\\s*[<~]';
-                                                                } else {
-                                                                    var tempDiv = document.createElement('div');
-                                                                    tempDiv.innerHTML = filterValue;
-                                                                    return '\\s*' + jQuery.fn.dataTable.util.escapeRegex(tempDiv.innerText) + '\\s*';
-                                                                }
-                                                            }
-                                                        }
-
-                                                        jQuery(document).ready(function () {
-                                                            jQuery(".view-filter-btns a").click(function (e) {
-                                                                var filterValue = jQuery(this).find("span").not('.badge').html().trim(),
-                                                                    dataTable = jQuery('#tableServicesList').DataTable(),
-                                                                    filterValueRegex;
-                                                                if (jQuery(this).hasClass('active')) {
-                                                                    jQuery(this).removeClass('active');
-                                                                    jQuery(this).find("i.far.fa-dot-circle").removeClass('fa-dot-circle').addClass('fa-circle');
-                                                                    dataTable.column(4).search('').draw();
-                                                                } else {
-                                                                    jQuery('.view-filter-btns .list-group-item').removeClass('active');
-                                                                    jQuery('i.far.fa-dot-circle').removeClass('fa-dot-circle').addClass('fa-circle');
-                                                                    jQuery(this).addClass('active');
-                                                                    jQuery(this).find(jQuery("i.far.fa-circle")).removeClass('fa-circle').addClass('fa-dot-circle');
-                                                                    filterValueRegex = buildFilterRegex(filterValue);
-                                                                    dataTable.column(4)
-                                                                        .search(filterValueRegex, true, false, false)
-                                                                        .draw();
-                                                                }
-
-                                                                // Prevent jumping to the top of the page when no matching tag is found.
-                                                                e.preventDefault();
-                                                            });
-                                                        });
-                                                    </script>
-
-                                                    <script>
-                                                        // The ready function is being called twice on page load.
-                                                        var alreadyReady = false;
-                                                        jQuery(document).ready( function () {
-                                                            var table = jQuery("#tableServicesList").DataTable({
-                                                                "dom": '<"listtable"fit>pl',            "responsive": true,
-                                                                "oLanguage": {
-                                                                    "sEmptyTable":     "未找到任何紀錄",
-                                                                    "sInfo":           "顯示 _TOTAL_ 筆資料中的第 _START_ 筆至第 _END_ 筆",
-                                                                    "sInfoEmpty":      "顯示 0 筆資料中的第 0 筆至第 0 筆",
-                                                                    "sInfoFiltered":   "(自 _MAX_ 筆資料中過濾)",
-                                                                    "sInfoPostFix":    "",
-                                                                    "sInfoThousands":  ",",
-                                                                    "sLengthMenu":     "顯示 _MENU_ 筆資料",
-                                                                    "sLoadingRecords": "載入中...",
-                                                                    "sProcessing":     "處理中...",
-                                                                    "sSearch":         "",
-                                                                    "sZeroRecords":    "未找到任何紀錄",
-                                                                    "oPaginate": {
-                                                                        "sFirst":    "第一頁",
-                                                                        "sLast":     "最末頁",
-                                                                        "sNext":     "下一頁",
-                                                                        "sPrevious": "上一頁"
-                                                                    }
-                                                                },
-                                                                "pageLength": 10,
-                                                                "order": [
-                                                                    [
-                                                                        0,
-                                                                        "asc"
-                                                                    ]
-                                                                ],
-                                                                "lengthMenu": [
-                                                                    [10, 25, 50, -1],
-                                                                    [10, 25, 50, "全部"]
-                                                                ],
-                                                                "aoColumnDefs": [
-                                                                    {
-                                                                        "bSortable": false,
-                                                                        "aTargets": [
-                                                                            0                    ]
-                                                                    },
-                                                                    {
-                                                                        "sType": "string",
-                                                                        "aTargets": [
-                                                                            4                    ]
-                                                                    }
-                                                                ],
-                                                                "stateSave": true
-                                                            });
-
-                                                            // Highlight remembered filter on page re-load
-                                                            var rememberedFilterTerm = table.state().columns[4].search.search;
-                                                            if (rememberedFilterTerm && !alreadyReady) {
-                                                                // This should only run on the first "ready" event.
-                                                                jQuery(".view-filter-btns a span").each(function (index) {
-                                                                    if (buildFilterRegex(jQuery(this).text().trim()) == rememberedFilterTerm) {
-                                                                        jQuery(this).parent('a').addClass('active');
-                                                                        jQuery(this).parent('a').find('i').removeClass('fa-circle').addClass('fa-dot-circle');
-                                                                    }
-                                                                });
-                                                            }
-                                                            alreadyReady = true;
-                                                        });
-                                                    </script>
-
-                                                    <script>
-                                                        jQuery(document).ready(function() {
-                                                            var table = jQuery('#tableServicesList').show().DataTable();
-
-                                                            table.order([1, 'asc'], [4, 'asc']);
-                                                            table.draw();
-                                                            jQuery('#tableLoading').hide();
-                                                        });
-                                                    </script>
-
-                                                    <div class="table-container clearfix">
-                                                        <table id="tableServicesList" class="table table-list w-hidden">
-                                                            <thead>
-                                                            <tr>
-                                                                <th></th>
-                                                                <th>產品 / 服務</th>
-                                                                <th>價格</th>
-                                                                <th>下次到期日</th>
-                                                                <th>狀態</th>
-                                                                <th></th>
-                                                            </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                            <tr onclick="clickableSafeRedirect(event, 'clientarea.php?action=productdetails&amp;id=3333', false)">
-                                                                <td class="py-0 text-center ssl-info" data-element-id="3333" data-type="service" data-domain="doumeng">
-                                                                    <img src="/assets/img/ssl/ssl-inactive.png" data-toggle="tooltip" title="No SSL Detected. Click here to browse SSL options" class="ssl-state ssl-inactive" width="25">
-                                                                </td>
-                                                                <td><strong>新产品-【HK-Group 12】</strong><br /><a href="http://hk.doumeng"  target="_blank">hk.doumeng</a></td>
-                                                                <td class="text-center" data-order="89.00">$66.00 USD <small class="text-muted">年繳</small></td>
-                                                                <td class="text-center"><span class="w-hidden">2023-09-19</span>19/09/2023</td>
-                                                                <td class="text-center"><span class="label status status-active">可用</span></td>
-                                                                <td class="responsive-edit-button" >
-                                                                    <a href="clientarea.php?action=productdetails&amp;id=3333" class="btn btn-block btn-info text-white">
-                                                                        管理產品
-                                                                    </a>
-                                                                </td>
-                                                            </tr>
-                                                            <tr onclick="clickableSafeRedirect(event, 'clientarea.php?action=productdetails&amp;id=3333', false)">
-                                                                <td class="py-0 text-center ssl-info" data-element-id="3333" data-type="service" data-domain="doumeng">
-                                                                    <img src="/assets/img/ssl/ssl-inactive.png" data-toggle="tooltip" title="No SSL Detected. Click here to browse SSL options" class="ssl-state ssl-inactive" width="25">
-                                                                </td>
-                                                                <td><strong>新产品-【HK-Group 13】</strong><br /><a href="http://hk.doumeng"  target="_blank">hk.doumeng</a></td>
-                                                                <td class="text-center" data-order="149.00">$66.00 USD <small class="text-muted">年繳</small></td>
-                                                                <td class="text-center"><span class="w-hidden">2023-08-24</span>24/08/2023</td>
-                                                                <td class="text-center"><span class="label status status-active">可用</span></td>
-                                                                <td class="responsive-edit-button" >
-                                                                    <a href="clientarea.php?action=productdetails&amp;id=3333" class="btn btn-block btn-info text-white">
-                                                                        管理產品
-                                                                    </a>
-                                                                </td>
-                                                            </tr>
-                                                            <tr onclick="clickableSafeRedirect(event, 'clientarea.php?action=productdetails&amp;id=3333', false)">
-                                                                <td class="py-0 text-center ssl-info" data-element-id="3333" data-type="service" data-domain="doumeng">
-                                                                    <img src="/assets/img/ssl/ssl-inactive.png" data-toggle="tooltip" title="No SSL Detected. Click here to browse SSL options" class="ssl-state ssl-inactive" width="25">
-                                                                </td>
-                                                                <td><strong>新产品-【HK-Group 12】</strong><br /><a href="http://hk.doumeng"  target="_blank">hk.doumeng</a></td>
-                                                                <td class="text-center" data-order="89.00">$66.00 USD <small class="text-muted">年繳</small></td>
-                                                                <td class="text-center"><span class="w-hidden">2023-09-26</span>26/09/2023</td>
-                                                                <td class="text-center"><span class="label status status-active">可用</span></td>
-                                                                <td class="responsive-edit-button" >
-                                                                    <a href="clientarea.php?action=productdetails&amp;id=3333" class="btn btn-block btn-info text-white">
-                                                                        管理產品
-                                                                    </a>
-                                                                </td>
-                                                            </tr>
-                                                            <tr onclick="clickableSafeRedirect(event, 'clientarea.php?action=productdetails&amp;id=3333', false)">
-                                                                <td class="py-0 text-center ssl-info" data-element-id="3333" data-type="service" data-domain="doumeng">
-                                                                    <img src="/assets/img/ssl/ssl-inactive.png" data-toggle="tooltip" title="No SSL Detected. Click here to browse SSL options" class="ssl-state ssl-inactive" width="25">
-                                                                </td>
-                                                                <td><strong>新产品-【HK-Group 12】</strong><br /><a href="http://hk.doumeng"  target="_blank">hk.doumeng</a></td>
-                                                                <td class="text-center" data-order="89.00">$66.00 USD <small class="text-muted">年繳</small></td>
-                                                                <td class="text-center"><span class="w-hidden">2023-10-01</span>01/10/2023</td>
-                                                                <td class="text-center"><span class="label status status-active">可用</span></td>
-                                                                <td class="responsive-edit-button" >
-                                                                    <a href="clientarea.php?action=productdetails&amp;id=3333" class="btn btn-block btn-info text-white">
-                                                                        管理產品
-                                                                    </a>
-                                                                </td>
-                                                            </tr>
-                                                            <tr onclick="clickableSafeRedirect(event, 'clientarea.php?action=productdetails&amp;id=3333', false)">
-                                                                <td class="py-0 text-center ssl-info" data-element-id="3333" data-type="service" data-domain="doumeng">
-                                                                    <img src="/assets/img/ssl/ssl-inactive.png" data-toggle="tooltip" title="No SSL Detected. Click here to browse SSL options" class="ssl-state ssl-inactive" width="25">
-                                                                </td>
-                                                                <td><strong>【HK-Group 5】</strong><br /><a href="http://hk.doumeng"  target="_blank">hk.doumeng</a></td>
-                                                                <td class="text-center" data-order="67.50">$66.50 USD <small class="text-muted">年繳</small></td>
-                                                                <td class="text-center"><span class="w-hidden">2022-11-11</span>11/11/2022</td>
-                                                                <td class="text-center"><span class="label status status-active">可用</span></td>
-                                                                <td class="responsive-edit-button" >
-                                                                    <a href="clientarea.php?action=productdetails&amp;id=3333" class="btn btn-block btn-info text-white">
-                                                                        管理產品
-                                                                    </a>
-                                                                </td>
-                                                            </tr>
-                                                            <tr onclick="clickableSafeRedirect(event, 'clientarea.php?action=productdetails&amp;id=3333', false)">
-                                                                <td class="py-0 text-center ssl-info" data-element-id="3333" data-type="service" data-domain="doumeng">
-                                                                    <img src="/assets/img/ssl/ssl-inactive.png" data-toggle="tooltip" title="No SSL Detected. Click here to browse SSL options" class="ssl-state ssl-inactive" width="25">
-                                                                </td>
-                                                                <td><strong>【HK-Group 5】</strong><br /><a href="http://hk.doumeng"  target="_blank">hk.doumeng</a></td>
-                                                                <td class="text-center" data-order="67.50">$66.50 USD <small class="text-muted">年繳</small></td>
-                                                                <td class="text-center"><span class="w-hidden">2022-11-11</span>11/11/2022</td>
-                                                                <td class="text-center"><span class="label status status-active">可用</span></td>
-                                                                <td class="responsive-edit-button" >
-                                                                    <a href="clientarea.php?action=productdetails&amp;id=3333" class="btn btn-block btn-info text-white">
-                                                                        管理產品
-                                                                    </a>
-                                                                </td>
-                                                            </tr>
-                                                            <tr onclick="clickableSafeRedirect(event, 'clientarea.php?action=productdetails&amp;id=3333', false)">
-                                                                <td class="py-0 text-center ssl-info" data-element-id="3333" data-type="service" data-domain="doumeng">
-                                                                    <img src="/assets/img/ssl/ssl-inactive.png" data-toggle="tooltip" title="No SSL Detected. Click here to browse SSL options" class="ssl-state ssl-inactive" width="25">
-                                                                </td>
-                                                                <td><strong>新产品-【HK-Group 12】</strong><br /><a href="http://hk.doumeng"  target="_blank">hk.doumeng</a></td>
-                                                                <td class="text-center" data-order="89.00">$66.00 USD <small class="text-muted">年繳</small></td>
-                                                                <td class="text-center"><span class="w-hidden">2023-07-21</span>21/07/2023</td>
-                                                                <td class="text-center"><span class="label status status-active">可用</span></td>
-                                                                <td class="responsive-edit-button" >
-                                                                    <a href="clientarea.php?action=productdetails&amp;id=3333" class="btn btn-block btn-info text-white">
-                                                                        管理產品
-                                                                    </a>
-                                                                </td>
-                                                            </tr>
-                                                            <tr onclick="clickableSafeRedirect(event, 'clientarea.php?action=productdetails&amp;id=3333', false)">
-                                                                <td class="py-0 text-center ssl-info" data-element-id="3333" data-type="service" data-domain="doumeng">
-                                                                    <img src="/assets/img/ssl/ssl-inactive.png" data-toggle="tooltip" title="No SSL Detected. Click here to browse SSL options" class="ssl-state ssl-inactive" width="25">
-                                                                </td>
-                                                                <td><strong>新产品-【HK-Group 13】</strong><br /><a href="http://hk.doumeng"  target="_blank">hk.doumeng</a></td>
-                                                                <td class="text-center" data-order="149.00">$66.00 USD <small class="text-muted">年繳</small></td>
-                                                                <td class="text-center"><span class="w-hidden">2023-08-24</span>24/08/2023</td>
-                                                                <td class="text-center"><span class="label status status-active">可用</span></td>
-                                                                <td class="responsive-edit-button" >
-                                                                    <a href="clientarea.php?action=productdetails&amp;id=3333" class="btn btn-block btn-info text-white">
-                                                                        管理產品
-                                                                    </a>
-                                                                </td>
-                                                            </tr>
-                                                            <tr onclick="clickableSafeRedirect(event, 'clientarea.php?action=productdetails&amp;id=3333', false)">
-                                                                <td class="py-0 text-center ssl-info" data-element-id="3333" data-type="service" data-domain="doumeng">
-                                                                    <img src="/assets/img/ssl/ssl-inactive.png" data-toggle="tooltip" title="No SSL Detected. Click here to browse SSL options" class="ssl-state ssl-inactive" width="25">
-                                                                </td>
-                                                                <td><strong>新产品-【HK-Group 13】</strong><br /><a href="http://hk.doumeng"  target="_blank">hk.doumeng</a></td>
-                                                                <td class="text-center" data-order="149.00">$66.00 USD <small class="text-muted">年繳</small></td>
-                                                                <td class="text-center"><span class="w-hidden">2023-08-11</span>11/08/2023</td>
-                                                                <td class="text-center"><span class="label status status-active">可用</span></td>
-                                                                <td class="responsive-edit-button" >
-                                                                    <a href="clientarea.php?action=productdetails&amp;id=3333" class="btn btn-block btn-info text-white">
-                                                                        管理產品
-                                                                    </a>
-                                                                </td>
-                                                            </tr>
-                                                            <tr onclick="clickableSafeRedirect(event, 'clientarea.php?action=productdetails&amp;id=3333', false)">
-                                                                <td class="py-0 text-center ssl-info" data-element-id="3333" data-type="service" data-domain="doumeng">
-                                                                    <img src="/assets/img/ssl/ssl-inactive.png" data-toggle="tooltip" title="No SSL Detected. Click here to browse SSL options" class="ssl-state ssl-inactive" width="25">
-                                                                </td>
-                                                                <td><strong>新产品-【HK-Group 13】</strong><br /><a href="http://hk.doumeng"  target="_blank">hk.doumeng</a></td>
-                                                                <td class="text-center" data-order="149.00">$66.00 USD <small class="text-muted">年繳</small></td>
-                                                                <td class="text-center"><span class="w-hidden">2023-08-19</span>19/08/2023</td>
-                                                                <td class="text-center"><span class="label status status-active">可用</span></td>
-                                                                <td class="responsive-edit-button" >
-                                                                    <a href="clientarea.php?action=productdetails&amp;id=3333" class="btn btn-block btn-info text-white">
-                                                                        管理產品
-                                                                    </a>
-                                                                </td>
-                                                            </tr>
-                                                            </tbody>
-                                                        </table>
-                                                        <div class="text-center" id="tableLoading">
-                                                            <p><i class="fas fa-spinner fa-spin"></i> 載入中...</p>
-                                                        </div>
-                                                    </div>
+                        <thead>
+                        <tr role="row"><th data-class="expand" class="expand sorting_asc" rowspan="1" colspan="1" aria-label="产品/服务">产品/服务</th><th data-hide="phone,tablet" class="sorting" tabindex="0" aria-controls="tableServicesList" rowspan="1" colspan="1" aria-label="状态: activate to sort column ascending">状态</th><th data-hide="phone,tablet" class="sorting_disabled" rowspan="1" colspan="1" aria-label="可用区">可用区</th><th data-hide="phone,tablet" class="sorting_asc" rowspan="1" colspan="1" aria-label="网络类型">网络类型</th><th data-hide="phone,tablet" class="sorting" tabindex="0" aria-controls="tableServicesList" rowspan="1" colspan="1" aria-label="主IPv4地址: activate to sort column ascending">主IPv4地址</th><th data-hide="phone,tablet" class="sorting" tabindex="0" aria-controls="tableServicesList" rowspan="1" colspan="1" aria-label="下次付款日期: activate to sort column ascending">下次付款日期</th><th data-hide="phone,tablet" class="sorting_disabled" rowspan="1" colspan="1" aria-label="备注">备注</th><th data-hide="phone,tablet" class="sorting_disabled" rowspan="1" colspan="1" aria-label="操作">操作</th></tr>
+                        </thead>
+                        <tbody>
 
 
 
-                                                </div>
 
-                                            </div>
-                                            <div class="d-md-none col-md-3 sidebar sidebar-secondary">
-                                                <div menuItemName="My Services Actions" class="mb-3 card card-sidebar panel-default">
-                                                    <div class="card-header">
-                                                        <h3 class="card-title m-0">
-                                                            <i class="fas fa-plus"></i>&nbsp;                動作
-                                                            <i class="fas fa-chevron-up card-minimise float-right"></i>
-                                                        </h3>
-                                                    </div>
-                                                    <div class="collapsable-card-body">
-                                                        <div class="list-group list-group-flush d-inline-block d-md-flex" role="tablist">
-                                                            <a menuItemName="Place a New Order" href="/cart.php" class="list-group-item list-group-item-action" id="Secondary_Sidebar-My_Services_Actions-Place_a_New_Order">
-                                                                <i class="fas fa-shopping-cart fa-fw"></i>&nbsp;                                建立新訂單
-                                                            </a>
-                                                            <a menuItemName="View Available Addons" href="/cart.php?gid=addons" class="list-group-item list-group-item-action" id="Secondary_Sidebar-My_Services_Actions-View_Available_Addons">
-                                                                <i class="fas fa-cubes fa-fw"></i>&nbsp;                                檢視可用的附加套件
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="clearfix"></div>
-                                        </div>
+
+
+
+
+
+
+                        <tr onclick="clickableSafeRedirect(event, '/clientarea.php?action=productdetails&amp;id=3266', false)" role="row" class="odd">
+                            <td class="expand sorting_1"><span class="responsiveExpander"></span>
+                                <span class="w-hidden">产品/服务</span>
+                                <div class="">
+                                    <strong>新产品-【HK-Group 12】</strong>
+                                    <div class="text-black-50">
+                                        cn-hk-1.43.229.153.120
+                                    </div>
                                 </div>
-                                </section>
+                            </td>
+                            <td data-order="有效的">
+                                <span class="w-hidden">状态</span>
+                                <span class="label status status-active">有效的</span>
+                            </td>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    -
+                                </div>
+                            </td>
+                            <td class="sorting_2">
+                                <span class="w-hidden">网络类型</span>
+                                -
+
+                            </td>
+                            <td>
+                                <span class="w-hidden">主IPv4地址</span>
+                                <div class="d-flex align-items-center">
+
+                                    43.229.153.120
+                                </div></td>
+                            <td data-toggle="tooltip" data-placement="bottom" data-original-title="每年 $89.00 USD">
+                                <span class="w-hidden">下次付款日期</span>
+                                2023-09-19
+                            </td>
+                            <td>
+                                <span class="d-block d-md-none">备注</span>
+                                <a class="text-black-50" href="javascript: Notes('3266', '');">备注</a>
+                            </td>
+                            <td>
+                                <a href="javascript:getValue('getTickets', '3266');" class="text-primary mr-2">
+                                    工单
+                                </a>
+                                <a href="javascript:getValue('getInvoices', '3266');" class="text-primary mr-2">
+                                    账单
+                                </a>
+                                <a href="index.php?m=renewal&amp;action=renew&amp;sid=3266" class="text-primary">
+                                    续费
+                                </a>
+                            </td>
+                        </tr><tr onclick="clickableSafeRedirect(event, '/clientarea.php?action=productdetails&amp;id=3330', false)" role="row" class="even">
+                            <td class="expand sorting_1"><span class="responsiveExpander"></span>
+                                <span class="w-hidden">产品/服务</span>
+                                <div class="">
+                                    <strong>新产品-【HK-Group 12】</strong>
+                                    <div class="text-black-50">
+                                        cn-hk-10.43.229.153.159
+                                    </div>
+                                </div>
+                            </td>
+                            <td data-order="有效的">
+                                <span class="w-hidden">状态</span>
+                                <span class="label status status-active">有效的</span>
+                            </td>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    -
+                                </div>
+                            </td>
+                            <td class="sorting_2">
+                                <span class="w-hidden">网络类型</span>
+                                -
+
+                            </td>
+                            <td>
+                                <span class="w-hidden">主IPv4地址</span>
+                                <div class="d-flex align-items-center">
+
+                                    43.229.153.159
+                                </div></td>
+                            <td data-toggle="tooltip" data-placement="bottom" data-original-title="每年 $99.00 USD">
+                                <span class="w-hidden">下次付款日期</span>
+                                2023-10-17
+                            </td>
+                            <td>
+                                <span class="d-block d-md-none">备注</span>
+                                <a class="text-black-50" href="javascript: Notes('3330', '');">备注</a>
+                            </td>
+                            <td>
+                                <a href="javascript:getValue('getTickets', '3330');" class="text-primary mr-2">
+                                    工单
+                                </a>
+                                <a href="javascript:getValue('getInvoices', '3330');" class="text-primary mr-2">
+                                    账单
+                                </a>
+                                <a href="index.php?m=renewal&amp;action=renew&amp;sid=3330" class="text-primary">
+                                    续费
+                                </a>
+                            </td>
+                        </tr><tr onclick="clickableSafeRedirect(event, '/clientarea.php?action=productdetails&amp;id=3294', false)" role="row" class="odd">
+                            <td class="expand sorting_1"><span class="responsiveExpander"></span>
+                                <span class="w-hidden">产品/服务</span>
+                                <div class="">
+                                    <strong>新产品-【HK-Group 12】</strong>
+                                    <div class="text-black-50">
+                                        cn-hk-32.103.103.245.190
+                                    </div>
+                                </div>
+                            </td>
+                            <td data-order="有效的">
+                                <span class="w-hidden">状态</span>
+                                <span class="label status status-active">有效的</span>
+                            </td>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    -
+                                </div>
+                            </td>
+                            <td class="sorting_2">
+                                <span class="w-hidden">网络类型</span>
+                                -
+
+                            </td>
+                            <td>
+                                <span class="w-hidden">主IPv4地址</span>
+                                <div class="d-flex align-items-center">
+
+                                    103.103.245.190
+                                </div></td>
+                            <td data-toggle="tooltip" data-placement="bottom" data-original-title="每年 $89.00 USD">
+                                <span class="w-hidden">下次付款日期</span>
+                                2023-09-26
+                            </td>
+                            <td>
+                                <span class="d-block d-md-none">备注</span>
+                                <a class="text-black-50" href="javascript: Notes('3294', '');">备注</a>
+                            </td>
+                            <td>
+                                <a href="javascript:getValue('getTickets', '3294');" class="text-primary mr-2">
+                                    工单
+                                </a>
+                                <a href="javascript:getValue('getInvoices', '3294');" class="text-primary mr-2">
+                                    账单
+                                </a>
+                                <a href="index.php?m=renewal&amp;action=renew&amp;sid=3294" class="text-primary">
+                                    续费
+                                </a>
+                            </td>
+                        </tr><tr onclick="clickableSafeRedirect(event, '/clientarea.php?action=productdetails&amp;id=3308', false)" role="row" class="even">
+                            <td class="expand sorting_1"><span class="responsiveExpander"></span>
+                                <span class="w-hidden">产品/服务</span>
+                                <div class="">
+                                    <strong>新产品-【HK-Group 12】</strong>
+                                    <div class="text-black-50">
+                                        cn-hk-33.43.229.153.128
+                                    </div>
+                                </div>
+                            </td>
+                            <td data-order="有效的">
+                                <span class="w-hidden">状态</span>
+                                <span class="label status status-active">有效的</span>
+                            </td>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    -
+                                </div>
+                            </td>
+                            <td class="sorting_2">
+                                <span class="w-hidden">网络类型</span>
+                                -
+
+                            </td>
+                            <td>
+                                <span class="w-hidden">主IPv4地址</span>
+                                <div class="d-flex align-items-center">
+
+                                    43.229.153.128
+                                </div></td>
+                            <td data-toggle="tooltip" data-placement="bottom" data-original-title="每年 $89.00 USD">
+                                <span class="w-hidden">下次付款日期</span>
+                                2023-10-01
+                            </td>
+                            <td>
+                                <span class="d-block d-md-none">备注</span>
+                                <a class="text-black-50" href="javascript: Notes('3308', '');">备注</a>
+                            </td>
+                            <td>
+                                <a href="javascript:getValue('getTickets', '3308');" class="text-primary mr-2">
+                                    工单
+                                </a>
+                                <a href="javascript:getValue('getInvoices', '3308');" class="text-primary mr-2">
+                                    账单
+                                </a>
+                                <a href="index.php?m=renewal&amp;action=renew&amp;sid=3308" class="text-primary">
+                                    续费
+                                </a>
+                            </td>
+                        </tr><tr onclick="clickableSafeRedirect(event, '/clientarea.php?action=productdetails&amp;id=3112', false)" role="row" class="odd">
+                            <td class="expand sorting_1"><span class="responsiveExpander"></span>
+                                <span class="w-hidden">产品/服务</span>
+                                <div class="">
+                                    <strong>新产品-【HK-Group 12】</strong>
+                                    <div class="text-black-50">
+                                        cn-hk-34.156.251.179.90
+                                    </div>
+                                </div>
+                            </td>
+                            <td data-order="有效的">
+                                <span class="w-hidden">状态</span>
+                                <span class="label status status-active">有效的</span>
+                            </td>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    -
+                                </div>
+                            </td>
+                            <td class="sorting_2">
+                                <span class="w-hidden">网络类型</span>
+                                -
+
+                            </td>
+                            <td>
+                                <span class="w-hidden">主IPv4地址</span>
+                                <div class="d-flex align-items-center">
+
+                                    156.251.179.90
+                                </div></td>
+                            <td data-toggle="tooltip" data-placement="bottom" data-original-title="每年 $89.00 USD">
+                                <span class="w-hidden">下次付款日期</span>
+                                2024-07-21
+                            </td>
+                            <td>
+                                <span class="d-block d-md-none">备注</span>
+                                <a class="text-black-50" href="javascript: Notes('3112', '');">备注</a>
+                            </td>
+                            <td>
+                                <a href="javascript:getValue('getTickets', '3112');" class="text-primary mr-2">
+                                    工单
+                                </a>
+                                <a href="javascript:getValue('getInvoices', '3112');" class="text-primary mr-2">
+                                    账单
+                                </a>
+                                <a href="index.php?m=renewal&amp;action=renew&amp;sid=3112" class="text-primary">
+                                    续费
+                                </a>
+                            </td>
+                        </tr><tr onclick="clickableSafeRedirect(event, '/clientarea.php?action=productdetails&amp;id=3329', false)" role="row" class="even">
+                            <td class="expand sorting_1"><span class="responsiveExpander"></span>
+                                <span class="w-hidden">产品/服务</span>
+                                <div class="">
+                                    <strong>新产品-【HK-Group 12】</strong>
+                                    <div class="text-black-50">
+                                        cn-hk-9.43.229.153.149
+                                    </div>
+                                </div>
+                            </td>
+                            <td data-order="有效的">
+                                <span class="w-hidden">状态</span>
+                                <span class="label status status-active">有效的</span>
+                            </td>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    -
+                                </div>
+                            </td>
+                            <td class="sorting_2">
+                                <span class="w-hidden">网络类型</span>
+                                -
+
+                            </td>
+                            <td>
+                                <span class="w-hidden">主IPv4地址</span>
+                                <div class="d-flex align-items-center">
+
+                                    43.229.153.149
+                                </div></td>
+                            <td data-toggle="tooltip" data-placement="bottom" data-original-title="每年 $99.00 USD">
+                                <span class="w-hidden">下次付款日期</span>
+                                2023-10-17
+                            </td>
+                            <td>
+                                <span class="d-block d-md-none">备注</span>
+                                <a class="text-black-50" href="javascript: Notes('3329', '');">备注</a>
+                            </td>
+                            <td>
+                                <a href="javascript:getValue('getTickets', '3329');" class="text-primary mr-2">
+                                    工单
+                                </a>
+                                <a href="javascript:getValue('getInvoices', '3329');" class="text-primary mr-2">
+                                    账单
+                                </a>
+                                <a href="index.php?m=renewal&amp;action=renew&amp;sid=3329" class="text-primary">
+                                    续费
+                                </a>
+                            </td>
+                        </tr><tr onclick="clickableSafeRedirect(event, '/clientarea.php?action=productdetails&amp;id=3209', false)" role="row" class="odd">
+                            <td class="expand sorting_1"><span class="responsiveExpander"></span>
+                                <span class="w-hidden">产品/服务</span>
+                                <div class="">
+                                    <strong>新产品-【HK-Group 13】</strong>
+                                    <div class="text-black-50">
+                                        cn-hk-30.156.251.179.82
+                                    </div>
+                                </div>
+                            </td>
+                            <td data-order="有效的">
+                                <span class="w-hidden">状态</span>
+                                <span class="label status status-active">有效的</span>
+                            </td>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    -
+                                </div>
+                            </td>
+                            <td class="sorting_2">
+                                <span class="w-hidden">网络类型</span>
+                                -
+
+                            </td>
+                            <td>
+                                <span class="w-hidden">主IPv4地址</span>
+                                <div class="d-flex align-items-center">
+
+                                    156.251.179.82
+                                </div></td>
+                            <td data-toggle="tooltip" data-placement="bottom" data-original-title="每年 $149.00 USD">
+                                <span class="w-hidden">下次付款日期</span>
+                                2023-08-24
+                            </td>
+                            <td>
+                                <span class="d-block d-md-none">备注</span>
+                                <a class="text-black-50" href="javascript: Notes('3209', '');">备注</a>
+                            </td>
+                            <td>
+                                <a href="javascript:getValue('getTickets', '3209');" class="text-primary mr-2">
+                                    工单
+                                </a>
+                                <a href="javascript:getValue('getInvoices', '3209');" class="text-primary mr-2">
+                                    账单
+                                </a>
+                                <a href="index.php?m=renewal&amp;action=renew&amp;sid=3209" class="text-primary">
+                                    续费
+                                </a>
+                            </td>
+                        </tr><tr onclick="clickableSafeRedirect(event, '/clientarea.php?action=productdetails&amp;id=3210', false)" role="row" class="even">
+                            <td class="expand sorting_1"><span class="responsiveExpander"></span>
+                                <span class="w-hidden">产品/服务</span>
+                                <div class="">
+                                    <strong>新产品-【HK-Group 13】</strong>
+                                    <div class="text-black-50">
+                                        cn-hk-31.156.251.179.75
+                                    </div>
+                                </div>
+                            </td>
+                            <td data-order="有效的">
+                                <span class="w-hidden">状态</span>
+                                <span class="label status status-active">有效的</span>
+                            </td>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    -
+                                </div>
+                            </td>
+                            <td class="sorting_2">
+                                <span class="w-hidden">网络类型</span>
+                                -
+
+                            </td>
+                            <td>
+                                <span class="w-hidden">主IPv4地址</span>
+                                <div class="d-flex align-items-center">
+
+                                    156.251.179.75
+                                </div></td>
+                            <td data-toggle="tooltip" data-placement="bottom" data-original-title="每年 $149.00 USD">
+                                <span class="w-hidden">下次付款日期</span>
+                                2024-08-24
+                            </td>
+                            <td>
+                                <span class="d-block d-md-none">备注</span>
+                                <a class="text-black-50" href="javascript: Notes('3210', '');">备注</a>
+                            </td>
+                            <td>
+                                <a href="javascript:getValue('getTickets', '3210');" class="text-primary mr-2">
+                                    工单
+                                </a>
+                                <a href="javascript:getValue('getInvoices', '3210');" class="text-primary mr-2">
+                                    账单
+                                </a>
+                                <a href="index.php?m=renewal&amp;action=renew&amp;sid=3210" class="text-primary">
+                                    续费
+                                </a>
+                            </td>
+                        </tr><tr onclick="clickableSafeRedirect(event, '/clientarea.php?action=productdetails&amp;id=3161', false)" role="row" class="odd">
+                            <td class="expand sorting_1"><span class="responsiveExpander"></span>
+                                <span class="w-hidden">产品/服务</span>
+                                <div class="">
+                                    <strong>新产品-【HK-Group 13】</strong>
+                                    <div class="text-black-50">
+                                        cn-hk-package.43.229.153.148
+                                    </div>
+                                </div>
+                            </td>
+                            <td data-order="有效的">
+                                <span class="w-hidden">状态</span>
+                                <span class="label status status-active">有效的</span>
+                            </td>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    -
+                                </div>
+                            </td>
+                            <td class="sorting_2">
+                                <span class="w-hidden">网络类型</span>
+                                -
+
+                            </td>
+                            <td>
+                                <span class="w-hidden">主IPv4地址</span>
+                                <div class="d-flex align-items-center">
+
+                                    43.229.153.148
+                                </div></td>
+                            <td data-toggle="tooltip" data-placement="bottom" data-original-title="每年 $149.00 USD">
+                                <span class="w-hidden">下次付款日期</span>
+                                2023-08-11
+                            </td>
+                            <td>
+                                <span class="d-block d-md-none">备注</span>
+                                <a class="text-black-50" href="javascript: Notes('3161', '');">备注</a>
+                            </td>
+                            <td>
+                                <a href="javascript:getValue('getTickets', '3161');" class="text-primary mr-2">
+                                    工单
+                                </a>
+                                <a href="javascript:getValue('getInvoices', '3161');" class="text-primary mr-2">
+                                    账单
+                                </a>
+                                <a href="index.php?m=renewal&amp;action=renew&amp;sid=3161" class="text-primary">
+                                    续费
+                                </a>
+                            </td>
+                        </tr><tr onclick="clickableSafeRedirect(event, '/clientarea.php?action=productdetails&amp;id=3197', false)" role="row" class="even">
+                            <td class="expand sorting_1"><span class="responsiveExpander"></span>
+                                <span class="w-hidden">产品/服务</span>
+                                <div class="">
+                                    <strong>新产品-【HK-Group 13】</strong>
+                                    <div class="text-black-50">
+                                        hkvc6-cc.103.103.245.125
+                                    </div>
+                                </div>
+                            </td>
+                            <td data-order="有效的">
+                                <span class="w-hidden">状态</span>
+                                <span class="label status status-active">有效的</span>
+                            </td>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    -
+                                </div>
+                            </td>
+                            <td class="sorting_2">
+                                <span class="w-hidden">网络类型</span>
+                                -
+
+                            </td>
+                            <td>
+                                <span class="w-hidden">主IPv4地址</span>
+                                <div class="d-flex align-items-center">
+
+                                    103.103.245.125
+                                </div></td>
+                            <td data-toggle="tooltip" data-placement="bottom" data-original-title="每年 $149.00 USD">
+                                <span class="w-hidden">下次付款日期</span>
+                                2023-08-19
+                            </td>
+                            <td>
+                                <span class="d-block d-md-none">备注</span>
+                                <a class="text-black-50" href="javascript: Notes('3197', '');">备注</a>
+                            </td>
+                            <td>
+                                <a href="javascript:getValue('getTickets', '3197');" class="text-primary mr-2">
+                                    工单
+                                </a>
+                                <a href="javascript:getValue('getInvoices', '3197');" class="text-primary mr-2">
+                                    账单
+                                </a>
+                                <a href="index.php?m=renewal&amp;action=renew&amp;sid=3197" class="text-primary">
+                                    续费
+                                </a>
+                            </td>
+                        </tr></tbody>
+                    </table></div><div class="dataTables_paginate paging_bootstrap" id="tableServicesList_paginate"><ul class="pagination"><li class="prev disabled"><a href="#"><i class="fal fa-angle-double-left icon-only"></i></a></li><li class="active"><a href="#">1</a></li><li class="next disabled"><a href="#"><i class="fal fa-angle-double-right icon-only"></i></a></li></ul></div><div class="dataTables_length" id="tableServicesList_length"><label>每页显示 <select name="tableServicesList_length" aria-controls="tableServicesList" class="form-control input-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="-1">所有</option></select> 条</label></div></div>
+                    <div class="text-center p-3 hidden" id="tableLoading">
+                        <p><i class="fas fa-spinner fa-spin"></i> 正在加载…</p>
+                    </div>
+                </div>
+
+
+
+                <style>
+
+                    .by-device-container {
+                        position: relative;
+                        height: 160px;
+                    }
+
+                    .piechart-legend {
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        text-align: center;
+                    }
+
+                    .chart-container1 {
+                        position: relative;
+                        height: 340px;
+                    }
+
+                    .chartjs-container1 {
+                        position: relative;
+                        height: 260px;
+                    }
+                </style>
+                <div class="row hidden">
+                    <div class="col-12 col-lg-6 d-flex">
+                        <div class="card radius-10 w-100">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center">
+                                    <h6 class="mb-0">状态分布</h6>
+                                </div>
+                                <div class="row row-cols-1 row-cols-md-2 g-3 mt-2 align-items-center">
+                                    <div class="col-lg-7 col-xl-7 col-xxl-8">
+                                        <div class="by-device-container">
+                                            <div class="piechart-legend">
+                                                <h2 class="mb-1">0</h2>
+                                                <h6 class="mb-0">总台数</h6>
+                                            </div>
+                                            <canvas id="chart5" height="0" width="0" class="chartjs-render-monitor" style="display: block; height: 0px; width: 0px;"></canvas>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-5 col-xl-5 col-xxl-4">
+                                        <div class="">
+                                            <ul class="list-group list-group-flush">
+                                                <li class="list-group-item d-flex align-items-center justify-content-between border-0">
+                                                    <i class="ecs-status on"></i> <span>运行中 - </span> <span>0 台</span>
+                                                </li>
+
+                                                <li class="list-group-item d-flex align-items-center justify-content-between border-0">
+                                                    <i class="ecs-status off"></i> <span>已关机 - </span> <span>0 台</span>
+                                                </li>
+
+                                                <li class="list-group-item d-flex align-items-center justify-content-between border-0">
+                                                    <i class="ecs-status wait"></i> <span>等待重启 - </span> <span>0 台</span>
+                                                </li>
+                                                <li class="list-group-item d-flex align-items-center justify-content-between border-0">
+                                                    <i class="ecs-status paused"></i> <span>被挂起 - </span> <span>0 台</span>
+                                                </li>
+
+                                                <!--<li class="list-group-item d-flex align-items-center justify-content-between border-0">
+                                                  <i class="ecs-status recycle"></i> <span>被回收 - </span> <span>0 台</span>
+                                                </li>-->
+
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                    <div class="col-12 col-lg-6 d-flex">
+                        <div class="card radius-10 w-100">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center">
+                                    <h6 class="mb-0">规格分布</h6>
+                                </div>
+                                <div class="row row-cols-1 row-cols-md-2 g-3 mt-2 align-items-center">
+                                    <div class="col-lg-7 col-xl-7 col-xxl-8">
+                                        <div class="by-device-container">
+                                            <div class="piechart-legend">
+                                                <h2 class="mb-1">0</h2>
+                                                <h6 class="mb-0">运行中</h6>
+                                            </div>
+                                            <canvas id="chart6" height="0" width="0" class="chartjs-render-monitor" style="display: block; height: 0px; width: 0px;"></canvas>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-5 col-xl-5 col-xxl-4">
+                                        <div class="">
+                                            <ul class="list-group list-group-flush">
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--end row-->
+
+                <script>
+
+                    var statuschart = new Chart(document.getElementById('chart5'), {
+                        type: 'doughnut',
+                        data: {
+                            labels: ["运行中", "已关机", "等待重启", "未知状态","挂起","被回收"],
+                            datasets: [{
+                                label: "实例状态",
+                                backgroundColor: ["#8ea8fd","#e65050","#ff9500","#3e4459", "#e9eaee","#9ca0a6"],
+                                data: [0,0,0,0,0,0]
+                            }]
+                        },
+                        options: {
+                            maintainAspectRatio: false,
+                            cutoutPercentage: 85,
+                            responsive: true,
+                            legend: {
+                                display: false
+                            }
+                        }
+                    });
+
+                    var chart = new Chart(document.getElementById('chart6'), {
+                        type: 'doughnut',
+                        data: {
+                            labels: [],
+                            datasets: [{
+                                label: "实例配置",
+                                backgroundColor: ["#8ea8fd", "#3461ff", "#c1cfff",],
+                                data:[]
+                            }]
+                        },
+                        options: {
+                            maintainAspectRatio: false,
+                            cutoutPercentage: 85,
+                            responsive: true,
+                            legend: {
+                                display: false
+                            }
+                        }
+                    });
+
+
+                </script>
+
+
+
+                <script src="https://cdnjs.loli.net/ajax/libs/layer/3.1.1/layer.min.js"></script>
+                <link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/layer/3.1.1/theme/default/layer.min.css">
+                <style>
+                    .notes .layui-layer-content {
+                        padding: 25px;
+                    }
+                    .notes.layui-layer {
+                        border-radius: 6px;
+                        box-shadow: 0 0 10px 0 rgba(0,0,0,.2);
+                    }
+                    .notes .layui-layer-title {
+                        padding: 0 25px;
+                        height: 45px;
+                        line-height: 45px;
+                        font-size: 16px;
+                        font-weight: 500;
+                        color: #333;
+                        background-color: #f6f7f8;
+                        border-radius: 6px 6px 0 0;
+                    }
+                    .notes .layui-layer-content .form-item-title {
+                        line-height: 24px;
+                        color: #666;
+                        margin-bottom: 15px;
+                        font-weight: 600;
+                        margin-top: -20px;
+                    }
+                    .notes .layui-layer-setwin {
+                        top: 13px;
+                        right: 15px;
+                    }
+                    .notes .layui-layer-setwin .layui-layer-close1 {
+                        font-family: "Font Awesome 5 Pro";
+                        background-image: none;
+                        font-size: 1.5rem;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        color: #AAA;
+                    }
+                    .notes .layui-layer-setwin .layui-layer-close1:before {
+                        content: "\f00d";
+                    }
+                    .notes .layui-layer-btn {
+                        display: flex;
+                        padding: 0 25px 25px;
+                    }
+                    .notes .layui-layer-btn > a {
+                        display: flex;
+                        flex: 1;
+                        min-height: 45px;
+                        align-items: center;
+                        justify-content: center;
+                        border-radius: 4px;
+                        font-weight: 600;
+                        margin: 0;
+                    }
+                    .notes .layui-layer-btn .layui-layer-btn0 {
+                        border-color: #087fdf;
+                        background-color: #087fdf;
+                    }
+                    .notes .layui-layer-btn .layui-layer-btn1 {
+                        margin-left: 20px;
+                        color: #087fdf;
+                        border-color: #087fdf;
+                    }
+                </style>
+                <script type="text/javascript">
+                    function Notes(id, content) {
+                        layer.open({
+                            skin: 'notes',
+                            type: 1,
+                            title: '备注',
+                            content: '<div class="form-item-title">温馨提示：文本框为空时提交，则为删除备注。</div><div class="alert alert-info"><i class="fas fa-exclamation-triangle"></i> 备注为空时，提交清除备注！</div><textarea type="textarea" name="notes" id="notes" class="form-control notes" rows="6">'+content+'</textarea>',
+                            shade: 0.5,
+                            area: '500px',
+                            btn: ['创建工单', '取消'],
+                            yes: function(index, layero) {
+
+                                var notes = $(layero).find('.notes').val();
+
+                                $.post("", { ac: "productNote", id: id, notes: notes }, function (data) {
+                                    if (data.status == 'success') {
+                                        window.location.reload();
+                                    } else {
+                                        layer.msg(data.msg);
+                                        return false;
+                                    }
+                                }, "json");
+                            }
+                        });
+                    }
+                    function getValue(type, id) {
+
+                        layer.load(1);
+
+                        $.post("", { ac: type, id: id }, function (data) {
+
+                            if (data.status == 'success') {
+                                var html_body = '';
+                                if (type == 'getInvoices') {
+                                    var title = '关联账单';
+                                    var html_header = '<table class="table"><thead><tr><th>账单 ID</th><th>生成日期</th><th>账单金额</th><th>余额支付</th><th>总计</th><th>状态</th><th>操作</th></tr></thead><tbody>';
+
+                                    $.each(data.data,function(i, val){
+                                        html_body += '<tr><td>#'+val.id+'</td><td>'+val.date+'</td><td>'+val.subtotal+'</td><td>'+val.credit+'</td><td>'+val.total+'</td><td><span class="label status status-'+val.textstatus+'">'+val.status+'</span></td><td><a href="/viewinvoice.php?id='+val.id+'" class="btn btn-dark btn-sm px-2 py-0" target="_blank"">查看详情</a></td></tr>';
+                                    });
+
+                                    var html_footer = '</tbody></table>';
+                                } else {
+                                    var title = '关联工单';
+                                    var html_header = '<table class="table"><thead><tr><th>工单 ID</th><th>主题</th><th>状态</th><th>操作</th></tr></thead><tbody>';
+
+                                    $.each(data.data,function(i, val){
+                                        html_body += '<tr><td>'+val.tid+'</td><td>'+val.title+'</td><td><span class="label status status-'+val.textstatus+'">'+val.status+'</ispan></td><td><a href="/viewticket.php?tid='+val.tid+'&c='+val.c+'" class="btn btn-sm btn-dark btn-sm px-2 py-0" target="_blank"">查看详情</a></td></tr>';
+                                    });
+
+                                    var html_footer = '</tbody></table>';
+                                }
+
+                                layer.closeAll('loading');
+
+                                layer.open({
+                                    skin: 'notes',
+                                    type: 1,
+                                    title: title,
+                                    content: html_header + html_body + html_footer,
+                                    shade: 0.5,
+                                    area: '600px',
+                                    maxWidth: '80%',
+                                });
+
+                            } else {
+
+                                layer.closeAll('loading');
+                                layer.msg(data.msg);
+                                return false;
+                            }
+                        }, "json");
+                    }
+                </script>
+
+
+
             </div>
         </div>
-
-        <footer id="footer" class="footer">
-            <div class="container">
-
-                <p class="copyright mb-0">
-                    Copyright &copy; 2022 VoLLcloud LLC. All Rights Reserved.
-                </p>
-            </div>
-        </footer>
     </div>
-</div>
+    </div>
+</section>
 
-</div>
-<!-- END layout-wrapper -->
 
-<div id="fullpage-overlay" class="w-hidden">
+
+
+
+<div id="fullpage-overlay" class="w-hidden" style="display: none;">
     <div class="outer-wrapper">
         <div class="inner-wrapper">
             <img src="/assets/img/overlay-spinner.svg">
@@ -784,180 +1467,47 @@ olor: #641f1a !important;background-color: #ffd2d4 !important;}#htb .warning{col
             <div class="modal-header">
                 <h5 class="modal-title"></h5>
                 <button type="button" class="close" data-dismiss="modal">
-                    <span aria-hidden="true">&times;</span>
-                    <span class="sr-only">Close</span>
+                    <span aria-hidden="true">×</span>
+                    <span class="sr-only">关闭</span>
                 </button>
             </div>
             <div class="modal-body">
-                載入中...
+                正在加载…
             </div>
             <div class="modal-footer">
                 <div class="float-left loader">
                     <i class="fas fa-circle-notch fa-spin"></i>
-                    載入中...
+                    正在加载…
                 </div>
                 <button type="button" class="btn btn-default" data-dismiss="modal">
-                    Close
+                    关闭
                 </button>
                 <button type="button" class="btn btn-primary modal-submit">
-                    Submit
+                    创建工单
                 </button>
             </div>
         </div>
     </div>
 </div>
 
-<form method="get" action="/clientarea.php?action=services&amp;">
+<form method="get" action="/console/ec?action=services&amp;group=ec&amp;">
     <div class="modal modal-localisation" id="modalChooseLanguage" tabindex="-1" role="dialog">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-body">
                     <button type="button" class="close text-light" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
+                        <span aria-hidden="true">×</span>
                     </button>
 
-                    <h5 class="h5 pt-5 pb-3">語言</h5>
-                    <div class="row item-selector">
-                        <input type="hidden" name="language" value="">
-                        <div class="col-4">
-                            <a href="#" class="item" data-value="arabic">
-                                العربية
-                            </a>
-                        </div>
-                        <div class="col-4">
-                            <a href="#" class="item" data-value="azerbaijani">
-                                Azerbaijani
-                            </a>
-                        </div>
-                        <div class="col-4">
-                            <a href="#" class="item" data-value="catalan">
-                                Català
-                            </a>
-                        </div>
-                        <div class="col-4">
-                            <a href="#" class="item active" data-value="chinese">
-                                中文
-                            </a>
-                        </div>
-                        <div class="col-4">
-                            <a href="#" class="item" data-value="croatian">
-                                Hrvatski
-                            </a>
-                        </div>
-                        <div class="col-4">
-                            <a href="#" class="item" data-value="czech">
-                                Čeština
-                            </a>
-                        </div>
-                        <div class="col-4">
-                            <a href="#" class="item" data-value="danish">
-                                Dansk
-                            </a>
-                        </div>
-                        <div class="col-4">
-                            <a href="#" class="item" data-value="dutch">
-                                Nederlands
-                            </a>
-                        </div>
-                        <div class="col-4">
-                            <a href="#" class="item" data-value="english">
-                                English
-                            </a>
-                        </div>
-                        <div class="col-4">
-                            <a href="#" class="item" data-value="estonian">
-                                Estonian
-                            </a>
-                        </div>
-                        <div class="col-4">
-                            <a href="#" class="item" data-value="farsi">
-                                Persian
-                            </a>
-                        </div>
-                        <div class="col-4">
-                            <a href="#" class="item" data-value="french">
-                                Français
-                            </a>
-                        </div>
-                        <div class="col-4">
-                            <a href="#" class="item" data-value="german">
-                                Deutsch
-                            </a>
-                        </div>
-                        <div class="col-4">
-                            <a href="#" class="item" data-value="hebrew">
-                                עברית
-                            </a>
-                        </div>
-                        <div class="col-4">
-                            <a href="#" class="item" data-value="hungarian">
-                                Magyar
-                            </a>
-                        </div>
-                        <div class="col-4">
-                            <a href="#" class="item" data-value="italian">
-                                Italiano
-                            </a>
-                        </div>
-                        <div class="col-4">
-                            <a href="#" class="item" data-value="macedonian">
-                                Macedonian
-                            </a>
-                        </div>
-                        <div class="col-4">
-                            <a href="#" class="item" data-value="norwegian">
-                                Norwegian
-                            </a>
-                        </div>
-                        <div class="col-4">
-                            <a href="#" class="item" data-value="portuguese-br">
-                                Português
-                            </a>
-                        </div>
-                        <div class="col-4">
-                            <a href="#" class="item" data-value="portuguese-pt">
-                                Português
-                            </a>
-                        </div>
-                        <div class="col-4">
-                            <a href="#" class="item" data-value="romanian">
-                                Română
-                            </a>
-                        </div>
-                        <div class="col-4">
-                            <a href="#" class="item" data-value="russian">
-                                Русский
-                            </a>
-                        </div>
-                        <div class="col-4">
-                            <a href="#" class="item" data-value="spanish">
-                                Español
-                            </a>
-                        </div>
-                        <div class="col-4">
-                            <a href="#" class="item" data-value="swedish">
-                                Svenska
-                            </a>
-                        </div>
-                        <div class="col-4">
-                            <a href="#" class="item" data-value="turkish">
-                                Türkçe
-                            </a>
-                        </div>
-                        <div class="col-4">
-                            <a href="#" class="item" data-value="ukranian">
-                                Українська
-                            </a>
-                        </div>
-                    </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-default">Apply</button>
+                    <button type="submit" class="btn btn-light">应用</button>
                 </div>
             </div>
         </div>
     </div>
 </form>
+
 
 
 <form action="#" id="frmGeneratePassword">
@@ -966,24 +1516,24 @@ olor: #641f1a !important;background-color: #ffd2d4 !important;}#htb .warning{col
             <div class="modal-content">
                 <div class="modal-header bg-primary text-white">
                     <h4 class="modal-title">
-                        Generate Password
+                        生成密码
                     </h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
+                        <span aria-hidden="true">×</span>
                     </button>
                 </div>
                 <div class="modal-body">
                     <div class="alert alert-danger w-hidden" id="generatePwLengthError">
-                        Please enter a number between 8 and 64 for the password length
+                        请输入长度在 8 到 64 之间的数字
                     </div>
                     <div class="form-group row">
-                        <label for="generatePwLength" class="col-sm-4 col-form-label">Password Length</label>
+                        <label for="generatePwLength" class="col-sm-4 col-form-label">密码长度</label>
                         <div class="col-sm-8">
                             <input type="number" min="8" max="64" value="12" step="1" class="form-control input-inline input-inline-100" id="inputGeneratePasswordLength">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="generatePwOutput" class="col-sm-4 col-form-label">Generated Password</label>
+                        <label for="generatePwOutput" class="col-sm-4 col-form-label">密码已生成</label>
                         <div class="col-sm-8">
                             <input type="text" class="form-control" id="inputGeneratePasswordOutput">
                         </div>
@@ -992,185 +1542,35 @@ olor: #641f1a !important;background-color: #ffd2d4 !important;}#htb .warning{col
                         <div class="col-sm-8 offset-sm-4">
                             <button type="submit" class="btn btn-default btn-sm">
                                 <i class="fas fa-plus fa-fw"></i>
-                                Generate new password
+                                生成新密码
                             </button>
                             <button type="button" class="btn btn-default btn-sm copy-to-clipboard" data-clipboard-target="#inputGeneratePasswordOutput">
                                 <img src="/assets/img/clippy.svg" alt="Copy to clipboard" width="15">
-                                Copy
+                                复制
                             </button>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">
-                        Close
+                        关闭
                     </button>
                     <button type="button" class="btn btn-primary" id="btnGeneratePasswordInsert" data-clipboard-target="#inputGeneratePasswordOutput">
-                        Copy to clipboard and Insert
+                        复制到剪贴板并插入
                     </button>
                 </div>
             </div>
         </div>
     </div>
 </form>
-<script src="https://unicons.iconscout.com/release/v2.0.1/script/monochrome/bundle.js"></script>
-<script src="/templates/VollCloud/libs/metismenu/metisMenu.min.js"></script>
-<script src="/templates/VollCloud/libs/simplebar/simplebar.min.js"></script>
-<script src="/templates/VollCloud/libs/node-waves/waves.min.js"></script>
-<script src="/templates/VollCloud/js/app.js"></script>
 
 
-<script>
-    $("#renewAdd").after('<div id="testadd"><div id="renew2094" data-status="success" data-msg="" data-afterdate="2023-11-11" data-billingcycle="一年" data-frontdate="2022-11-11" data-id="2094" data-invoiceid="" data-product="【HK-Group 5】" data-product
-    name="【HK-Group 5】" data-stotal="67.50" data-userid="1119"></div><div id="renew2095" data-status="success" data-msg="" data-afterdate="2023-11-11" data-billingcycle="一年" data-frontdate="2022-11-11" data-id="2095" data-invoiceid="" data-product="【HK-Group 5】" data-prod
-    uctname="【HK-Group 5】" data-stotal="67.50" data-userid="1119"></div><div id="renew3112" data-status="success" data-msg="" data-afterdate="2024-07-21" data-billingcycle="一年" data-frontdate="2023-07-21" data-id="3112" data-invoiceid="" data-product="新产品-【HK-Group 12】
-    data-productname="新产品-【HK-Group 12】" data-stotal="89.00" data-userid="1119"></div><div id="renew3161" data-status="success" data-msg="" data-afterdate="2024-08-11" data-billingcycle="一年" data-frontdate="2023-08-11" data-id="3161" data-invoiceid="" data-product="新
-    产品-【HK-Group 13】" data-productname="新产品-【HK-Group 13】" data-stotal="149.00" data-userid="1119"></div><div id="renew3197" data-status="success" data-msg="" data-afterdate="2024-08-19" data-billingcycle="一年" data-frontdate="2023-08-19" data-id="3197" data-invoiceid
-        ="" data-product="新产品-【HK-Group 13】" data-productname="新产品-【HK-Group 13】" data-stotal="149.00" data-userid="1119"></div><div id="renew3209" data-status="success" data-msg="" data-afterdate="2024-08-24" data-billingcycle="一年" data-frontdate="2023-08-24" data-id="
-    3209" data-invoiceid="" data-product="新产品-【HK-Group 13】" data-productname="新产品-【HK-Group 13】" data-stotal="149.00" data-userid="1119"></div><div id="renew3210" data-status="success" data-msg="" data-afterdate="2024-08-24" data-billingcycle="一年" data-frontdate="2
-    023-08-24" data-id="3210" data-invoiceid="" data-product="新产品-【HK-Group 13】" data-productname="新产品-【HK-Group 13】" data-stotal="149.00" data-userid="1119"></div><div id="renew3266" data-status="success" data-msg="" data-afterdate="2024-09-19" data-billingcycle="一
-    年" data-frontdate="2023-09-19" data-id="3266" data-invoiceid="" data-product="新产品-【HK-Group 12】" data-productname="新产品-【HK-Group 12】" data-stotal="89.00" data-userid="1119"></div><div id="renew3294" data-status="success" data-msg="" data-afterdate="2024-09-26" da
-    ta-billingcycle="一年" data-frontdate="2023-09-26" data-id="3294" data-invoiceid="" data-product="新产品-【HK-Group 12】" data-productname="新产品-【HK-Group 12】" data-stotal="89.00" data-userid="1119"></div><div id="renew3308" data-status="success" data-msg="" data-afterdate="2024-10-01" data-billingcycle="一年" data-frontdate="2023-10-01" data-id="3308" data-invoiceid="" data-product="新产品-【HK-Group 12】" data-productname="新产品-【HK-Group 12】" data-stotal="89.00" data-userid="1119"></div></div>');
-</script>
-<script type="text/javascript">
-    //添加按钮
-    function addButtonRenew(){
-        setTimeout(function(){
-            $(".table-container tbody tr").each(function(){
-                if($(this).find('td').eq(2).find('span').length>0){
-                    //six
-                    var datas = $(this).find('td').eq(2).find('span').html();
-                    var html = $(this).find('td').eq(2).html();     //表中下次付款日期td值
-                }else{
-                    //net work
-                    var datas = $(this).find('td').eq(3).find('span').html();
-                    var html = $(this).find('td').eq(3).html();     //表中下次付款日期td值
-                }
-                // var status = $.trim($(this).find('td .status').html());
-                // console.log(status);
-                var active = $(this).find('.sorting_2 span').hasClass("status-active");
-                var suspended = $(this).find('.sorting_2 span').hasClass("status-suspended");
-                if(datas != '0000-00-00' && (active || suspended)){
-                    if($(this).attr('onclick')){
-                        var clicktext = $(this).attr('onclick');
-                        $(this).attr('onclick',"");
-                        $(this).find('td').eq(0).attr('onclick',clicktext);
-                    }else{
-                        var clicktext = $(this).find('td').eq(0).attr('onclick');       //点击事件中的内容
-                    }
-                    var str = clicktext.match(/id=(.*)/)[1];        //正则截取 最终获取id值
-                    var strs = str.replace(" ", "");
-                    var id = strs.slice(0,-8);
-                    // console.log(strs);
-                    var botton = ' <button id="getRenewalMsg" data-toggle="modal" data-target="#renewalBillingCycles" dataid="'+id+'" style="">续费</button>';              //新增按钮
-                    if(html.indexOf(botton) == -1 ){
-                        if($(this).find('td').eq(2).find('span').length>0){
-                            //six
-                            $(this).find('td').eq(2).html(html+botton);
-                        }else{
-                            //net work
-                            $(this).find('td').eq(3).html(html+botton);
-                        }
-                    }
-                }
-            })
-        },100)
-    }
-    addButtonRenew();
-    $(document).on('click','.paginate_button a,.view-filter-btns .list-group .list-group-item',function(){
-        addButtonRenew();
-    })
-    $(document).on('change','.dataTables_length select',function(){
-        addButtonRenew();
-    })
-    $(document).on('keyup',"input[type='search']",function(){
-        addButtonRenew();
-    })
-
-    $(".table-container").after('<div class="col-xs-12 col-sm-12" id="renewAdd"><div class="modal fade modalboxs" id="renewalBillingCycles" tabindex="-1" role="dialog" aria-labelledby="closepowerLabel" aria-hidden="true"><div class="modal-dialog"><di
-    v class="modal-content"><div class="modal-header"><button type="button" data-dismiss="modal" class="close" aria-hidden="true">          &times;        </button><h5 class="modal-title">          续费产品        </h5></div><div class="modal-body" style="font-size:16px;"><div
-        class="renewtishi"></div><div class="hostingrenewal"><div class="alert alert-danger alert-block" style="box-shadow:none;border:0;"><span style="text-align:left">            您正在为产品续费:</span></br></div><div class="clearfix"><table class="table"><tr><th>产品名</th><th>
-        续费时间</th><th>支付金额</th></tr><tr class="text-left"><td></td><td></td><td></td></tr></table></div><div class="form-group" align="center"><span class="renewalHronize" style="margin: 20px 0px 0px;display:block">正在查询账务详情...</span><form style="margin-bottom: 5px; d
-isplay: inline-flex;" id="uppay" action=""><span><input name="renewalFeePayment" type="hidden" value="1" /><input type="hidden" name="cycle" value="" /><input type="hidden" name="hostingid" value="" /><input type="hidden" name="userid" value="" /></span></form><div class="r
-enewalinfor" style="margin:20px 0 0px 0;display:none;"><span class="renewalsMsg"></span><table class="table table-list m-t-20"><<thead><tr><th style="text-align:left;width:20%">账单id</th><th style="text-align:left;width:20%">账单类型</th><th style="text-align:left;width:20
-%">账单金额</th><th style="text-align:left;width:40%">描述</th></tr></thead><tbody class="moreInvoice"></tbody></table><div class="clearfix"></div></div><div style="font-size:12px;color:#888" class="m-t-10 m-l-10" align="left"><span class="changeCyclemsg"></span></div></div
-    ><div class="clearfix"></div></div></div><div class="modal-footer"><button type="button" class="btn btn-default renewalresult" data-dismiss="modal">取消</button><button type="button" class="btn btn-primary renewalconfirm" renewtype="renewal" style="padding: 6px 20px !important;">确认</button></div></div></div></div></div>');
-    $(document).on('click','.table-container tbody tr td button',function(){
-        var id = $(this).attr('dataid');
-        var modal=$(this).attr("data-target");
-        // console.log(modal);
-        var contenct = $("#renewAdd .modal-dialog .modal-content .modal-body .hostingrenewal tbody .text-left");
-        $(contenct).find('td').html('');
-        $(modal).find(".moreInvoice").html("");
-        $(modal).find(".renewalHronize").text("");
-        $(modal).find(".renewalinfor").hide();
-        $(modal).find(".changeCyclemsg").text();
-        $(".renewalconfirm").attr("disabled",true);
-        // console.log(contenct);
-        $.post("",{"xxxx":"xxxx","hostingid":id},function(data){
-            if(data.status=="success"){
-                $(contenct).find('td').eq(0).html(data.productname+"<br>(&yen;"+data.stotal+"/"+data.billingcycle+")");
-                $(contenct).find('td').eq(1).html(data.frontdate+"-"+data.afterdate);
-                $(contenct).find('td').eq(2).html("&yen;"+data.stotal);
-                if(data.invoiceid!=""){
-                    $(modal).find(".renewalHronize").html(data.msg+' <a href="/viewinvoice.php?id='+data.invoiceid+'" style="color:red">立即支付</a>');
-                    $(modal).find(".renewalconfirm").hide();
-                }else{
-                    $("#uppay").attr('action','clientarea.php?action=productdetails&id='+id);
-                    $("#uppay input[name='cycle']").val(data.billingcycle);
-                    $("#uppay input[name='hostingid']").val(id);
-                    $("#uppay input[name='userid']").val(data.userid);
-                    $(".renewalconfirm").attr("disabled",false);
-                    $(modal).find(".renewalconfirm").show();
-                }
-            }
-            if(data.status=="error"){
-                $(modal).find(".renewalHronize").html(data.msg);
-                $(modal).find(".renewalconfirm").hide();
-            }
-        },"json");
-    })
-    $(document).on("click",".renewalconfirm",function(){
-        var type=$(this).attr("renewtype");
-        if(type=="renewal"){
-            var form=$("#uppay");
-            $("#renewalBillingCycles").find(".renewalconfirm").text("确认...");
-            $("#renewalBillingCycles").find(".renewalconfirm").attr("disabled",true);
-            $.post("",form.serialize(),function(data){
-                if(data.status=="success"){
-                    $("#renewalBillingCycles").find(".renewtishi").html(data.msg+' <a href="/viewinvoice.php?id='+data.invoiceid+'" style="color:red">立即支付</a>');
-                    $("#renewalBillingCycles").find(".renewalresult").text("完成").addClass("jumpReload").removeAttr("data-dismiss");
-                    $("#renewalBillingCycles").find(".close").addClass("jumpReload").removeAttr("data-dismiss");
-                    $("#renewalBillingCycles").find(".renewalconfirm").hide().attr("disabled",false);
-                    $("#renewalBillingCycles").find(".hostingrenewal").hide();
-                }else{
-                    $("#renewalBillingCycles").find(".renewalconfirm").attr("disabled",false).text("确认");
-                    $("#renewalBillingCycles").find(".changeCyclemsg").text(data.msg);
-                }
-            },"json");
-        }else if(type=="changecycle"){
-            var form=$("#billing_cycle_uppay");
-            $("#changeBillingCycles").find(".renewalconfirm").text("确认...");
-            $("#changeBillingCycles").find(".renewalconfirm").attr("disabled",true);
-            $.post("",form.serialize(),function(data){
-                if(data.status=="success"){
-                    $("#changeBillingCycles").find(".renewalresult").text("完成").addClass("jumpReload").removeAttr("data-dismiss");
-                    $("#changeBillingCycles").find(".close").addClass("jumpReload").removeAttr("data-dismiss");
-                    $("#changeBillingCycles").find(".renewalconfirm").hide();
-                    $("#changeBillingCycles").find(".renewtishi").text(data.msg);
-                    $("#changeBillingCycles").find(".hostingrenewal").hide();
-                }else{
-                    $("#changeBillingCycles").find(".renewalconfirm").attr("disabled",false).text("确认");
-                    $("#changeBillingCycles").find(".changeCyclemsg").text(data.msg);
-                }
-            },"json");
-        }
-    });
-    $(document).on("click",".jumpReload",function(){
-        window.location.reload();
-    });
-</script>
 
 
-</body>
-</html>
+
+
+
+
+
+
+<div id="lightboxOverlay" class="lightboxOverlay" style="display: none;"></div><div id="lightbox" class="lightbox" style="display: none;"><div class="lb-outerContainer"><div class="lb-container"><img class="lb-image" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="><div class="lb-nav"><a class="lb-prev" href=""></a><a class="lb-next" href=""></a></div><div class="lb-loader"><a class="lb-cancel"></a></div></div></div><div class="lb-dataContainer"><div class="lb-data"><div class="lb-details"><span class="lb-caption"></span><span class="lb-number"></span></div><div class="lb-closeContainer"><a class="lb-close"></a></div></div></div></div></body></html>
