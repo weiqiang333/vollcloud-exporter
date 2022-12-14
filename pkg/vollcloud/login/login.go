@@ -64,13 +64,14 @@ func (l *Login) Login() (string, error) {
 		log.Println("Failed goquery error: ", err)
 		return "", err
 	}
-	headerUsername := strings.TrimSpace(doc.Find("#page-header-user-dropdown").Text())
+	//fmt.Println(doc.Text(), doc.Find(".nav-item.dropdown.account").Text(), doc.Find(".nav-item.dropdown.account .nav-link.dropdown-toggle").Text())
+	headerUsername := strings.TrimSpace(doc.Find(".nav-item.dropdown.account .nav-link.dropdown-toggle").Text())
 
 	log.Println("Info login success user: ", headerUsername)
 	if len(headerUsername) == 0 {
-		pageTitleBox := doc.Find(".page-title-box")
-		log.Println("Failed Login, msg: ", strings.Fields(pageTitleBox.Text()))
-		return "", fmt.Errorf("Failed Login")
+		pageTitleBox := doc.Find("title").Text() + doc.Find("div.pageError").Text() + doc.Find("#MGAlerts").Text()
+		log.Println("Failed Login, msg: ", strings.Fields(pageTitleBox))
+		return "", fmt.Errorf("Failed Login %s ", strings.Fields(pageTitleBox))
 	}
 	return headerUsername, nil
 }

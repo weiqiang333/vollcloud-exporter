@@ -11,14 +11,12 @@ import (
 	"github.com/spf13/viper"
 
 	"vollcloud-exporter/pkg/unit/conversion"
-	"vollcloud-exporter/pkg/unit/date"
 )
 
 type Productdetails struct {
 	HttpClient   *http.Client
 	Doc          *goquery.Document
 	Stats        Stats
-	Cost         Cost
 	StatsMapTemp map[string]string
 }
 
@@ -35,18 +33,10 @@ type Stats struct {
 	BandwidthUsage   float64 // 使用百分比
 }
 
-type Cost struct {
-	DateStart      string
-	DateEnd        string
-	BlendedCostUSD float64
-	CostCycle      string
-}
-
 func NewProductdetails(httpClient http.Client) *Productdetails {
 	return &Productdetails{
 		HttpClient:   &httpClient,
 		Stats:        Stats{},
-		Cost:         Cost{},
 		StatsMapTemp: map[string]string{},
 	}
 }
@@ -76,40 +66,9 @@ func (p *Productdetails) Get(idUrl string) error {
 	return nil
 }
 
-// GetProductDetails 解析 html 中的产品详情信息
-func (p *Productdetails) GetProductDetails() error {
-	productDetails := p.Doc.Find("div.product-details .col-md-6.text-center")
-	if productDetails.Length() == 0 {
-		return fmt.Errorf("Failed GetProductDetails is nil")
-	}
-	m := formatProductDetailsText(productDetails.Text())
-	log.Println("Info GetProductDetails formatProductDetailsText: ", m)
-	if len(m) == 0 {
-		return fmt.Errorf("Failed GetProductDetails is nil")
-	}
-	dateStart, err := date.ChangeDateLayout(m["Registration Date"])
-	if err != nil {
-		return fmt.Errorf("Failed GetProductDetails %s ", err.Error())
-	}
-	dateEnd, err := date.ChangeDateLayout(m["Next Due Date"])
-	if err != nil {
-		return fmt.Errorf("Failed GetProductDetails %s ", err.Error())
-	}
-	blendedCostUSD, err := strconv.ParseFloat(strings.ReplaceAll(strings.ReplaceAll(m["Recurring Amount"], "$", ""), " USD", ""), 64)
-	if err != nil {
-		return fmt.Errorf("Failed GetProductDetails Recurring Amount %s ", err.Error())
-	}
-	p.Cost = Cost{
-		DateStart:      dateStart,
-		DateEnd:        dateEnd,
-		BlendedCostUSD: blendedCostUSD,
-	}
-	return nil
-}
-
 // GetModuleBody 将资源 tr 中的信息临时存放至 StatsMapTemp，方便提取
 func (p *Productdetails) GetModuleBody() {
-	p.Doc.Find("div.module-body tr").Each(func(i int, s *goquery.Selection) {
+	p.Doc.Find("div.module-body .table.pm-stats tr").Each(func(i int, s *goquery.Selection) {
 		tds := []string{}
 		s.Find("td").Each(func(i int, selection *goquery.Selection) {
 			if strings.TrimSpace(selection.Text()) == "" {
@@ -121,6 +80,22 @@ func (p *Productdetails) GetModuleBody() {
 		if len(tds) >= 2 {
 			//log.Println("Info GetModuleBody", tds)
 			p.StatsMapTemp[tds[0]] = tds[1]
+		}
+	})
+	hostname := strings.TrimSpace(p.Doc.Find("#solus-hostname").Text())
+	if len(hostname) == 0 {
+		hostname = "nil"
+	}
+	status := strings.TrimSpace(p.Doc.Find("#solus-hostname").Text())
+	if len(status) == 0 {
+		status = "nil"
+	}
+	p.StatsMapTemp["Hostname"] = hostname
+	p.StatsMapTemp["Status"] = status
+	p.Doc.Find("div.svm-header-config div").Each(func(i int, s *goquery.Selection) {
+		conf := strings.Split(strings.TrimSpace(s.Text()), ":")
+		if len(conf) >= 2 {
+			p.StatsMapTemp[strings.TrimSpace(conf[0])] = strings.TrimSpace(conf[1])
 		}
 	})
 	//log.Println("Info GetModuleBody success: ", p.StatsMapTemp)
@@ -149,77 +124,6 @@ func (p *Productdetails) CreateStats() error {
 	}
 	log.Println("Info CreateStats success: ", p.Stats)
 	return nil
-}
-
-// SplitCostCycle 将成本拆分: 年/月/日 (日只返回最近7天的)
-func (p *Productdetails) SplitCostCycle() []Cost {
-	var costs []Cost
-	cycle, err := date.GetDateSubPeriodUnit(p.Cost.DateStart, p.Cost.DateEnd)
-	if err != nil {
-		log.Println("Failed SplitCostCycle error", cycle, err.Error())
-		return costs
-	}
-	costs = append(costs, Cost{
-		DateStart:      p.Cost.DateStart,
-		DateEnd:        p.Cost.DateEnd,
-		BlendedCostUSD: p.Cost.BlendedCostUSD,
-		CostCycle:      cycle,
-	})
-	if cycle == "year" {
-		newCycle := "month"
-		costDay := p.Cost.BlendedCostUSD / 365
-		dateRangeMonth, err := date.GetDateRangeYearToMonth(p.Cost.DateStart, p.Cost.DateEnd)
-		if err != nil {
-			log.Println("Warn GetDateRangeYearToMonth", dateRangeMonth, err.Error())
-			return costs
-		}
-		for i, m := range dateRangeMonth {
-			if i+1 >= len(dateRangeMonth) {
-				continue
-			}
-			day, err := date.GetDateSubPeriodDays(m, dateRangeMonth[i+1])
-			if err != nil {
-				log.Println("Warn GetDateSubPeriodDays", err.Error())
-				continue
-			}
-			costs = append(costs, Cost{
-				DateStart:      m,
-				DateEnd:        dateRangeMonth[i+1],
-				BlendedCostUSD: day * costDay,
-				CostCycle:      newCycle,
-			})
-		}
-		newCycle = "day"
-		dateRangeDays := date.GetDateRangeToDay(date.GetBeforeDay(-7), date.GetNowDay())
-		for i, d := range dateRangeDays {
-			if i+1 >= len(dateRangeDays) {
-				continue
-			}
-			costs = append(costs, Cost{
-				DateStart:      d,
-				DateEnd:        dateRangeDays[i+1],
-				BlendedCostUSD: costDay,
-				CostCycle:      newCycle,
-			})
-		}
-	}
-	if cycle == "month" {
-		newCycle := "day"
-		costDay := p.Cost.BlendedCostUSD / 30
-		dateRangeDays := date.GetDateRangeToDay(date.GetBeforeDay(-7), date.GetNowDay())
-		for i, d := range dateRangeDays {
-			if i+1 >= len(dateRangeDays) {
-				continue
-			}
-			costs = append(costs, Cost{
-				DateStart:      d,
-				DateEnd:        dateRangeDays[i+1],
-				BlendedCostUSD: costDay,
-				CostCycle:      newCycle,
-			})
-		}
-	}
-	return costs
 }
 
 // getBandwidth - b 例子: "254.38 GB of 1000 GB Used / 745.62 GB Free\n\n\n                                25%"
@@ -265,29 +169,8 @@ func getConversion(s string) (float64, error) {
 }
 
 func getStatus(s string) float64 {
-	if s == "online" {
+	if s == "online" || s == "Online" {
 		return 1
 	}
 	return 0
-}
-
-// formatProductDetailsText 格式化解析项目信息的数据 -> map
-func formatProductDetailsText(text string) map[string]string {
-	texts := strings.Split(text, "\n")
-	data := map[string]string{}
-	sub := []string{}
-	for _, v := range texts {
-		v = strings.TrimSpace(v)
-		if len(v) == 0 {
-			sub = []string{}
-			continue
-		}
-		sub = append(sub, v)
-		if len(sub) < 2 {
-			continue
-		}
-		data[sub[0]] = sub[1]
-		sub = []string{}
-	}
-	return data
 }

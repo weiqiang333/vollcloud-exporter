@@ -14,6 +14,41 @@ func GetBeforeDay(i int) string {
 	return time.Now().AddDate(0, 0, i).Format("2006-01-02")
 }
 
+// GetBeforeMonth 返回多少月之前的时间 固定格式 2006-01-02
+func GetBeforeMonth(i int) string {
+	return time.Now().AddDate(0, i, 0).Format("2006-01-02")
+}
+
+// GetDateBeforeMonth 返回特指日期多少月之前的时间 固定格式 2006-01-02
+func GetDateBeforeMonth(date string, i int) (string, error) {
+	layout := "2006-01-02"
+	t, err := time.Parse(layout, date)
+	if err != nil {
+		return "", err
+	}
+	return t.AddDate(0, i, 0).Format("2006-01-02"), nil
+}
+
+// GetDateBeforeYear 返回特指日期多少月之前的时间 固定格式 2006-01-02
+func GetDateBeforeYear(date string, i int) (string, error) {
+	layout := "2006-01-02"
+	t, err := time.Parse(layout, date)
+	if err != nil {
+		return "", err
+	}
+	return t.AddDate(i, 0, 0).Format("2006-01-02"), nil
+}
+
+// IfDateBigNow 判断时间在当前时间之前
+func IfDateBigNow(dateStart string) (bool, error) {
+	layout := "2006-01-02"
+	t, err := time.Parse(layout, dateStart)
+	if err != nil {
+		return false, err
+	}
+	return time.Now().After(t), nil
+}
+
 // ChangeDateLayout date layout change: "02/01/2006" -> "2006-01-02"
 func ChangeDateLayout(oldTime string) (string, error) {
 	layout := "02/01/2006"

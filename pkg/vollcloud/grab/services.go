@@ -3,6 +3,7 @@ package grab
 import (
 	"log"
 	"net/http"
+	"strings"
 
 	"github.com/PuerkitoBio/goquery"
 	"github.com/spf13/viper"
@@ -39,14 +40,16 @@ func (s *Services) Get() {
 
 // GetProductIdUrls 获取资源的子页面
 func (s *Services) GetProductIdUrls() {
-	tbody := s.Doc.Find("#tableServicesList tbody")
-	urlHref := tbody.Find("td.responsive-edit-button").Each(func(i int, gs *goquery.Selection) {
-		title := gs.Find("a")
-		href, IsExist := title.Attr("href")
+	urlHref := s.Doc.Find("#tableServicesList tbody tr").Each(func(i int, gs *goquery.Selection) {
+		onclick, IsExist := gs.Attr("onclick")
 		if IsExist {
-			s.IdUrls = append(s.IdUrls, href)
+			onclicks := strings.Split(onclick, "'")
+			if len(onclick) < 2 {
+				log.Println("Warn GetProductIdUrls() unusual Split: ", onclick)
+			}
+			s.IdUrls = append(s.IdUrls, onclicks[1])
 		}
-		log.Println("Info GetProductIdUrls() : ", href, IsExist)
+		log.Println("Info GetProductIdUrls() : ", onclick, IsExist)
 	})
 	log.Println("Info GetProductIdUrls() IdUrls: ", urlHref.Size(), s.IdUrls)
 }
