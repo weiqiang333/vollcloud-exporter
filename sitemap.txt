@@ -2,3 +2,4 @@ https://weiqiang333.github.io/vollcloud-exporter/index.html
 https://weiqiang333.github.io/vollcloud-exporter/README.md
 https://weiqiang333.github.io/vollcloud-exporter/README-cn.md
 https://weiqiang333.github.io/vollcloud-exporter/docs/mertrics_example
+https://weiqiang333.github.io/vollcloud-exporter/blob/master/docs/%E7%89%B9%E6%80%A7.md
