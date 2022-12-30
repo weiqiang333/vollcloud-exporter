@@ -86,7 +86,7 @@ func (p *Productdetails) GetModuleBody() {
 	if len(hostname) == 0 {
 		hostname = "nil"
 	}
-	status := strings.TrimSpace(p.Doc.Find("#solus-hostname").Text())
+	status := strings.TrimSpace(p.Doc.Find("#solus_status").Text())
 	if len(status) == 0 {
 		status = "nil"
 	}
